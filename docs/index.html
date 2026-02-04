@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lehner Haus - Konfigurator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- jsPDF for client-side PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+/* ============================================
+   LEHNER HAUS KONFIGURATOR - Statische Version
+   ============================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary-50: #e8f5f0;
+    --primary-100: #c5e8db;
+    --primary-400: #59be9b;
+    --primary-500: #3bb289;
+    --primary-700: #2d906f;
+    --primary-800: #267e61;
+    --primary-900: #06402b;
+    --primary-950: #042e1f;
+    --primary-color: #06402b;
+    --secondary-50: #faf8f5;
+    --secondary-100: #f5f3ef;
+    --secondary-400: #ccc2b0;
+    --secondary-500: #b1a699;
+    --gold-500: #D4AF37;
+    --gold-600: #b8922e;
+    --gray-50: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #eeeeee;
+    --gray-300: #e0e0e0;
+    --gray-400: #bdbdbd;
+    --gray-500: #9e9e9e;
+    --gray-600: #757575;
+    --gray-700: #616161;
+    --gray-900: #212121;
+    --success-color: #06402b;
+    --error-500: #f44336;
+    --warning-50: #fff8e1;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+    --glow-primary: 0 0 20px rgba(6,64,43,0.3);
+    --glow-gold: 0 0 20px rgba(212,175,55,0.4);
+    --radius-md: 6px;
+    --radius-lg: 10px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+    --transition-fast: 0.15s cubic-bezier(0.4,0,0.2,1);
+    --transition-slow: 0.3s cubic-bezier(0.4,0,0.2,1);
+    --transition-bounce: 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.5;
+    color: #1d1d1b;
+    background-color: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-950) 100%);
+    color: white;
+    padding: 24px 0;
+    box-shadow: var(--shadow-lg);
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.logo h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 4px; }
+.tagline { font-size: 1rem; font-style: italic; opacity: 0.9; font-weight: 300; }
+.qdf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--gold-500) 0%, var(--gold-600) 100%);
+    border-radius: var(--radius-full);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md), var(--glow-gold);
+}
+.qdf-badge svg { width: 20px; height: 20px; }
+
+/* Progress */
+.progress-container {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 16px 0;
+    box-shadow: var(--shadow-sm);
+}
+.progress-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.progress-bar-wrapper {
+    height: 6px;
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-700) 0%, var(--primary-500) 50%, var(--gold-500) 100%);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+    width: 0%;
+}
+.progress-steps { display: flex; justify-content: space-between; gap: 4px; }
+.progress-step { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 90px; }
+.progress-step-indicator {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    border: 2px solid var(--gray-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    transition: all var(--transition-fast);
+    margin-bottom: 4px;
+}
+.progress-step.active .progress-step-indicator { background: var(--primary-color); border-color: var(--primary-color); color: white; box-shadow: var(--glow-primary); }
+.progress-step.completed .progress-step-indicator { background: var(--gold-500); border-color: var(--gold-500); color: white; }
+.progress-step-label { font-size: 10px; color: var(--gray-500); text-align: center; }
+.progress-step.active .progress-step-label, .progress-step.completed .progress-step-label { color: var(--primary-color); font-weight: 500; }
+
+/* Main Content */
+.main-content {
+    background-color: white;
+    padding: 48px;
+    margin: 30px 0;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+.page-title { font-size: 1.875rem; font-weight: 700; color: var(--primary-color); margin-bottom: 12px; text-align: center; }
+.intro-text { text-align: center; font-size: 1.125rem; color: var(--gray-600); margin-bottom: 48px; font-weight: 300; }
+
+/* Form Sections */
+.form-section { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--gray-200); scroll-margin-top: 100px; }
+.form-section:last-of-type { border-bottom: none; }
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+.section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--gold-500) 100%);
+    margin-right: 16px;
+    border-radius: 2px;
+}
+.section-description { color: var(--gray-600); margin-bottom: 24px; font-size: 0.875rem; padding-left: 20px; }
+
+/* Form Elements */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.form-group { display: flex; flex-direction: column; position: relative; }
+.form-group label { font-weight: 500; margin-bottom: 8px; color: var(--primary-color); font-size: 0.875rem; }
+.form-group input, .form-group select {
+    padding: 14px 16px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: all var(--transition-fast);
+    background: white;
+}
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(6,64,43,0.1); }
+.form-group input.error { border-color: var(--error-500); }
+.form-group .error-message { color: var(--error-500); font-size: 0.75rem; margin-top: 4px; display: none; }
+.form-group .error-message.show { display: block; }
+
+/* Radio Cards */
+.radio-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.radio-card {
+    position: relative;
+    display: block;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    background-color: white;
+}
+.radio-card:hover { border-color: var(--primary-400); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.radio-card input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.radio-card.selected, .radio-card:has(input:checked) {
+    border-color: var(--primary-color);
+    border-width: 2px;
+    padding: 23px;
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--secondary-50) 100%);
+    box-shadow: var(--shadow-md), var(--glow-primary);
+}
+.radio-content h4 { font-size: 1.125rem; font-weight: 600; margin-bottom: 8px; color: var(--primary-color); }
+.radio-content p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.625; }
+.radio-content small { display: block; margin-top: 10px; font-size: 0.75rem; color: var(--gray-500); }
+.radio-card .checkmark {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    background: var(--success-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0);
+    transition: all var(--transition-bounce);
+    box-shadow: var(--shadow-md);
+}
+.radio-card .checkmark svg { width: 18px; height: 18px; stroke: white; stroke-width: 3; fill: none; }
+.radio-card.selected .checkmark, .radio-card:has(input:checked) .checkmark { opacity: 1; transform: scale(1); }
+
+.info-message {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, var(--warning-50) 0%, var(--secondary-50) 100%);
+    border-left: 4px solid var(--gold-500);
+    border-radius: var(--radius-md);
+    color: var(--gray-700);
+    font-size: 0.875rem;
+}
+
+/* Rooms */
+.rooms-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.room-section { background: var(--gray-100); padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); }
+.room-section h4 { color: var(--primary-color); margin-bottom: 16px; font-size: 1.125rem; font-weight: 600; }
+.room-item { display: flex; gap: 12px; margin-bottom: 12px; }
+.room-name, .room-details, .eigenleistung-input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-family: var(--font-family);
+}
+.room-name:focus, .room-details:focus, .eigenleistung-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(6,64,43,0.1); }
+.room-name { flex: 0 0 40%; }
+.btn-add {
+    margin-top: 12px;
+    padding: 12px 20px;
+    background-color: white;
+    border: 2px dashed var(--primary-400);
+    color: var(--primary-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    transition: all var(--transition-fast);
+}
+.btn-add:hover { background-color: var(--primary-color); border-style: solid; color: white; }
+#eigenleistungen-container { margin-bottom: 16px; }
+.eigenleistung-item { margin-bottom: 12px; }
+
+/* Submit */
+.submit-section { text-align: center; margin-top: 56px; padding-top: 32px; }
+.btn-submit {
+    padding: 18px 64px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-800) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+.btn-submit:hover { transform: translateY(-3px); background: linear-gradient(135deg, var(--primary-800) 0%, var(--primary-950) 100%); box-shadow: var(--shadow-xl), var(--glow-primary); }
+.btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+/* Footer */
+.footer { text-align: center; padding: 32px 0; color: var(--gray-600); font-size: 0.875rem; }
+
+/* Toast */
+.toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; }
+.toast {
+    min-width: 300px;
+    max-width: 450px;
+    padding: 16px 20px;
+    border-radius: var(--radius-lg);
+    background: white;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transform: translateX(120%);
+    transition: transform var(--transition-slow);
+    border-left: 4px solid var(--gray-400);
+}
+.toast.show { transform: translateX(0); }
+.toast.toast-error { border-left-color: var(--error-500); background: #ffebee; }
+.toast.toast-success { border-left-color: var(--success-color); background: #e8f5e9; }
+.toast-content { flex: 1; }
+.toast-title { font-weight: 600; font-size: 0.875rem; margin-bottom: 2px; }
+.toast-message { font-size: 0.875rem; color: var(--gray-700); }
+.toast-close { background: none; border: none; padding: 4px; cursor: pointer; color: var(--gray-500); }
+
+/* Loading Spinner */
+.spinner { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 767px) {
+    .header-inner { flex-direction: column; gap: 12px; }
+    .qdf-badge { font-size: 0.75rem; padding: 8px 16px; }
+    .main-content { padding: 24px 16px; margin: 16px 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .radio-group { grid-template-columns: 1fr; }
+    .rooms-container { grid-template-columns: 1fr; }
+    .room-item { flex-direction: column; }
+    .room-name { flex: 1; }
+    .progress-step-label { display: none; }
+    .progress-step-indicator { width: 20px; height: 20px; font-size: 9px; }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-inner">
+                <div class="logo">
+                    <h1>LEHNER HAUS</h1>
+                    <p class="tagline">schwäbisch gut</p>
+                </div>
+                <div class="qdf-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    QDF Zertifiziert 2026
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-inner">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="progress-bar"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step" data-step="1"><div class="progress-step-indicator">1</div><span class="progress-step-label">Kontakt</span></div>
+                    <div class="progress-step" data-step="2"><div class="progress-step-indicator">2</div><span class="progress-step-label">Energie</span></div>
+                    <div class="progress-step" data-step="3"><div class="progress-step-indicator">3</div><span class="progress-step-label">Wand</span></div>
+                    <div class="progress-step" data-step="4"><div class="progress-step-indicator">4</div><span class="progress-step-label">Innen</span></div>
+                    <div class="progress-step" data-step="5"><div class="progress-step-indicator">5</div><span class="progress-step-label">Decke</span></div>
+                    <div class="progress-step" data-step="6"><div class="progress-step-indicator">6</div><span class="progress-step-label">Haus</span></div>
+                    <div class="progress-step" data-step="7"><div class="progress-step-indicator">7</div><span class="progress-step-label">Fenster</span></div>
+                    <div class="progress-step" data-step="8"><div class="progress-step-indicator">8</div><span class="progress-step-label">Dach</span></div>
+                    <div class="progress-step" data-step="9"><div class="progress-step-indicator">9</div><span class="progress-step-label">Heizung</span></div>
+                    <div class="progress-step" data-step="10"><div class="progress-step-indicator">10</div><span class="progress-step-label">Luft</span></div>
+                    <div class="progress-step" data-step="11"><div class="progress-step-indicator">11</div><span class="progress-step-label">Personen</span></div>
+                    <div class="progress-step" data-step="12"><div class="progress-step-indicator">12</div><span class="progress-step-label">Grundst.</span></div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <h2 class="page-title">Ihre persönliche Leistungsbeschreibung</h2>
+            <p class="intro-text">Gestalten Sie Ihr Traumhaus - wir erstellen Ihnen eine maßgeschneiderte Leistungsbeschreibung</p>
+
+            <form id="konfigurator-form">
+                <!-- 1. Kontaktdaten -->
+                <section class="form-section" id="section-1">
+                    <h3 class="section-title">1. Ihre Kontaktdaten</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bauherr_vorname">Vorname *</label>
+                            <input type="text" id="bauherr_vorname" name="bauherr_vorname" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="bauherr_nachname">Nachname *</label>
+                            <input type="text" id="bauherr_nachname" name="bauherr_nachname" required>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bauherr_email">E-Mail</label>
+                            <input type="email" id="bauherr_email" name="bauherr_email">
+                        </div>
+                        <div class="form-group">
+                            <label for="bauherr_telefon">Telefon</label>
+                            <input type="tel" id="bauherr_telefon" name="bauherr_telefon">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Energiestandard -->
+                <section class="form-section" id="section-2">
+                    <h3 class="section-title">2. Energiestandard</h3>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="kfw_standard" value="KFW55" required>
+                            <div class="radio-content">
+                                <h4>KfW 55</h4>
+                                <p>Effizienzhaus 55 - Attraktive Förderung mit bewährter Technik</p>
+                            </div>
+                            <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="kfw_standard" value="KFW40">
+                            <div class="radio-content">
+                                <h4>KfW 40</h4>
+                                <p>Effizienzhaus 40 - Höchste Energieeffizienz für maximale Förderung</p>
+                            </div>
+                            <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- 3. Außenwand -->
+                <section class="form-section" id="section-3">
+                    <h3 class="section-title">3. Außenwandsystem</h3>
+                    <p class="section-description">Wählen Sie Ihr Wandsystem basierend auf dem Energiestandard</p>
+                    <div id="wall-options" class="radio-group">
+                        <p class="info-message">Bitte wählen Sie zuerst einen Energiestandard aus.</p>
+                    </div>
+                </section>
+
+                <!-- 4. Innenwand -->
+                <section class="form-section" id="section-4">
+                    <h3 class="section-title">4. Innenwandsystem</h3>
+                    <div id="innerwall-options" class="radio-group"></div>
+                </section>
+
+                <!-- 5. Decke -->
+                <section class="form-section" id="section-5">
+                    <h3 class="section-title">5. Deckensystem</h3>
+                    <div id="decke-options" class="radio-group"></div>
+                </section>
+
+                <!-- 6. Haustyp -->
+                <section class="form-section" id="section-6">
+                    <h3 class="section-title">6. Haustyp</h3>
+                    <div id="haustyp-options" class="radio-group"></div>
+                </section>
+
+                <!-- 7. Fenster -->
+                <section class="form-section" id="section-7">
+                    <h3 class="section-title">7. Fenstersystem</h3>
+                    <div id="window-options" class="radio-group"></div>
+                </section>
+
+                <!-- 8. Dach -->
+                <section class="form-section" id="section-8">
+                    <h3 class="section-title">8. Dacheindeckung</h3>
+                    <div id="tiles-options" class="radio-group"></div>
+                </section>
+
+                <!-- 9. Heizung -->
+                <section class="form-section" id="section-9">
+                    <h3 class="section-title">9. Heizungssystem</h3>
+                    <div id="heizung-options" class="radio-group"></div>
+                </section>
+
+                <!-- 10. Lüftung -->
+                <section class="form-section" id="section-10">
+                    <h3 class="section-title">10. Lüftungssystem</h3>
+                    <p class="section-description">Die Lüftungsoptionen richten sich nach Ihrem gewählten Energiestandard</p>
+                    <div id="lueftung-options" class="radio-group">
+                        <p class="info-message">Bitte wählen Sie zuerst einen Energiestandard aus.</p>
+                    </div>
+                </section>
+
+                <!-- 11. Personenanzahl -->
+                <section class="form-section" id="section-11">
+                    <h3 class="section-title">11. Personenanzahl</h3>
+                    <div class="form-group">
+                        <label for="personenanzahl">Wie viele Personen ziehen ein? *</label>
+                        <select id="personenanzahl" name="personenanzahl" required>
+                            <option value="">Bitte wählen</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 Personen</option>
+                            <option value="3">3 Personen</option>
+                            <option value="4">4 Personen</option>
+                            <option value="5">5 Personen</option>
+                            <option value="6">6+ Personen</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- 12. Grundstück -->
+                <section class="form-section" id="section-12">
+                    <h3 class="section-title">12. Grundstücksstatus</h3>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="grundstueck" value="vorhanden" required>
+                            <div class="radio-content">
+                                <h4>Vorhanden</h4>
+                                <p>Ich besitze bereits ein Grundstück</p>
+                            </div>
+                            <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="grundstueck" value="in_aussicht">
+                            <div class="radio-content">
+                                <h4>In Aussicht</h4>
+                                <p>Ein Grundstück ist in Aussicht</p>
+                            </div>
+                            <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="grundstueck" value="suche">
+                            <div class="radio-content">
+                                <h4>Auf der Suche</h4>
+                                <p>Ich suche noch nach einem Grundstück</p>
+                            </div>
+                            <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Submit -->
+                <div class="submit-section">
+                    <button type="submit" class="btn-submit">Leistungsbeschreibung erstellen (PDF)</button>
+                </div>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Lehner Haus GmbH & Co. KG. Alle Rechte vorbehalten.</p>
+        </footer>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+// ============================================
+// KATALOG-DATEN (eingebettet)
+// ============================================
+const catalog = {
+    walls: {
+        KFW55: [
+            { id: 'climativ-fermacell', name: 'CLIMA-tiv Wand - fermacell', description: 'Hochwertige Außenwand mit fermacell Gipsfaser-Innenbeplankung. U-Wert: 0,149 W/(m²K)' },
+            { id: 'climativ-esb', name: 'CLIMA-tiv Wand - ESB', description: 'Wirtschaftliche Variante mit wohngesunder ESB-Innenbeplankung. U-Wert: 0,149 W/(m²K)' }
+        ],
+        KFW40: [
+            { id: 'climativ-plus-fermacell', name: 'CLIMA-tiv PLUS - fermacell', description: 'Premium-Wandsystem für KfW 40 mit U-Wert 0,129 W/(m²K)' },
+            { id: 'climativ-plus-esb', name: 'CLIMA-tiv PLUS - ESB', description: 'Hocheffiziente KfW 40 Wand mit wohngesunder ESB-Beplankung. U-Wert: 0,129 W/(m²K)' }
+        ]
+    },
+    innerwalls: [
+        { id: 'innenwand-fermacell-gipskarton', name: 'Innenwand fermacell + Gipskarton', description: 'Premium-Innenwand mit Schallschutz BASIS+ (52-55 dB)' },
+        { id: 'innenwand-esb-gipskarton', name: 'Innenwand ESB + Gipskarton', description: 'Wirtschaftliche Innenwand mit Schallschutz BASIS (47-49 dB)' }
+    ],
+    decken: [
+        { id: 'lehner-decke', name: 'Lehner Decke - Holzbalkendecke', description: 'Bewährte Holzbalkendecke mit optimaler Statik und exzellentem Schallschutz' },
+        { id: 'vollholzdecke', name: 'Vollholzdecke Premium', description: 'Massive Vollholzdecke für höchste Ansprüche mit sichtbarer Holzoberfläche' }
+    ],
+    windows: [
+        { id: 'kunststoff', name: '3-fach verglaste Kunststofffenster', description: '6-Kammer-Profil, Ug-Wert 0,5 W/(m²K), RC2-Sicherheit serienmäßig' },
+        { id: 'holz-alu', name: 'Holz-Aluminium-Fenster', description: 'Premium-Fenster mit Echtholz innen und wartungsfreier Alu-Außenschale' }
+    ],
+    tiles: [
+        { id: 'ton', name: 'Tondachziegel Premium Surface', description: 'Lebensdauer 80-100 Jahre, durchgefärbt, A² Brandschutz' },
+        { id: 'beton', name: 'Betondachsteine', description: 'Wirtschaftliche Lösung mit 30-40 Jahren Lebensdauer' }
+    ],
+    haustypen: [
+        { id: 'bungalow', name: 'Bungalow', description: 'Eingeschossiges, barrierefreies Wohnen auf einer Ebene' },
+        { id: 'stadtvilla', name: 'Stadtvilla', description: 'Zwei Vollgeschosse für maximalen Wohnraum' },
+        { id: 'familienhaus', name: 'Familienhaus', description: '1,5 Geschosse mit Kniestock - der beliebte Klassiker' },
+        { id: 'doppelhaus', name: 'Doppelhaushälfte', description: 'Zwei Wohneinheiten unter einem Dach' }
+    ],
+    heizung: [
+        { id: 'vaillant', name: 'Vaillant aroTHERM plus', description: 'Premium-Luft-Wasser-Wärmepumpe, SCOP bis 5,0, R290 Kältemittel' },
+        { id: 'viessmann', name: 'Viessmann Vitocal 250-A', description: 'Deutsche Premium-Wärmepumpe, SCOP bis 4,7, Made in Germany' }
+    ],
+    lueftung: {
+        KFW55: [
+            { id: 'keine', name: 'Natürliche Fensterlüftung', description: 'Manuelle Lüftung über Fenster (bei KfW 55 ausreichend)' }
+        ],
+        KFW40: [
+            { id: 'dezentral', name: 'Dezentrale Lüftung mit WRG', description: 'Einzelraumlüftung mit bis zu 91% Wärmerückgewinnung' },
+            { id: 'zentral', name: 'Zentrale Komfortlüftung mit WRG', description: 'Bis zu 95% Wärmerückgewinnung, F7 Pollenfilter' }
+        ]
+    }
+};
+
+// ============================================
+// TOAST NOTIFICATIONS
+// ============================================
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+        <div class="toast-content">
+            <div class="toast-title">${type === 'error' ? 'Fehler' : type === 'success' ? 'Erfolg' : 'Hinweis'}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => toast.remove(), 4000);
+}
+
+// ============================================
+// RENDER RADIO OPTIONS
+// ============================================
+function renderRadioOptions(containerId, items, name, required = true) {
+    const container = document.getElementById(containerId);
+    if (!container || !items) return;
+
+    container.innerHTML = items.map(item => `
+        <label class="radio-card">
+            <input type="radio" name="${name}" value="${item.id}" ${required ? 'required' : ''}>
+            <div class="radio-content">
+                <h4>${item.name}</h4>
+                <p>${item.description}</p>
+            </div>
+            <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        </label>
+    `).join('');
+
+    // Add event listeners
+    container.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            container.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+            radio.closest('.radio-card').classList.add('selected');
+            updateProgress();
+        });
+    });
+}
+
+// ============================================
+// KFW-ABHÄNGIGE OPTIONEN
+// ============================================
+function updateKfwDependentOptions() {
+    const kfwRadios = document.getElementsByName('kfw_standard');
+    let selectedKfw = null;
+    for (const radio of kfwRadios) {
+        if (radio.checked) { selectedKfw = radio.value; break; }
+    }
+
+    // Wall options
+    const wallContainer = document.getElementById('wall-options');
+    if (!selectedKfw) {
+        wallContainer.innerHTML = '<p class="info-message">Bitte wählen Sie zuerst einen Energiestandard aus.</p>';
+    } else {
+        renderRadioOptions('wall-options', catalog.walls[selectedKfw], 'wall');
+    }
+
+    // Lüftung options
+    const lueftungContainer = document.getElementById('lueftung-options');
+    if (!selectedKfw) {
+        lueftungContainer.innerHTML = '<p class="info-message">Bitte wählen Sie zuerst einen Energiestandard aus.</p>';
+    } else {
+        renderRadioOptions('lueftung-options', catalog.lueftung[selectedKfw], 'lueftung');
+    }
+}
+
+// ============================================
+// PROGRESS UPDATE
+// ============================================
+function updateProgress() {
+    const checks = {
+        1: () => document.getElementById('bauherr_vorname')?.value && document.getElementById('bauherr_nachname')?.value,
+        2: () => document.querySelector('input[name="kfw_standard"]:checked'),
+        3: () => document.querySelector('input[name="wall"]:checked'),
+        4: () => document.querySelector('input[name="innerwall"]:checked'),
+        5: () => document.querySelector('input[name="decke"]:checked'),
+        6: () => document.querySelector('input[name="haustyp"]:checked'),
+        7: () => document.querySelector('input[name="window"]:checked'),
+        8: () => document.querySelector('input[name="tiles"]:checked'),
+        9: () => document.querySelector('input[name="heizung"]:checked'),
+        10: () => document.querySelector('input[name="lueftung"]:checked'),
+        11: () => document.getElementById('personenanzahl')?.value,
+        12: () => document.querySelector('input[name="grundstueck"]:checked')
+    };
+
+    let completed = 0;
+    Object.entries(checks).forEach(([step, check]) => {
+        const stepEl = document.querySelector(`.progress-step[data-step="${step}"]`);
+        if (stepEl) {
+            stepEl.classList.remove('active', 'completed');
+            if (check()) { completed++; stepEl.classList.add('completed'); }
+        }
+    });
+
+    // Mark first incomplete as active
+    for (let i = 1; i <= 12; i++) {
+        if (!checks[i]()) {
+            const stepEl = document.querySelector(`.progress-step[data-step="${i}"]`);
+            if (stepEl) stepEl.classList.add('active');
+            break;
+        }
+    }
+
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) progressBar.style.width = `${(completed / 12) * 100}%`;
+}
+
+// ============================================
+// PDF GENERATION (Client-Side with jsPDF)
+// ============================================
+function generatePDF(formData) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const colors = {
+        primary: [6, 64, 43],
+        gold: [212, 175, 55],
+        text: [29, 29, 27],
+        gray: [102, 102, 102]
+    };
+
+    let y = 20;
+
+    // === TITLE PAGE ===
+    doc.setFillColor(...colors.primary);
+    doc.rect(0, 0, 210, 297, 'F');
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(36);
+    doc.setFont('helvetica', 'bold');
+    doc.text('LEHNER HAUS', 105, 80, { align: 'center' });
+
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'italic');
+    doc.text('schwäbisch gut', 105, 95, { align: 'center' });
+
+    doc.setFillColor(...colors.gold);
+    doc.rect(70, 110, 70, 1, 'F');
+
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Ihre persönliche', 105, 140, { align: 'center' });
+
+    doc.setTextColor(...colors.gold);
+    doc.setFontSize(26);
+    doc.text('Leistungsbeschreibung', 105, 155, { align: 'center' });
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(18);
+    doc.text(`Familie ${formData.bauherr_nachname}`, 105, 190, { align: 'center' });
+
+    doc.setFontSize(10);
+    doc.setTextColor(200, 200, 200);
+    doc.text(`Erstellt am ${new Date().toLocaleDateString('de-DE')}`, 105, 220, { align: 'center' });
+
+    // Footer
+    doc.setFontSize(8);
+    doc.text('Lehner Haus GmbH & Co. KG', 105, 270, { align: 'center' });
+    doc.text('Ihr Partner für individuelles Bauen seit über 60 Jahren', 105, 277, { align: 'center' });
+
+    // === PAGE 2: LEISTUNGSÜBERSICHT ===
+    doc.addPage();
+    y = 20;
+
+    // Header
+    doc.setFillColor(...colors.gold);
+    doc.rect(15, y, 3, 20, 'F');
+    doc.setTextColor(...colors.primary);
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Ihre Leistungen im Überblick', 22, y + 13);
+
+    y += 35;
+
+    // 3-Column Layout
+    const colWidth = 55;
+    const col1 = 18;
+    const col2 = 75;
+    const col3 = 132;
+
+    // Column Headers
+    doc.setFillColor(...colors.primary);
+    doc.rect(col1, y, colWidth, 8, 'F');
+    doc.rect(col2, y, colWidth, 8, 'F');
+    doc.rect(col3, y, colWidth, 8, 'F');
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.text('Planung & Service', col1 + 3, y + 5.5);
+    doc.text('Rohbau', col2 + 3, y + 5.5);
+    doc.text('Bezugsfertiger Ausbau', col3 + 3, y + 5.5);
+
+    y += 12;
+
+    const planungItems = ['Bestandsvermessung', 'Elektroplanung', 'Lüftungsplanung', 'Vor-Ort Bemusterung', 'Werkplanung & Statik', 'Bauleitung', 'Energieberater', 'KfW-Bestätigung'];
+    const rohbauItems = ['Gerüst & Kran', 'Bodenplatte inkl. Dämmung', 'Geschlossene Gebäudehülle', 'Außenputz komplett', 'Dach mit Eindeckung', formData.window === 'kunststoff' ? '3-fach Kunststofffenster' : 'Holz-Alu-Fenster', 'Haustür mit 3-fach-Verrieg.', 'Dachrinnen & Fallrohre'];
+    const ausbauItems = [formData.heizung === 'vaillant' ? 'Vaillant Wärmepumpe' : 'Viessmann Wärmepumpe', 'Estrich mit Fußbodenheizung', 'Elektr. Alu-Rollläden', 'Komplette Elektroinstallation', 'Fliesen (Bäder/WC)', 'Sanitärobjekte & Armaturen', 'Vinyl/Laminat (Wohnräume)', 'Malern (weiß) & Innentüren'];
+
+    doc.setTextColor(...colors.text);
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+
+    const maxItems = Math.max(planungItems.length, rohbauItems.length, ausbauItems.length);
+    for (let i = 0; i < maxItems; i++) {
+        if (planungItems[i]) {
+            doc.setTextColor(...colors.gold);
+            doc.text('•', col1, y);
+            doc.setTextColor(...colors.text);
+            doc.text(planungItems[i], col1 + 4, y);
+        }
+        if (rohbauItems[i]) {
+            doc.setTextColor(...colors.gold);
+            doc.text('•', col2, y);
+            doc.setTextColor(...colors.text);
+            doc.text(rohbauItems[i], col2 + 4, y);
+        }
+        if (ausbauItems[i]) {
+            doc.setTextColor(...colors.gold);
+            doc.text('•', col3, y);
+            doc.setTextColor(...colors.text);
+            doc.text(ausbauItems[i], col3 + 4, y);
+        }
+        y += 7;
+    }
+
+    y += 10;
+
+    // Highlight Box with selected components
+    doc.setFillColor(250, 248, 240);
+    doc.roundedRect(15, y, 180, 55, 3, 3, 'F');
+    doc.setFillColor(...colors.gold);
+    doc.rect(15, y, 3, 55, 'F');
+
+    doc.setTextColor(...colors.primary);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Ihre gewählten Ausstattungsmerkmale:', 22, y + 8);
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+
+    const wallName = catalog.walls[formData.kfw_standard]?.find(w => w.id === formData.wall)?.name || '-';
+    const innerwallName = catalog.innerwalls.find(i => i.id === formData.innerwall)?.name || '-';
+    const windowName = catalog.windows.find(w => w.id === formData.window)?.name || '-';
+    const tilesName = catalog.tiles.find(t => t.id === formData.tiles)?.name || '-';
+    const heizungName = catalog.heizung.find(h => h.id === formData.heizung)?.name || '-';
+    const haustypName = catalog.haustypen.find(h => h.id === formData.haustyp)?.name || '-';
+
+    const highlights = [
+        `Außenwand: ${wallName}`,
+        `Innenwand: ${innerwallName}`,
+        `Fenster: ${windowName}`,
+        `Dach: ${tilesName}`,
+        `Heizung: ${heizungName}`,
+        `Haustyp: ${haustypName}`
+    ];
+
+    let hx = 22;
+    let hy = y + 18;
+    highlights.forEach((h, i) => {
+        if (i === 3) { hx = 110; hy = y + 18; }
+        doc.setTextColor(...colors.gold);
+        doc.text('✓', hx, hy);
+        doc.setTextColor(...colors.text);
+        doc.text(h, hx + 5, hy);
+        hy += 10;
+    });
+
+    y += 65;
+
+    // Footer Box
+    doc.setFillColor(...colors.primary);
+    doc.roundedRect(15, y, 180, 20, 3, 3, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Alle Leistungen inklusive - keine versteckten Kosten!', 22, y + 8);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.text('Festpreis-Garantie von Lehner Haus: Ihr Preis steht von Anfang an fest.', 22, y + 15);
+
+    // Page footer
+    doc.setFontSize(7);
+    doc.setTextColor(...colors.gray);
+    doc.text('Lehner Haus GmbH & Co. KG | QDF-zertifiziert | www.lehner-haus.de', 15, 285);
+    doc.setTextColor(...colors.primary);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Seite 2', 185, 285);
+
+    // === PAGE 3: KONTAKT ===
+    doc.addPage();
+    y = 20;
+
+    doc.setFillColor(...colors.gold);
+    doc.rect(15, y, 3, 20, 'F');
+    doc.setTextColor(...colors.primary);
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Ihre nächsten Schritte', 22, y + 13);
+
+    y += 35;
+
+    doc.setTextColor(...colors.text);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Vielen Dank für Ihr Interesse an Lehner Haus.', 20, y);
+
+    y += 15;
+    doc.setFont('helvetica', 'bold');
+    doc.text('So geht es weiter:', 20, y);
+
+    y += 12;
+    const steps = [
+        '1. Persönliches Beratungsgespräch',
+        '2. Besichtigung unserer Musterhäuser',
+        '3. Gespräch mit Bauherren-Referenzen',
+        '4. Detaillierte Kostenaufstellung',
+        '5. Erstellung Ihres Angebots'
+    ];
+
+    doc.setFont('helvetica', 'normal');
+    steps.forEach(step => {
+        doc.text(step, 25, y);
+        y += 10;
+    });
+
+    y += 15;
+
+    // Contact Box
+    doc.setFillColor(...colors.primary);
+    doc.roundedRect(15, y, 180, 50, 5, 5, 'F');
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Ihr Ansprechpartner', 25, y + 15);
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Lehner Haus GmbH & Co. KG', 25, y + 28);
+    doc.text('Telefon: +49 (0) 7331 20 88 - 0', 25, y + 38);
+    doc.text('E-Mail: info@lehner-haus.de', 120, y + 38);
+
+    // Page footer
+    doc.setFontSize(7);
+    doc.setTextColor(...colors.gray);
+    doc.text('Lehner Haus GmbH & Co. KG | QDF-zertifiziert | www.lehner-haus.de', 15, 285);
+    doc.setTextColor(...colors.primary);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Seite 3', 185, 285);
+
+    // Save PDF
+    doc.save(`Leistungsbeschreibung_${formData.bauherr_nachname}.pdf`);
+}
+
+// ============================================
+// FORM SUBMISSION
+// ============================================
+document.getElementById('konfigurator-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validate required fields
+    const requiredRadios = ['kfw_standard', 'wall', 'innerwall', 'decke', 'haustyp', 'window', 'tiles', 'heizung', 'lueftung', 'grundstueck'];
+    for (const name of requiredRadios) {
+        if (!document.querySelector(`input[name="${name}"]:checked`)) {
+            showToast(`Bitte wählen Sie eine Option für "${name}" aus.`, 'error');
+            return;
+        }
+    }
+
+    const vorname = document.getElementById('bauherr_vorname').value.trim();
+    const nachname = document.getElementById('bauherr_nachname').value.trim();
+    const personenanzahl = document.getElementById('personenanzahl').value;
+
+    if (!vorname || !nachname) {
+        showToast('Bitte geben Sie Ihren Namen ein.', 'error');
+        return;
+    }
+
+    if (!personenanzahl) {
+        showToast('Bitte wählen Sie die Personenanzahl.', 'error');
+        return;
+    }
+
+    // Collect form data
+    const formData = {
+        bauherr_vorname: vorname,
+        bauherr_nachname: nachname,
+        bauherr_email: document.getElementById('bauherr_email').value,
+        bauherr_telefon: document.getElementById('bauherr_telefon').value,
+        kfw_standard: document.querySelector('input[name="kfw_standard"]:checked').value,
+        wall: document.querySelector('input[name="wall"]:checked').value,
+        innerwall: document.querySelector('input[name="innerwall"]:checked').value,
+        decke: document.querySelector('input[name="decke"]:checked').value,
+        haustyp: document.querySelector('input[name="haustyp"]:checked').value,
+        window: document.querySelector('input[name="window"]:checked').value,
+        tiles: document.querySelector('input[name="tiles"]:checked').value,
+        heizung: document.querySelector('input[name="heizung"]:checked').value,
+        lueftung: document.querySelector('input[name="lueftung"]:checked').value,
+        personenanzahl: personenanzahl,
+        grundstueck: document.querySelector('input[name="grundstueck"]:checked').value
+    };
+
+    // Show loading
+    const btn = document.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.innerHTML = '<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> PDF wird erstellt...';
+
+    // Generate PDF
+    setTimeout(() => {
+        try {
+            generatePDF(formData);
+            showToast('PDF wurde erfolgreich erstellt!', 'success');
+        } catch (err) {
+            showToast('Fehler beim Erstellen des PDFs: ' + err.message, 'error');
+        }
+        btn.disabled = false;
+        btn.innerHTML = 'Leistungsbeschreibung erstellen (PDF)';
+    }, 500);
+});
+
+// ============================================
+// INITIALIZATION
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Render static options
+    renderRadioOptions('innerwall-options', catalog.innerwalls, 'innerwall');
+    renderRadioOptions('decke-options', catalog.decken, 'decke');
+    renderRadioOptions('haustyp-options', catalog.haustypen, 'haustyp');
+    renderRadioOptions('window-options', catalog.windows, 'window');
+    renderRadioOptions('tiles-options', catalog.tiles, 'tiles');
+    renderRadioOptions('heizung-options', catalog.heizung, 'heizung');
+
+    // KfW radio change listener
+    document.querySelectorAll('input[name="kfw_standard"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            this.closest('.radio-card').parentElement.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+            this.closest('.radio-card').classList.add('selected');
+            updateKfwDependentOptions();
+            updateProgress();
+        });
+    });
+
+    // Input listeners for progress
+    document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('change', updateProgress);
+        el.addEventListener('input', updateProgress);
+    });
+
+    updateProgress();
+});
+    </script>
+</body>
+</html>

@@ -97,7 +97,14 @@ class PdfService {
     this.drawExecutiveSummary(doc, submission);
     this.drawFooter(doc, pageNum);
 
-    // Seite 4: Ihre 7 Qualitätsvorteile (NEU)
+    // Seite 4: Leistungsübersicht (Kompakt auf einer Seite)
+    doc.addPage();
+    pageNum++;
+    this.drawHeader(doc, 'Ihre Leistungen im Überblick');
+    this.drawLeistungsuebersicht(doc, submission);
+    this.drawFooter(doc, pageNum);
+
+    // Seite 5: Ihre 7 Qualitätsvorteile
     doc.addPage();
     pageNum++;
     this.drawHeader(doc, 'Ihre 7 Qualitätsvorteile');
@@ -517,6 +524,178 @@ class PdfService {
     doc.font(this.typography.body.font).fontSize(this.typography.body.size).fillColor(this.colors.white);
     doc.text('Vereinbaren Sie jetzt Ihren Termin im Musterhaus oder nutzen Sie unsere kostenlose Bedarfsanalyse.',
       marginLeft + 20, y + 40, { width: contentWidth - 40, lineGap: 2 });
+  }
+
+  // NEU: Kompakte Leistungsübersicht auf einer Seite
+  drawLeistungsuebersicht(doc, submission) {
+    let y = 95;
+    const { marginLeft, contentWidth } = this.layout;
+
+    // Dynamische Werte aus Submission
+    const windowData = catalogService.getVariantById('windows', submission.window);
+    const heizung = catalogService.getVariantById('heizung', submission.heizung);
+    const lueftung = catalogService.getVariantById('lueftung', submission.lueftung);
+
+    // Fenster-Beschreibung dynamisch
+    const fensterText = windowData ? windowData.name : '3-fach verglaste Kunststofffenster';
+    // Heizung dynamisch
+    const heizungText = heizung ? heizung.name : 'Luft-Wasser-Wärmepumpe';
+    // Lüftung dynamisch
+    const hasLueftung = lueftung && lueftung.id !== 'keine';
+    const lueftungText = hasLueftung ? lueftung.name : null;
+
+    // 3-Spalten Layout
+    const colWidth = 155;
+    const colGap = 10;
+    const col1X = marginLeft;
+    const col2X = marginLeft + colWidth + colGap;
+    const col3X = marginLeft + 2 * (colWidth + colGap);
+
+    // === SPALTE 1: PLANUNG ===
+    doc.roundedRect(col1X, y, colWidth, 22, 4).fill(this.colors.primary);
+    doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.white);
+    doc.text('Planung & Service', col1X + 8, y + 6);
+
+    let y1 = y + 30;
+    const planungItems = [
+      'Bestandsvermessung',
+      'Elektroplanung',
+      'Lüftungsplanung',
+      'Vor-Ort Bemusterung',
+      'Übergabe- & Werkplanung',
+      'Statische Berechnungen',
+      'Bauleitung',
+      'Energieberater (EnEV)',
+      'Energieausweis',
+      'KfW-Bestätigung',
+      'Lebenszyklusanalyse (LCA)'
+    ];
+
+    doc.font('Helvetica').fontSize(7.5).fillColor(this.colors.text);
+    planungItems.forEach(item => {
+      doc.fillColor(this.colors.gold).text('•', col1X + 3, y1, { lineBreak: false });
+      doc.fillColor(this.colors.text).text(item, col1X + 12, y1, { width: colWidth - 15 });
+      y1 += 11;
+    });
+
+    // === SPALTE 2: ROHBAU ===
+    doc.roundedRect(col2X, y, colWidth, 22, 4).fill(this.colors.primary);
+    doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.white);
+    doc.text('Rohbau', col2X + 8, y + 6);
+
+    let y2 = y + 30;
+    const rohbauItems = [
+      'Gerüst & Kran',
+      'Transport',
+      'Baustromanschluss',
+      'Bodenplatte inkl. Dämmung',
+      'Mehrspartenhauseinführung',
+      'Geschlossene Gebäudehülle',
+      'Außenputz',
+      'Zwischendecke',
+      'Innenwände geschlossen',
+      'Dach mit Eindeckung',
+      'Dachüberstände gestrichen',
+      fensterText,
+      'Haustür (3-fach-Verrieg.)',
+      'Alu-Außenfensterbänke',
+      'Dachrinnen & Fallrohre'
+    ];
+
+    doc.font('Helvetica').fontSize(7.5);
+    rohbauItems.forEach(item => {
+      doc.fillColor(this.colors.gold).text('•', col2X + 3, y2, { lineBreak: false });
+      doc.fillColor(this.colors.text).text(item, col2X + 12, y2, { width: colWidth - 15 });
+      y2 += 11;
+    });
+
+    // === SPALTE 3: AUSBAU ===
+    doc.roundedRect(col3X, y, colWidth, 22, 4).fill(this.colors.primary);
+    doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.white);
+    doc.text('Bezugsfertiger Ausbau', col3X + 8, y + 6);
+
+    let y3 = y + 30;
+    const ausbauItems = [
+      heizungText,
+      'Estrich mit Fußbodenheizung',
+      'Raumthermostate',
+      'Elektr. Alu-Rollläden',
+      'Stromantrag & Abnahme',
+      'Zählerschrank',
+      'Blower-Door-Test',
+      'Komplette Elektroinstallation'
+    ];
+
+    // Lüftung nur wenn gewählt
+    if (lueftungText) {
+      ausbauItems.push(lueftungText);
+    }
+
+    // Innenausbau
+    ausbauItems.push(
+      'Fliesen (Bäder/WC)',
+      'Sanitärobjekte & Armaturen',
+      'Vinyl/Laminat (Wohnräume)',
+      'Spachteln & Schleifen',
+      'Malern (weiß)',
+      'Innentüren'
+    );
+
+    doc.font('Helvetica').fontSize(7.5);
+    ausbauItems.forEach(item => {
+      doc.fillColor(this.colors.gold).text('•', col3X + 3, y3, { lineBreak: false });
+      doc.fillColor(this.colors.text).text(item, col3X + 12, y3, { width: colWidth - 15 });
+      y3 += 11;
+    });
+
+    // Maximale Y-Position für Box unten
+    const maxY = Math.max(y1, y2, y3) + 15;
+
+    // === HIGHLIGHT BOX: Gewählte Komponenten ===
+    doc.roundedRect(marginLeft, maxY, contentWidth, 85, 8).fill(this.colors.goldLight);
+    doc.rect(marginLeft, maxY, 4, 85).fill(this.colors.gold);
+
+    doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.primary);
+    doc.text('Ihre gewählten Ausstattungsmerkmale:', marginLeft + 15, maxY + 10);
+
+    const wall = catalogService.getVariantById('walls', submission.wall);
+    const innerwall = catalogService.getVariantById('innerwalls', submission.innerwall);
+    const decke = catalogService.getVariantById('decken', submission.decke);
+    const tiles = catalogService.getVariantById('tiles', submission.tiles);
+
+    const highlights = [
+      wall ? `Außenwand: ${wall.name}` : null,
+      innerwall ? `Innenwand: ${innerwall.name}` : null,
+      decke ? `Decke: ${decke.name}` : null,
+      windowData ? `Fenster: ${windowData.name}` : null,
+      tiles ? `Dach: ${tiles.name}` : null,
+      heizung ? `Heizung: ${heizung.name}` : null,
+      hasLueftung ? `Lüftung: ${lueftungText}` : null
+    ].filter(Boolean);
+
+    doc.font('Helvetica').fontSize(8).fillColor(this.colors.text);
+    let hx = marginLeft + 15;
+    let hy = maxY + 28;
+    const colHalfWidth = contentWidth / 2 - 20;
+
+    highlights.forEach((h, i) => {
+      const isRightCol = i >= Math.ceil(highlights.length / 2);
+      const xPos = isRightCol ? marginLeft + contentWidth / 2 : marginLeft + 15;
+      const yPos = isRightCol ? maxY + 28 + (i - Math.ceil(highlights.length / 2)) * 13 : maxY + 28 + i * 13;
+
+      doc.fillColor(this.colors.gold).text('✓', xPos, yPos, { lineBreak: false });
+      doc.fillColor(this.colors.text).text(h, xPos + 12, yPos, { width: colHalfWidth });
+    });
+
+    // === FOOTER BOX ===
+    const footerY = maxY + 100;
+    doc.roundedRect(marginLeft, footerY, contentWidth, 40, 6).fill(this.colors.primary);
+
+    doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.white);
+    doc.text('Alle Leistungen inklusive - keine versteckten Kosten!', marginLeft + 15, footerY + 10);
+
+    doc.font('Helvetica').fontSize(8).fillColor(this.colors.white);
+    doc.text('Festpreis-Garantie von Lehner Haus: Ihr Preis steht von Anfang an fest.', marginLeft + 15, footerY + 24);
   }
 
   drawOverviewContent(doc, submission) {
