@@ -51,38 +51,42 @@
                     </div>
                     <div class="progress-step" data-step="5">
                         <div class="progress-step-indicator">5</div>
-                        <span class="progress-step-label">Haus</span>
+                        <span class="progress-step-label">Decke</span>
                     </div>
                     <div class="progress-step" data-step="6">
                         <div class="progress-step-indicator">6</div>
-                        <span class="progress-step-label">Fenster</span>
+                        <span class="progress-step-label">Haus</span>
                     </div>
                     <div class="progress-step" data-step="7">
                         <div class="progress-step-indicator">7</div>
-                        <span class="progress-step-label">Dach</span>
+                        <span class="progress-step-label">Fenster</span>
                     </div>
                     <div class="progress-step" data-step="8">
                         <div class="progress-step-indicator">8</div>
-                        <span class="progress-step-label">Heizung</span>
+                        <span class="progress-step-label">Dach</span>
                     </div>
                     <div class="progress-step" data-step="9">
                         <div class="progress-step-indicator">9</div>
-                        <span class="progress-step-label">Luft</span>
+                        <span class="progress-step-label">Heizung</span>
                     </div>
                     <div class="progress-step" data-step="10">
                         <div class="progress-step-indicator">10</div>
-                        <span class="progress-step-label">Personen</span>
+                        <span class="progress-step-label">Luft</span>
                     </div>
                     <div class="progress-step" data-step="11">
                         <div class="progress-step-indicator">11</div>
-                        <span class="progress-step-label">Grundst.</span>
+                        <span class="progress-step-label">Personen</span>
                     </div>
                     <div class="progress-step" data-step="12">
                         <div class="progress-step-indicator">12</div>
-                        <span class="progress-step-label">Raume</span>
+                        <span class="progress-step-label">Grundst.</span>
                     </div>
                     <div class="progress-step" data-step="13">
                         <div class="progress-step-indicator">13</div>
+                        <span class="progress-step-label">Raume</span>
+                    </div>
+                    <div class="progress-step" data-step="14">
+                        <div class="progress-step-indicator">14</div>
                         <span class="progress-step-label">Eigen</span>
                     </div>
                 </div>
@@ -191,9 +195,29 @@
                     </div>
                 </section>
 
-                <!-- Haustyp -->
+                <!-- Decke -->
                 <section class="form-section" id="section-5">
-                    <h3 class="section-title">5. Haustyp</h3>
+                    <h3 class="section-title">5. Deckensystem</h3>
+
+                    <div class="radio-group">
+                        <% if (catalog && catalog.decken) { catalog.decken.forEach(decke => { %>
+                        <label class="radio-card">
+                            <input type="radio" name="decke" value="<%= decke.id %>" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4><%= decke.name %></h4>
+                                <p><%= decke.description %></p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                        <% }); } %>
+                    </div>
+                </section>
+
+                <!-- Haustyp -->
+                <section class="form-section" id="section-6">
+                    <h3 class="section-title">6. Haustyp</h3>
 
                     <div class="radio-group">
                         <% catalog.haustypen.forEach(haustyp => { %>
@@ -213,8 +237,8 @@
                 </section>
 
                 <!-- Fenster -->
-                <section class="form-section" id="section-6">
-                    <h3 class="section-title">6. Fenstersystem</h3>
+                <section class="form-section" id="section-7">
+                    <h3 class="section-title">7. Fenstersystem</h3>
 
                     <div class="radio-group">
                         <% catalog.windows.forEach(window => { %>
@@ -233,8 +257,8 @@
                 </section>
 
                 <!-- Dachziegel -->
-                <section class="form-section" id="section-7">
-                    <h3 class="section-title">7. Dacheindeckung</h3>
+                <section class="form-section" id="section-8">
+                    <h3 class="section-title">8. Dacheindeckung</h3>
 
                     <div class="radio-group">
                         <% catalog.tiles.forEach(tile => { %>
@@ -253,8 +277,8 @@
                 </section>
 
                 <!-- Heizung -->
-                <section class="form-section" id="section-8">
-                    <h3 class="section-title">8. Heizungssystem</h3>
+                <section class="form-section" id="section-9">
+                    <h3 class="section-title">9. Heizungssystem</h3>
 
                     <div class="radio-group">
                         <% catalog.heizung.forEach(heiz => { %>
@@ -273,8 +297,8 @@
                 </section>
 
                 <!-- Luftung -->
-                <section class="form-section" id="section-9">
-                    <h3 class="section-title">9. Luftungssystem</h3>
+                <section class="form-section" id="section-10">
+                    <h3 class="section-title">10. Luftungssystem</h3>
                     <p class="section-description">Die Luftungsoptionen richten sich nach Ihrem gewahlten Energiestandard</p>
 
                     <div id="lueftung-options" class="radio-group">
@@ -283,8 +307,8 @@
                 </section>
 
                 <!-- Personenanzahl -->
-                <section class="form-section" id="section-10">
-                    <h3 class="section-title">10. Personenanzahl</h3>
+                <section class="form-section" id="section-11">
+                    <h3 class="section-title">11. Personenanzahl</h3>
 
                     <div class="form-group">
                         <label for="personenanzahl">Wie viele Personen ziehen ein? *</label>
@@ -305,8 +329,8 @@
                 </section>
 
                 <!-- Grundstuck -->
-                <section class="form-section" id="section-11">
-                    <h3 class="section-title">11. Grundstucksstatus</h3>
+                <section class="form-section" id="section-12">
+                    <h3 class="section-title">12. Grundstucksstatus</h3>
 
                     <div class="radio-group">
                         <label class="radio-card">
@@ -345,8 +369,8 @@
                 </section>
 
                 <!-- Raumplanung -->
-                <section class="form-section" id="section-12">
-                    <h3 class="section-title">12. Raumplanung</h3>
+                <section class="form-section" id="section-13">
+                    <h3 class="section-title">13. Raumplanung</h3>
                     <p class="section-description">Welche Raume wunschen Sie sich in Ihrem Haus?</p>
 
                     <div class="rooms-container">
@@ -386,8 +410,8 @@
                 </section>
 
                 <!-- Eigenleistungen -->
-                <section class="form-section" id="section-13">
-                    <h3 class="section-title">13. Geplante Eigenleistungen</h3>
+                <section class="form-section" id="section-14">
+                    <h3 class="section-title">14. Geplante Eigenleistungen</h3>
                     <p class="section-description">Welche Arbeiten mochten Sie selbst durchfuhren?</p>
 
                     <div id="eigenleistungen-container">

@@ -6,6 +6,7 @@ const fs = require('fs');
 const COLORS = {
   walls: { r: 0, g: 51, b: 102 },
   innenwalls: { r: 0, g: 102, b: 153 },
+  decken: { r: 139, g: 90, b: 43 },
   windows: { r: 0, g: 153, b: 204 },
   tiles: { r: 204, g: 102, b: 0 },
   haustypen: { r: 51, g: 153, b: 102 },

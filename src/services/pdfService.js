@@ -121,6 +121,7 @@ class PdfService {
     const components = [
       { title: 'Außenwandsystem', data: catalogService.getVariantById('walls', submission.wall) },
       { title: 'Innenwandsystem', data: innerwallData },
+      { title: 'Deckensystem', data: catalogService.getVariantById('decken', submission.decke) },
       { title: 'Fenstersystem', data: catalogService.getVariantById('windows', submission.window) },
       { title: 'Dacheindeckung', data: catalogService.getVariantById('tiles', submission.tiles) },
       { title: 'Ihr Haustyp', data: catalogService.getVariantById('haustypen', submission.haustyp) },
@@ -473,6 +474,7 @@ class PdfService {
 
     const wall = catalogService.getVariantById('walls', submission.wall);
     const innerwall = catalogService.getVariantById('innerwalls', submission.innerwall);
+    const decke = catalogService.getVariantById('decken', submission.decke);
     const windowData = catalogService.getVariantById('windows', submission.window);
     const tiles = catalogService.getVariantById('tiles', submission.tiles);
     const heizung = catalogService.getVariantById('heizung', submission.heizung);
@@ -481,6 +483,7 @@ class PdfService {
     const components = [
       ['Außenwand', wall?.name, wall?.technicalDetails?.uValue],
       ['Innenwand', innerwall?.name, innerwall?.technicalDetails?.soundInsulation],
+      ['Decke', decke?.name, decke?.technicalDetails?.soundInsulation],
       ['Fenster', windowData?.name, windowData?.technicalDetails?.ugValue],
       ['Dach', tiles?.name, tiles?.technicalDetails?.lifespan],
       ['Heizung', heizung?.name, heizung?.technicalDetails?.scop]
@@ -549,6 +552,7 @@ class PdfService {
 
         const wall = catalogService.getVariantById('walls', submission.wall);
     const innerwall = catalogService.getVariantById('innerwalls', submission.innerwall);
+    const decke = catalogService.getVariantById('decken', submission.decke);
     const windowData = catalogService.getVariantById('windows', submission.window);
     const tiles = catalogService.getVariantById('tiles', submission.tiles);
     const heizung = catalogService.getVariantById('heizung', submission.heizung);
@@ -557,6 +561,7 @@ class PdfService {
     const componentsList = [
       { label: 'Außenwand', data: wall },
       { label: 'Innenwand', data: innerwall },
+      { label: 'Decke', data: decke },
       { label: 'Fenster', data: windowData },
       { label: 'Dach', data: tiles },
       { label: 'Heizung', data: heizung }

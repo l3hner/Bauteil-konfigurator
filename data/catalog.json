@@ -469,5 +469,61 @@
       "filePath": "assets/variants/lueftung/zentral.png",
       "technicalDrawing": "assets/variants/lueftung/zentral-technical.png"
     }
+  ],
+  "decken": [
+    {
+      "id": "lehner-decke",
+      "name": "Lehner Decke – Holzbalkendecke",
+      "description": "Die bewährte Lehner Holzbalkendecke mit optimaler Statik und exzellentem Schallschutz. Massivholzbalken mit hochwertiger Dämmung für höchsten Wohnkomfort.",
+      "constructionType": "Holzbalkendecke",
+      "premiumFeatures": [
+        "Massive Holzbalken für optimale Tragfähigkeit",
+        "Integrierte Trittschalldämmung für ruhige Wohnräume",
+        "Diffusionsoffener Aufbau für gesundes Raumklima"
+      ],
+      "technicalDetails": {
+        "construction": "Holzbalken mit Zwischendämmung",
+        "soundInsulation": "Trittschall optimiert",
+        "loadCapacity": "Hohe Tragfähigkeit für alle Wohnbereiche",
+        "height": "Standardhöhe für optimale Raumnutzung"
+      },
+      "advantages": [
+        "Bewährte Lehner Haus Konstruktion seit Jahrzehnten",
+        "Optimales Preis-Leistungs-Verhältnis",
+        "Exzellenter Schallschutz zwischen den Geschossen",
+        "Natürlicher Baustoff Holz – nachhaltig und wohngesund",
+        "Flexible Installationsführung möglich"
+      ],
+      "comparisonNotes": "❗ Die Decke ist entscheidend für Schallschutz und Wohnkomfort! KRITISCHE FRAGEN:\n\n1. 'Welchen Trittschallschutz bietet die Decke?' (Schlechter Schallschutz = jeder Schritt im OG ist im EG hörbar)\n\n2. 'Wie dick ist die Dämmung in der Decke?' (Mehr Dämmung = besserer Schall- und Wärmeschutz)\n\n3. 'Ist die Decke diffusionsoffen?' (Wichtig für Feuchteregulierung und Vermeidung von Schimmel)\n\n4. 'Welche Tragfähigkeit hat die Decke?' (Wichtig für schwere Möbel, Badewannen, etc.)\n\n5. 'Wo werden Installationen geführt?' (Gute Planung = keine nachträglichen Probleme)",
+      "filePath": "assets/variants/decken/lehner-decke.png",
+      "technicalDrawing": "assets/variants/decken/lehner-decke-technical.png"
+    },
+    {
+      "id": "vollholzdecke",
+      "name": "Vollholzdecke Premium",
+      "description": "Die massive Vollholzdecke für höchste Ansprüche. Sichtbare Holzoberfläche von unten für ein warmes, natürliches Wohnambiente. Premium-Qualität aus nachhaltiger Forstwirtschaft.",
+      "constructionType": "Massivholzdecke",
+      "premiumFeatures": [
+        "Sichtbare Holzoberfläche – natürliche Schönheit in jedem Raum",
+        "Massive Konstruktion für maximale Langlebigkeit",
+        "Premium-Schallschutz durch Massivholz"
+      ],
+      "technicalDetails": {
+        "construction": "Massivholzelemente, optional sichtbar",
+        "soundInsulation": "Hervorragender Schallschutz durch Masse",
+        "loadCapacity": "Höchste Tragfähigkeit",
+        "surface": "Sichtholz-Qualität möglich"
+      },
+      "advantages": [
+        "Sichtbare Holzdecke für gehobenes Wohnambiente",
+        "Massive Konstruktion – extrem langlebig und wertstabil",
+        "Hervorragender Schallschutz durch hohe Masse",
+        "100% natürlicher Baustoff aus nachhaltiger Forstwirtschaft",
+        "Reguliert Raumfeuchte und Raumklima positiv"
+      ],
+      "comparisonNotes": "❗ Die PREMIUM-Wahl für anspruchsvolle Bauherren! BEACHTEN:\n\n1. 'Ist die Holzoberfläche wirklich sichtbar oder verkleidet?' (Sichtholz = echtes Wohngefühl; verkleidet = verschenktes Potenzial)\n\n2. 'Woher stammt das Holz?' (Bei uns: nachhaltige Forstwirtschaft, kurze Transportwege)\n\n3. 'Welche Oberflächenbehandlung?' (Natürliche Öle/Wachse = wohngesund; Lacke = können ausdünsten)\n\n4. 'Welchen Schallschutz erreicht die massive Decke?' (Masse = Schallschutz; Vollholz ist hier überlegen)\n\n5. 'Ist die Decke für alle Räume geeignet?' (Ja, auch für Feuchträume bei richtiger Behandlung)",
+      "filePath": "assets/variants/decken/vollholzdecke.png",
+      "technicalDrawing": "assets/variants/decken/vollholzdecke-technical.png"
+    }
   ]
 }

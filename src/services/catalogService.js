@@ -16,6 +16,7 @@ class CatalogService {
       return {
         walls: [],
         innerwalls: [],
+        decken: [],
         windows: [],
         tiles: [],
         haustypen: [],
@@ -37,6 +38,10 @@ class CatalogService {
 
   getInnerwalls() {
     return this.catalog.innerwalls || [];
+  }
+
+  getDecken() {
+    return this.catalog.decken || [];
   }
 
   getWindows() {
@@ -89,6 +94,11 @@ class CatalogService {
     // Validate innerwall selection
     if (selection.innerwall && !this.getVariantById('innerwalls', selection.innerwall)) {
       errors.push('Ungültige Innenwandauswahl');
+    }
+
+    // Validate decke selection
+    if (selection.decke && !this.getVariantById('decken', selection.decke)) {
+      errors.push('Ungültige Deckenauswahl');
     }
 
     // Validate window selection
