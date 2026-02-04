@@ -1,0 +1,61 @@
+{
+  "id": "test-golden-sample",
+  "timestamp": "2026-02-02T16:00:00.000Z",
+  "bauherr_vorname": "Max",
+  "bauherr_nachname": "Mustermann",
+  "bauherr_email": "max@example.de",
+  "bauherr_telefon": "0123456789",
+  "kfw_standard": "KFW40",
+  "haustyp": "familienhaus",
+  "personenanzahl": 4,
+  "grundstueck": "vorhanden",
+  "wall": "climativ-plus-fermacell",
+  "innerwall": "innenwand-fermacell-gipskarton",
+  "window": "holz-alu",
+  "tiles": "ton",
+  "heizung": "vaillant",
+  "lueftung": "zentral",
+  "rooms": {
+    "erdgeschoss": [
+      {
+        "name": "Wohnzimmer",
+        "details": "Offen zum Essbereich, Südseite"
+      },
+      {
+        "name": "Küche",
+        "details": "Mit Kochinsel"
+      },
+      {
+        "name": "Gäste-WC",
+        "details": "Barrierefrei"
+      },
+      {
+        "name": "Hauswirtschaft",
+        "details": "Technikraum"
+      }
+    ],
+    "obergeschoss": [
+      {
+        "name": "Elternschlafzimmer",
+        "details": "Mit Ankleide"
+      },
+      {
+        "name": "Bad",
+        "details": "Dusche + Badewanne"
+      },
+      {
+        "name": "Kinderzimmer 1",
+        "details": ""
+      },
+      {
+        "name": "Kinderzimmer 2",
+        "details": ""
+      }
+    ],
+    "untergeschoss": []
+  },
+  "eigenleistungen": [
+    "Malerarbeiten",
+    "Bodenbeläge verlegen"
+  ]
+}

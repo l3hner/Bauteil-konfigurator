@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ihre Leistungsbeschreibung - Lehner Haus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-inner">
+                <div class="logo">
+                    <h1>LEHNER HAUS</h1>
+                    <p class="tagline">schwabisch gut</p>
+                </div>
+                <div class="qdf-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    QDF Zertifiziert 2026
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content result-page">
+            <div class="success-message">
+                <!-- Animated Checkmark Circle -->
+                <div class="checkmark-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="circle" cx="50" cy="50" r="45"/>
+                        <path class="check" d="M30 50 L45 65 L70 35"/>
+                    </svg>
+                </div>
+                <h2>Ihre Leistungsbeschreibung wurde erfolgreich erstellt!</h2>
+            </div>
+
+            <div class="result-summary">
+                <h3>Zusammenfassung</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <strong>Bauherr</strong>
+                        <span><%= submission.bauherr_vorname %> <%= submission.bauherr_nachname %></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Haustyp</strong>
+                        <span><%= submission.haustyp %></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Energiestandard</strong>
+                        <span><%= submission.kfw_standard === 'KFW55' ? 'KfW 55' : 'KfW 40' %></span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Personenanzahl</strong>
+                        <span><%= submission.personenanzahl %> Person<%= submission.personenanzahl > 1 ? 'en' : '' %></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/pdf/<%= submission.id %>" class="btn btn-primary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    PDF ansehen
+                </a>
+
+                <a href="/pdf/<%= submission.id %>?download=1" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    PDF herunterladen
+                </a>
+            </div>
+
+            <div class="next-steps">
+                <h3>Ihre nachsten Schritte</h3>
+                <ol class="steps-list">
+                    <li>Prufen Sie Ihre personalisierte Leistungsbeschreibung in Ruhe</li>
+                    <li>Vereinbaren Sie einen Beratungstermin mit uns</li>
+                    <li>Besichtigen Sie unsere Musterhauser</li>
+                    <li>Erhalten Sie Ihr individuelles Angebot</li>
+                </ol>
+            </div>
+
+            <div class="contact-box">
+                <h3>Jetzt Beratungstermin vereinbaren</h3>
+                <p>Unser Team steht Ihnen gerne fur alle Fragen zur Verfugung.</p>
+                <div class="contact-info">
+                    <p><strong>Telefon:</strong> +49 (0) 7331 20 88 - 0</p>
+                    <p><strong>E-Mail:</strong> info@lehner-haus.de</p>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="/" class="btn btn-text">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"/>
+                        <polyline points="12 19 5 12 12 5"/>
+                    </svg>
+                    Neue Konfiguration erstellen
+                </a>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Lehner Haus GmbH & Co. KG. Alle Rechte vorbehalten.</p>
+        </footer>
+    </div>
+
+    <!-- Optional: Confetti effect -->
+    <script>
+        // Simple confetti effect on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create confetti container
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:9999;';
+            document.body.appendChild(confettiContainer);
+
+            // Colors for confetti (matching brand)
+            const colors = ['#06402b', '#D4AF37', '#b1a699', '#267e61', '#faf8f0'];
+
+            // Create confetti pieces
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    const size = Math.random() * 10 + 5;
+                    const startX = Math.random() * 100;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+
+                    confetti.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: ${color};
+                        left: ${startX}%;
+                        top: -20px;
+                        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                        animation: confetti-fall ${Math.random() * 2 + 2}s ease-out forwards;
+                        transform: rotate(${Math.random() * 360}deg);
+                    `;
+
+                    confettiContainer.appendChild(confetti);
+
+                    // Remove after animation
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+
+            // Remove container after all confetti is done
+            setTimeout(() => confettiContainer.remove(), 5000);
+        });
+    </script>
+
+    <style>
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>

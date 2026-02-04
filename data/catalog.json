@@ -1,0 +1,473 @@
+{
+  "walls": [
+    {
+      "id": "climativ-fermacell",
+      "name": "CLIMA-tiv Wand – fermacell®",
+      "kfwCompatible": ["KFW55", "KFW40"],
+      "description": "Hochwertige CLIMA-tiv Außenwand mit fermacell Gipsfaser-Innenbeplankung. Optimaler U-Wert von 0,149 W/(m²K) für energieeffizientes Bauen. Wandstärke: 282,5 mm inkl. 80mm Dämmfassade.",
+      "fireRating": "F90",
+      "constructionType": "diffusionsoffen",
+      "premiumFeatures": [
+        "Doppelbeplankung für höchste Stabilität und 60 kg Auszugslast",
+        "Diffusionsoffener Wandaufbau - natürliche Feuchteregulation ohne Dampfsperren",
+        "F90 Brandschutz - 90 Minuten Feuerwiderstand als Standard"
+      ],
+      "technicalDetails": {
+        "uValue": "0,149 W/(m²K)",
+        "wallThickness": "282,5 mm",
+        "insulation": "160 mm Mineralwolle + 80 mm Dämmfassade",
+        "position": "Pos. 11.160 / 11.165",
+        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+      },
+      "advantages": [
+        "Fermacell Gipsfaser-Innenbeplankung für höchste Robustheit",
+        "Hervorragende Befestigungsmöglichkeiten für schwere Lasten (Hängeschränke, TV-Halterungen)",
+        "Feuchtigkeitsresistent und schimmelunempfindlich",
+        "Höchster Brandschutz durch mineralische Platte",
+        "QDF-zertifizierte Qualität mit RAL-Gütezeichen"
+      ],
+      "comparisonNotes": "❗ KRITISCHE FRAGEN für Mitbewerber:\n\n1. 'Welchen EXAKTEN U-Wert hat Ihre Außenwand?' (Bei uns: 0,149 W/(m²K) - deutlich unter KfW-Anforderung)\n\n2. 'Ist die Innenbeplankung Fermacell, Gipskarton oder OSB?' (OSB = KEIN Brandschutz F90, nur 15-20kg Tragkraft statt 60kg bei Fermacell)\n\n3. 'Ist der Wandaufbau diffusionsoffen?' (Dampfsperren können bei Beschädigung zu Schimmel führen - diffusionsoffene Konstruktion ist baubiologisch besser)\n\n4. 'Erreichen Sie F90 Brandschutz als Standard?' (90 Min. Feuerwiderstand - nicht bei OSB-Beplankung!)\n\n5. 'Welche Dämmung verwenden Sie?' (Mineralwolle ist brandsicher A1, PU-Schaum setzt bei Brand toxische Gase frei)",
+      "filePath": "assets/variants/walls/climativ-fermacell.png",
+      "technicalDrawing": "assets/variants/walls/climativ-fermacell-technical.png"
+    },
+    {
+      "id": "climativ-esb",
+      "name": "CLIMA-tiv Wand – ESB",
+      "kfwCompatible": ["KFW55", "KFW40"],
+      "description": "Wirtschaftliche CLIMA-tiv Variante mit wohngesunder ESB-Innenbeplankung. U-Wert: 0,149 W/(m²K). ESB-Platten aus frischem Fichtenholz – nachhaltig und emissionsarm.",
+      "fireRating": "F90",
+      "constructionType": "diffusionsoffen",
+      "premiumFeatures": [
+        "ESB statt OSB - wohngesund zertifiziert aus regionalem Fichtenholz (max. 150km)",
+        "Diffusionsoffener Wandaufbau - höhere Diffusionsoffenheit als OSB reduziert Schimmelrisiko",
+        "F90 Brandschutz durch spezielle ESB-Qualität"
+      ],
+      "technicalDetails": {
+        "uValue": "0,149 W/(m²K)",
+        "wallThickness": "282,5 mm",
+        "insulation": "160 mm Mineralwolle + 80 mm Dämmfassade",
+        "position": "Pos. 11.160 / 11.165",
+        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+      },
+      "advantages": [
+        "ESB-Platten aus frischem Fichtenholz (max. 150km Transportweg)",
+        "Wohngesund zertifiziert – keine bedenklichen Emissionen",
+        "Höhere Diffusionsoffenheit als OSB (weniger Schimmelrisiko)",
+        "Bewährtes CLIMA-tiv System zu attraktivem Preis",
+        "Ausgezeichnete Wärmedämmung mit U-Wert 0,149"
+      ],
+      "comparisonNotes": "❗ KRITISCHE FRAGEN für Mitbewerber:\n\n1. 'Verwenden Sie ESB oder OSB?' (Die meisten nutzen billigeres OSB aus Industrierestholz)\n\n2. 'Ist Ihre Holzwerkstoffplatte wohngesund zertifiziert?' (ESB hat 25% geringere Quellung und deutlich niedrigere VOC-Emissionen als OSB)\n\n3. 'Wie ist der U-Wert der Außenwand?' (Manche Anbieter erreichen angegebene Werte nur mit Tricks bei der Messung)\n\n4. 'Ist der Wandaufbau diffusionsoffen oder mit Dampfsperre?' (Diffusionsoffener Aufbau ist baubiologisch besser)\n\n5. 'Woher stammt das Holz?' (Bei uns max. 150km Transportweg - nachhaltig und regional)",
+      "filePath": "assets/variants/walls/climativ-esb.png",
+      "technicalDrawing": "assets/variants/walls/climativ-esb-technical.png"
+    },
+    {
+      "id": "climativ-plus-fermacell",
+      "name": "CLIMA-tiv PLUS – fermacell®",
+      "kfwCompatible": ["KFW40"],
+      "description": "Premium-Wandsystem für KfW 40 mit exzellentem U-Wert von 0,129 W/(m²K). Fermacell Innenbeplankung für höchste Wohnqualität. Wandstärke 322,5 mm.",
+      "fireRating": "F90",
+      "constructionType": "diffusionsoffen",
+      "premiumFeatures": [
+        "U-Wert 0,129 W/(m²K) - DEUTLICH besser als KfW 40 Anforderung (Sicherheitspuffer!)",
+        "Doppelbeplankung mit Fermacell - 60 kg Auszugslast pro Befestigung",
+        "Diffusionsoffene Konstruktion - natürliche Feuchteregulation",
+        "F90 Brandschutz - höchste Sicherheit durch mineralische Beplankung"
+      ],
+      "technicalDetails": {
+        "uValue": "0,129 W/(m²K)",
+        "wallThickness": "322,5 mm",
+        "insulation": "200 mm Mineralwolle + 80 mm Dämmfassade",
+        "position": "Pos. 11.240 / 11.245",
+        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+      },
+      "advantages": [
+        "Exzellenter U-Wert von 0,129 W/(m²K) – deutlich besser als KfW-Anforderung",
+        "Zukunftssicher für kommende verschärfte Anforderungen",
+        "Fermacell Premium-Oberfläche mit maximaler Robustheit",
+        "Optimale Basis für hochwertige Innenwandgestaltung",
+        "Höchste Förderfähigkeit durch übererfüllte Standards"
+      ],
+      "comparisonNotes": "❗ KfW 40 ist NICHT gleich KfW 40! KRITISCHE FRAGEN:\n\n1. 'Welchen EXAKTEN U-Wert hat die Außenwand?' (Viele erreichen nur knapp 0,28 - wir liegen bei 0,129 W/(m²K)!)\n\n2. 'Wird die Dämmung vollflächig eingebracht?' (Installationsebenen unterbrechen oft die Dämmung und verschlechtern den U-Wert)\n\n3. 'Wie dick ist die Dämmung?' (200mm Mineralwolle PLUS 80mm Fassadendämmung = 280mm gesamt)\n\n4. 'Welche Innenbeplankung?' (Fermacell = F90 Brandschutz + 60kg Tragkraft; OSB = kein F90, nur 15-20kg)\n\n5. 'Ist der Wandaufbau diffusionsoffen?' (Ja = gut; Dampfsperre = Schimmelrisiko bei Beschädigung)",
+      "filePath": "assets/variants/walls/climativ-plus-fermacell.png",
+      "technicalDrawing": "assets/variants/walls/climativ-plus-fermacell-technical.png"
+    },
+    {
+      "id": "climativ-plus-esb",
+      "name": "CLIMA-tiv PLUS – ESB",
+      "kfwCompatible": ["KFW40"],
+      "description": "Hocheffiziente KfW 40 Wand mit wohngesunder ESB-Beplankung. U-Wert: 0,129 W/(m²K). Beste Energieeffizienz kombiniert mit nachhaltigen Materialien.",
+      "fireRating": "F90",
+      "constructionType": "diffusionsoffen",
+      "premiumFeatures": [
+        "U-Wert 0,129 W/(m²K) - übertrifft KfW 40 Standard deutlich",
+        "Wohngesunde ESB-Platten aus regionalem Fichtenholz (max. 150km)",
+        "Diffusionsoffene Konstruktion minimiert Feuchteprobleme",
+        "F90 Brandschutz mit nachhaltigen Materialien"
+      ],
+      "technicalDetails": {
+        "uValue": "0,129 W/(m²K)",
+        "wallThickness": "322,5 mm",
+        "insulation": "200 mm Mineralwolle + 80 mm Dämmfassade",
+        "position": "Pos. 11.240 / 11.245",
+        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+      },
+      "advantages": [
+        "KfW 40 Effizienz mit wohngesundem ESB-Material",
+        "U-Wert 0,129 – übertrifft Anforderungen deutlich",
+        "Nachhaltige ESB-Platten aus regionalem Fichtenholz",
+        "Optimales Preis-Leistungs-Verhältnis im KfW 40 Segment",
+        "Diffusionsoffene Konstruktion minimiert Feuchteprobleme"
+      ],
+      "comparisonNotes": "❗ Der wirtschaftliche Weg zu KfW 40! Aber VORSICHT vor Billig-Anbietern:\n\n1. 'Wie dick ist die Dämmung wirklich?' (Bei uns: 200mm Mineralwolle PLUS 80mm Dämmfassade = 280mm gesamt)\n\n2. 'Welcher Dämmstoff wird verwendet?' (PU-Schaum erreicht ähnliche U-Werte mit weniger Dicke, setzt aber bei Brand toxische Gase frei - Mineralwolle ist brandsicher A1)\n\n3. 'Verwenden Sie ESB oder OSB?' (ESB = wohngesund zertifiziert, niedrige VOC-Emissionen; OSB = Industrierestholz, riecht oft Jahre)\n\n4. 'Welchen U-Wert garantieren Sie schriftlich?' (Manche rechnen U-Werte schön oder erreichen sie nur unter Idealbedingungen)\n\n5. 'Ist die Konstruktion diffusionsoffen?' (Ja = baubiologisch besser; Dampfsperre = Schimmelrisiko)",
+      "filePath": "assets/variants/walls/climativ-plus-esb.png",
+      "technicalDrawing": "assets/variants/walls/climativ-plus-esb-technical.png"
+    }
+  ],
+  "innerwalls": [
+    {
+      "id": "innenwand-fermacell-gipskarton",
+      "name": "Innenwand fermacell® + Gipskarton",
+      "description": "Premium-Innenwand mit Doppelbeplankung: fermacell Gipsfaser außen, Gipskarton innen. Schallschutz BASIS+ mit Rw,R bis 55 dB - erreicht Wohnungsstandard.",
+      "constructionType": "beidseitig beplankt",
+      "bathroomSuitable": true,
+      "premiumFeatures": [
+        "Beidseitige Beplankung für besseren Schallschutz - BASIS+ Standard (52-55 dB)",
+        "2,5 cm Gipskarton - ideal für schwere Badezimmer-Fliesen (statt 1,25 cm Standard)",
+        "Schallschutz bis zu Wohnungsstandard - 'keine oder kaum wahrnehmbare Geräusche'"
+      ],
+      "technicalDetails": {
+        "soundInsulation": "Rw,R 52-55 dB (BASIS+)",
+        "wallThickness": "IW 80/160 mm",
+        "position": "Pos. 30.200",
+        "plasterThickness": "2,5 cm Gipskarton für Feuchträume und schwere Fliesen"
+      },
+      "advantages": [
+        "Schallschutz BASIS+ Standard: 'Keine oder nur kaum wahrnehmbaren Geräusche'",
+        "Fermacell bietet 60 kg Auszugslast pro Befestigung",
+        "Feuchtraumgeeignet ohne zusätzliche Behandlung",
+        "Optimale Kombination aus Robustheit und Verarbeitungsfreundlichkeit",
+        "A2-Brandschutzklasse (nicht brennbar)"
+      ],
+      "comparisonNotes": "❗ Schallschutz ist im Fertighaus oft der SCHWACHPUNKT! KRITISCHE FRAGEN:\n\n1. 'Welchen Schallschutz haben Ihre Innenwände IN DER PRAXIS?' (BASIS = nur 47-49 dB, BASIS+ = 52-55 dB - DAS ist der Unterschied!)\n\n2. 'Sind die Wände beidseitig beplankt?' (Einseitige Beplankung oder nur Gipskarton erreicht keine guten Schallschutzwerte)\n\n3. 'Wie dick ist der Gipskarton im Bad?' (Standard 1,25 cm reicht oft nicht für schwere Fliesen - wir verbauen 2,5 cm)\n\n4. 'Wie werden Anschlüsse ausgeführt?' (Schallbrücken entstehen oft an Decken- und Wandanschlüssen)\n\n5. 'Besteht die Wand aus ALLEN Materialien oder nur Platten ohne Ständerwerk-Details?' (Qualität liegt im Detail!)",
+      "filePath": "assets/variants/innenwalls/fermacell-gipskarton.png",
+      "technicalDrawing": "assets/variants/innenwalls/fermacell-gipskarton-technical.png"
+    },
+    {
+      "id": "innenwand-esb-gipskarton",
+      "name": "Innenwand ESB + Gipskarton",
+      "description": "Wirtschaftliche Innenwand mit ESB-Holzwerkstoffplatte und Gipskarton. Schallschutz BASIS Standard - ideal für Hauswirtschaftsräume und Flure.",
+      "constructionType": "beidseitig beplankt",
+      "bathroomSuitable": false,
+      "premiumFeatures": [
+        "ESB statt OSB - wohngesund zertifiziert, keine VOC-Emissionen",
+        "Beidseitige Beplankung für soliden Schallschutz BASIS (47-49 dB)",
+        "25% geringere Quellung als OSB bei Feuchtigkeit"
+      ],
+      "technicalDetails": {
+        "soundInsulation": "Rw,R 47-49 dB (BASIS)",
+        "wallThickness": "IW 80/160 mm",
+        "position": "Pos. 30.100"
+      },
+      "advantages": [
+        "Wirtschaftliche Lösung mit solidem Schallschutz BASIS",
+        "ESB-Platten für wohngesundes Raumklima",
+        "Gute Befestigungsmöglichkeiten für normale Lasten",
+        "Bewährte Materialkombination",
+        "Schnelle Verarbeitung auf der Baustelle"
+      ],
+      "comparisonNotes": "❗ Die wirtschaftliche Variante für nicht-sensible Bereiche. WICHTIG:\n\n1. 'Verwenden Sie ESB oder OSB?' (Lehner Haus = ESB; die meisten Anbieter = billiges OSB)\n\n2. 'Warum ist ESB besser?' (25% geringere Quellung, keine VOC-Emissionen, kein OSB-Geruch der jahrelang bleibt)\n\n3. 'Welcher Schallschutz wird erreicht?' (BASIS = 47-49 dB für Hauswirtschaft/Flure ok; für Schlafzimmer empfehlen wir BASIS+ mit 52-55 dB)\n\n4. 'Sind alle Materialien enthalten?' (Manche Anbieter rechnen nur Platten, vergessen Ständerwerk und Dichtungen)\n\n5. 'Riecht OSB noch nach Jahren?' (JA! ESB ist geruchsneutral und wohngesund zertifiziert)",
+      "filePath": "assets/variants/innenwalls/esb-gipskarton.png",
+      "technicalDrawing": "assets/variants/innenwalls/esb-gipskarton-technical.png"
+    }
+  ],
+  "windows": [
+    {
+      "id": "kunststoff",
+      "name": "Kunststofffenster Premium",
+      "description": "Hochwertige Kunststofffenster mit 3-fach Verglasung und 6-Kammer-Profil. Ug-Wert 0,5 W/(m²K) für beste Wärmedämmung. RC2-Beschlagstechnik serienmäßig.",
+      "securityClass": "RC2",
+      "premiumFeatures": [
+        "RC2-Beschlagstechnik serienmäßig - Pilzkopfverriegelung für Einbruchschutz",
+        "Ug-Wert 0,5 W/(m²K) - Passivhaus-tauglich",
+        "Warme Kante mit Edelstahl - keine Wärmebrücken"
+      ],
+      "technicalDetails": {
+        "ugValue": "0,5 W/(m²K)",
+        "profile": "6-Kammer-System, 80mm Bautiefe",
+        "glazing": "3-fach Verglasung mit Warmer Kante",
+        "securityFeatures": "RC2-Beschlagstechnik, Pilzkopfverriegelung an allen Fenstern"
+      },
+      "advantages": [
+        "3-fach Verglasung mit Ug-Wert 0,5 – Passivhaus-tauglich",
+        "6-Kammer-Profil für maximale Dämmung",
+        "Warme Kante (Edelstahl) statt Aluminium-Abstandhalter",
+        "Pilzkopfverriegelung für Einbruchschutz RC2",
+        "Pflegeleicht und langlebig"
+      ],
+      "comparisonNotes": "❗ NICHT alle Kunststofffenster sind gleich! KRITISCHE FRAGEN:\n\n1. 'Welchen Ug-Wert haben die Fenster?' (Billige Fenster: 1,0 oder schlechter; Lehner Haus: 0,5 W/(m²K) Standard)\n\n2. 'Ist es 2-fach oder 3-fach Verglasung?' (2-fach ist veraltet und erreicht keine guten U-Werte mehr)\n\n3. 'Wie viele Kammern hat das Profil?' (3-5 Kammern = einfach; 6 Kammern = Premium mit bester Dämmung)\n\n4. 'Warme Kante - aus Edelstahl oder Aluminium?' (Aluminium ist eine Wärmebrücke! Edelstahl = warm)\n\n5. 'Ist RC2-Sicherheitstechnik serienmäßig?' (Pilzkopfverriegelung schützt vor Einbruch - bei uns Standard, andere Aufpreis)",
+      "filePath": "assets/variants/windows/kunststoff.png",
+      "technicalDrawing": "assets/variants/windows/kunststoff-technical.png"
+    },
+    {
+      "id": "holz-alu",
+      "name": "Holz-Aluminium-Fenster",
+      "description": "Premium-Fenster mit Echtholz-Innenseite und witterungsbeständiger Aluminium-Außenschale. Ug-Wert 0,5 W/(m²K). RC2-Beschlagstechnik serienmäßig.",
+      "securityClass": "RC2",
+      "premiumFeatures": [
+        "RC2-Beschlagstechnik serienmäßig - höchste Sicherheit",
+        "Dreischicht-Leimholz innen - keine Furniere",
+        "Wartungsfreie Aluminium-Außenschale - kein Streichen nötig"
+      ],
+      "technicalDetails": {
+        "ugValue": "0,5 W/(m²K)",
+        "profile": "Dreischicht-Leimholz innen, pulverbeschichtetes Aluminium außen (mind. 1,5mm)",
+        "glazing": "3-fach Verglasung mit Warmer Kante",
+        "securityFeatures": "RC2-Beschlagstechnik, Pilzkopfverriegelung"
+      },
+      "advantages": [
+        "Natürliche Holzoptik für gehobenes Wohnambiente",
+        "Wartungsfreie Aluminiumaußenseite – kein Streichen nötig",
+        "Lebensdauer 40+ Jahre bei richtiger Pflege",
+        "Beste Wärmedämmung gleich Kunststoff",
+        "Deutliche Wertsteigerung der Immobilie"
+      ],
+      "comparisonNotes": "❗ Holz-Alu ist die PREMIUM-Wahl! Aber Vorsicht vor Billig-Angeboten:\n\n1. 'Ist es Dreischicht-Leimholz oder nur Furnier?' (Furnier = günstig aber kann sich ablösen; Massivholz = langlebig)\n\n2. 'Wie dick ist die Aluminium-Außenschale?' (Minimum 1,5mm; dünnere Schalen verziehen sich)\n\n3. 'Deutsche Markenqualität oder Import?' (Fernost-Fenster haben oft nach 5-10 Jahren Verzug und Undichtigkeit)\n\n4. 'Wie viele Jahre Garantie?' (Bei uns 10 Jahre auf deutsche Markenqualität)\n\n5. 'Welcher Ug-Wert?' (Manche Holz-Alu haben nur 0,7-0,9; wir bieten 0,5 W/(m²K))\n\n6. 'RC2-Sicherheit serienmäßig?' (Bei uns ja; andere nehmen Aufpreis)",
+      "filePath": "assets/variants/windows/holz-alu.png",
+      "technicalDrawing": "assets/variants/windows/holz-alu-technical.png"
+    }
+  ],
+  "tiles": [
+    {
+      "id": "ton",
+      "name": "Tondachziegel Premium Surface",
+      "description": "Hochwertige Tondachziegel mit Premium Surface Beschichtung und Durchfärbung. Lebensdauer 80-100 Jahre. Zeitlose Optik und nachhaltiges Naturmaterial. A² Brandschutz.",
+      "premiumSurface": true,
+      "brandProtection": "A²",
+      "technicalDetails": {
+        "material": "Gebrannter Ton, durchgefärbt",
+        "lifespan": "80-100 Jahre",
+        "weight": "ab 4t Gesamtdachgewicht bei typischem Einfamilienhaus",
+        "fireRating": "A² Brandschutz Euroklasse - nicht brennbar",
+        "surface": "Premium Surface für lange Lebensdauer und dauerhaften Glanz"
+      },
+      "advantages": [
+        "Lebensdauer 80-100 Jahre – einmal decken, nie wieder",
+        "Durchfärbung – Farbe verblasst nie",
+        "Natürliches Material ohne chemische Zusätze",
+        "Atmungsaktiv – reguliert Dachfeuchtigkeit",
+        "Wertstabil – steigert den Immobilienwert"
+      ],
+      "comparisonNotes": "❗ Tondachziegel sind die Investition FÜRS LEBEN! Langfrist-Rechnung:\n\n1. 'Wie lange hält das Dach?' (Beton: 30-40 Jahre = 2-3x neu decken; Ton: 80-100 Jahre = einmal!)\n\n2. 'Premium Surface oder Standard?' (Premium Surface hält länger und glänzt dauerhaft; Standard kann nach 20-30 Jahren matt werden)\n\n3. 'Durchgefärbt oder nur beschichtet?' (Durchgefärbt = Farbe IN der Masse, verblasst nie; beschichtet = Farbe AUF der Oberfläche, kann verblassen)\n\n4. 'A² Brandschutz gewährleistet?' (Ton = A² nicht brennbar; manche Materialien nur B oder C)\n\n5. 'Wie schwer ist das Dach?' (Ab 4t Gesamtgewicht - zeigt Qualität und Sturmfestigkeit)\n\n6. 'Preisvergleich mit Neubeschichtung?' (Beton nach 30 Jahren neu beschichten = Zusatzkosten; Ton = keine)",
+      "filePath": "assets/variants/tiles/ton.png",
+      "technicalDrawing": "assets/variants/tiles/ton-technical.png"
+    },
+    {
+      "id": "beton",
+      "name": "Betondachsteine",
+      "description": "Wirtschaftliche Betondachsteine mit guter Haltbarkeit. Vielfältige Farbauswahl für individuelle Dachgestaltung. Lebensdauer 30-40 Jahre.",
+      "premiumSurface": false,
+      "brandProtection": "B",
+      "technicalDetails": {
+        "material": "Hochdruckbeton, oberflächenbeschichtet",
+        "lifespan": "30-40 Jahre",
+        "weight": "ca. 43 kg/m²",
+        "fireRating": "B Brandschutz - schwer entflammbar"
+      },
+      "advantages": [
+        "Attraktives Preis-Leistungs-Verhältnis",
+        "Große Farbauswahl möglich",
+        "Gute Haltbarkeit von 30-40 Jahren",
+        "Bewährtes Material millionenfach verbaut",
+        "Schnelle Verlegung durch größere Formate möglich"
+      ],
+      "comparisonNotes": "❗ Die wirtschaftliche Wahl für begrenztes Budget. BEACHTEN SIE:\n\n1. 'Wie lange hält die Farbe?' (Oberflächenbeschichtung kann nach 15-20 Jahren verblassen - durchgefärbter Beton existiert NICHT)\n\n2. 'Was kostet Neubeschichtung?' (Nach 20-30 Jahren oft nötig - rechnen Sie das in Ihre Kalkulation ein)\n\n3. 'Lebensdauer gesamt?' (30-40 Jahre, dann Austausch - Ton hält 80-100 Jahre)\n\n4. 'Brandschutzklasse?' (Beton = B schwer entflammbar; Ton = A² nicht brennbar)\n\n5. 'Langfrist-Kosten beachten!' (Beton günstiger jetzt, aber 2-3x Erneuerung in 100 Jahren; Ton teurer jetzt, aber nur 1x)\n\nFür maximale Langlebigkeit und Werterhalt empfehlen wir Tondachziegel.",
+      "filePath": "assets/variants/tiles/beton.png",
+      "technicalDrawing": "assets/variants/tiles/beton-technical.png"
+    }
+  ],
+  "haustypen": [
+    {
+      "id": "bungalow",
+      "name": "Bungalow",
+      "description": "Eingeschossiges, barrierefreies Wohnen auf einer Ebene – ideal für alle Lebensphasen.",
+      "details": "Alle Wohnräume auf einer Ebene – ideal für barrierefreies Wohnen und alle Lebensphasen. Keine Treppen, kurze Wege, großzügige Raumaufteilung möglich. Bei Lehner Haus mit 100% freier Grundrissgestaltung.",
+      "advantages": [
+        "Komplett barrierefrei nach DIN 18040 realisierbar",
+        "Zukunftssicher für alle Lebensphasen",
+        "Keine Treppen – maximale Sicherheit und Komfort",
+        "Großzügige, offene Raumgestaltung möglich",
+        "Ideale Grundlage für Smart-Home-Integration"
+      ],
+      "filePath": "assets/variants/haustypen/bungalow.png"
+    },
+    {
+      "id": "stadtvilla",
+      "name": "Stadtvilla",
+      "description": "Zwei Vollgeschosse für maximalen Wohnraum auf kompaktem Grundstück.",
+      "details": "Zwei voll nutzbare Geschosse bieten optimale Raumausnutzung. Klare Trennung von Wohn- und Schlafbereich. Ideal für Familien mit hohem Platzbedarf. Repräsentative Architektur.",
+      "advantages": [
+        "Maximale Wohnfläche auf kleinem Grundstück",
+        "Klare Trennung von Wohn- und Privatbereich",
+        "Repräsentative, zeitlose Architektur",
+        "Flexibel für verschiedene Lebensmodelle",
+        "Wertstabil durch klassische Bauform"
+      ],
+      "filePath": "assets/variants/haustypen/stadtvilla.png"
+    },
+    {
+      "id": "familienhaus",
+      "name": "Familienhaus",
+      "description": "1,5 Geschosse mit Kniestock – der beliebte Klassiker für Familien.",
+      "details": "Erdgeschoss voll nutzbar, Dachgeschoss mit Kniestock bietet zusätzlichen Wohnraum. Perfekte Balance aus Raumangebot und Wirtschaftlichkeit. Der meistgebaute Haustyp in Deutschland.",
+      "advantages": [
+        "Bewährte und beliebte Bauform",
+        "Optimales Verhältnis von Kosten und Wohnraum",
+        "Charmante Dachschrägen im Obergeschoss",
+        "Flexible Nutzungsmöglichkeiten unterm Dach",
+        "Niedriger Energiebedarf durch kompakte Bauform"
+      ],
+      "filePath": "assets/variants/haustypen/familienhaus.png"
+    },
+    {
+      "id": "doppelhaus",
+      "name": "Doppelhaushälfte",
+      "description": "Zwei Wohneinheiten unter einem Dach – wirtschaftlich und gemeinschaftlich.",
+      "details": "Ideal für Mehrgenerationenwohnen oder als Kapitalanlage. Jede Haushälfte eigenständig nutzbar. Geteilte Baukosten bei individueller Gestaltung.",
+      "advantages": [
+        "Wirtschaftliche Bauweise durch geteilte Kosten",
+        "Ideal für Mehrgenerationenwohnen",
+        "Eine Hälfte als Kapitalanlage vermietbar",
+        "Gemeinschaft mit garantierter Privatsphäre",
+        "Geringere Heizkosten durch gemeinsame Wand"
+      ],
+      "filePath": "assets/variants/haustypen/doppelhaus.png"
+    },
+    {
+      "id": "reihenhaus",
+      "name": "Reihenhaus",
+      "description": "Optimale Grundstücksausnutzung für urbane Lagen.",
+      "details": "Effiziente Bauweise für schmale Grundstücke in urbanen Lagen. Optimale Kostenstruktur durch gemeinsame Wände. Perfekt für Baugemeinschaften.",
+      "advantages": [
+        "Höchste Wirtschaftlichkeit bei den Baukosten",
+        "Optimal für schmale Grundstücke in der Stadt",
+        "Geringste Heizkosten durch minimale Außenwandfläche",
+        "Urbanes Wohnen mit eigenem Garten",
+        "Ideal für Baugemeinschaften"
+      ],
+      "filePath": "assets/variants/haustypen/reihenhaus.png"
+    },
+    {
+      "id": "mehrfamilienhaus",
+      "name": "Mehrfamilienhaus",
+      "description": "Mehrere Wohneinheiten für Vermietung oder Mehrgenerationenwohnen.",
+      "details": "Flexible Gestaltung mit mehreren eigenständigen Wohneinheiten. Ideal für Vermietung oder Großfamilien. Auch als Bauträgerprojekt realisierbar.",
+      "advantages": [
+        "Mieteinnahmen als zusätzliches Einkommen",
+        "Mehrgenerationenwohnen unter einem Dach",
+        "Flexible Aufteilung der Wohneinheiten",
+        "Langfristige Wertstabilität als Kapitalanlage",
+        "KfW-Förderung pro Wohneinheit möglich"
+      ],
+      "filePath": "assets/variants/haustypen/mehrfamilienhaus.png"
+    }
+  ],
+  "heizung": [
+    {
+      "id": "vaillant",
+      "name": "Vaillant aroTHERM plus Wärmepumpe",
+      "description": "Premium-Luft-Wasser-Wärmepumpe vom deutschen Marktführer. SCOP bis 5,0 – höchste Effizienz auf dem Markt. Mit natürlichem Kältemittel R290 (Propan).",
+      "technicalDetails": {
+        "scop": "bis 5,0",
+        "refrigerant": "R290 (Propan) – natürlich, klimafreundlich",
+        "noise": "ab 35 dB(A) – flüsterleise"
+      },
+      "advantages": [
+        "SCOP bis 5,0 – Marktführer bei der Effizienz",
+        "Natürliches Kältemittel R290 – zukunftssicher",
+        "Ab 35 dB(A) – kaum hörbar im Betrieb",
+        "Integriertes Energiemanagement mit sensoCOMFORT",
+        "Service-Netzwerk mit über 3.000 Partnerbetrieben"
+      ],
+      "comparisonNotes": "❗ Bei Wärmepumpen entscheidet die EFFIZIENZ über Ihre Stromkosten für die nächsten 20 Jahre!\n\n1. 'Welchen SCOP hat die Wärmepumpe?' (SCOP = Seasonal Coefficient of Performance; 5,0 = aus 1 kWh Strom werden 5 kWh Wärme; Billige: nur 3,5 = 40% MEHR Stromkosten!)\n\n2. 'Welches Kältemittel wird verwendet?' (R290 = natürlich, zukunftssicher; R410A/R32 = werden langfristig verboten und teurer)\n\n3. 'Wie laut ist die Wärmepumpe?' (35 dB(A) = flüsterleise; billige >45 dB = deutlich hörbar, Streit mit Nachbarn)\n\n4. 'Wer plant und installiert die Anlage?' (Zertifizierte Fachbetriebe = richtige Auslegung; viele Probleme durch falsche Installation!)\n\n5. 'Wie viele Servicepartner gibt es?' (Vaillant: über 3.000 in Deutschland; bei Exoten: lange Wartezeiten)",
+      "filePath": "assets/variants/heizung/vaillant.png",
+      "technicalDrawing": "assets/variants/heizung/vaillant-technical.png"
+    },
+    {
+      "id": "viessmann",
+      "name": "Viessmann Vitocal 250-A Wärmepumpe",
+      "description": "Deutsche Premium-Wärmepumpe mit intelligenter Regelung. SCOP bis 4,7 und höchste Zuverlässigkeit. Made in Germany.",
+      "technicalDetails": {
+        "scop": "bis 4,7",
+        "refrigerant": "R290 (Propan) – natürlich, klimafreundlich",
+        "noise": "ab 36 dB(A)"
+      },
+      "advantages": [
+        "Made in Germany – deutsche Ingenieursqualität",
+        "Intelligente Regelung mit Vitoconnect",
+        "Natürliches Kältemittel R290",
+        "Extrem zuverlässig mit 5 Jahren Garantie",
+        "Optimal für Hybrid-Kombinationen geeignet"
+      ],
+      "comparisonNotes": "❗ Viessmann ist der INBEGRIFF deutscher Qualität. KRITISCHE FRAGEN:\n\n1. 'Welchen SCOP bietet die Wärmepumpe?' (Vitocal 250-A: bis 4,7 - Spitzenklasse!)\n\n2. 'Wer plant die Anlage?' (Installation ist SO wichtig wie das Gerät! Bei Lehner Haus: zertifizierte Fachbetriebe mit Viessmann-Schulung)\n\n3. 'Welche Zertifizierung haben die Installateure?' (Viele Probleme durch falsche Auslegung und Installation - fragen Sie konkret nach!)\n\n4. 'Made in Germany oder Import?' (Viessmann = Deutschland; viele andere importieren aus Fernost)\n\n5. 'Wie viele Jahre Garantie?' (Viessmann: 5 Jahre; billige oft nur 2 Jahre)\n\n6. 'Service-Verfügbarkeit?' (Viessmann-Partner deutschlandweit; bei Exoten oft lange Wartezeiten bei Störung)",
+      "filePath": "assets/variants/heizung/viessmann.png",
+      "technicalDrawing": "assets/variants/heizung/viessmann-technical.png"
+    }
+  ],
+  "lueftung": [
+    {
+      "id": "keine",
+      "name": "Natürliche Fensterlüftung",
+      "description": "Manuelle Lüftung über Fenster. Bei KfW 55 Standard ausreichend, wenn ein Lüftungskonzept erstellt wird.",
+      "note": "Bei KfW 55 ist mechanische Lüftung nicht zwingend erforderlich – ein Lüftungskonzept nach DIN 1946-6 ist aber Pflicht.",
+      "advantages": [
+        "Keine zusätzlichen Investitionskosten",
+        "Keine Wartungs- und Filterkosten",
+        "Individuelle Steuerung jederzeit möglich",
+        "Keine Technik die ausfallen kann",
+        "Gewohntes Lüftungsverhalten"
+      ],
+      "comparisonNotes": "Bei KfW 55 ist Fensterlüftung möglich – aber Sie verzichten auf Komfort und Energieeinsparung. Eine Lüftungsanlage spart 1.500-2.500 kWh Heizenergie pro Jahr durch Wärmerückgewinnung. Bei steigenden Energiepreisen amortisiert sich die Investition schnell. Außerdem: Pollenfilter für Allergiker, keine Schimmelgefahr durch vergessenes Lüften, und frische Luft auch bei geschlossenen Fenstern (wichtig an lauten Straßen). Überlegen Sie gut, ob Sie hier sparen möchten."
+    },
+    {
+      "id": "dezentral",
+      "name": "Dezentrale Lüftung mit WRG",
+      "description": "Einzelraumlüftungsgeräte mit bis zu 91% Wärmerückgewinnung. Raumweise steuerbar und einfach nachrüstbar.",
+      "technicalDetails": {
+        "heatRecovery": "bis 91%",
+        "noise": "ab 19 dB(A) – praktisch unhörbar",
+        "energySaving": "ca. 1.500 kWh/Jahr"
+      },
+      "advantages": [
+        "Bis zu 91% Wärmerückgewinnung",
+        "Raumweise individuell steuerbar",
+        "Einfache Wartung – Filter selbst wechselbar",
+        "Kein Leitungsnetz nötig – geringere Kosten",
+        "Auch nachträglich einfach erweiterbar"
+      ],
+      "comparisonNotes": "❗ Dezentrale Lüftung ist der Kompromiss aus Kosten und Komfort. WICHTIG:\n\n1. 'Welchen Schallpegel haben die Geräte?' (Billige: >35 dB = deutlich hörbar beim Schlafen; Markengeräte: <19 dB = praktisch unhörbar)\n\n2. 'Welche Geräte werden verbaut?' (Meltem, inVENTer = deutsche Marken mit nachgewiesener Leistung; No-Name aus Fernost = oft Probleme)\n\n3. 'Wie viel Wärme wird zurückgewonnen?' (Qualität: bis 91%; billige: oft nur 70-80%)\n\n4. 'Wie oft müssen Filter gewechselt werden?' (Bei Markengeräten: 2x jährlich selbst wechselbar)\n\n5. 'Sind die Geräte einzeln steuerbar?' (Ja = Komfort; Nein = alle laufen gleich)",
+      "filePath": "assets/variants/lueftung/dezentral.png",
+      "technicalDrawing": "assets/variants/lueftung/dezentral-technical.png"
+    },
+    {
+      "id": "zentral",
+      "name": "Zentrale Komfortlüftung mit WRG",
+      "description": "Vollwertiges Lüftungssystem mit zentralem Gerät und Kanalnetz. Bis zu 95% Wärmerückgewinnung. Die Premium-Lösung für höchsten Wohnkomfort.",
+      "technicalDetails": {
+        "heatRecovery": "bis 95%",
+        "noise": "Geräte im Technikraum – Wohnräume geräuschfrei",
+        "energySaving": "ca. 2.500 kWh/Jahr",
+        "filters": "F7 Pollenfilter Standard"
+      },
+      "advantages": [
+        "Bis zu 95% Wärmerückgewinnung – maximale Effizienz",
+        "F7 Pollenfilter – ideal für Allergiker",
+        "Gleichmäßig frische Luft in allen Räumen",
+        "Gerät im Technikraum – Wohnräume völlig geräuschfrei",
+        "Automatische Feuchteregulierung gegen Schimmel"
+      ],
+      "comparisonNotes": "❗ Die KÖNIGSKLASSE der Wohnraumlüftung! Für KfW 40 fast immer notwendig. KRITISCH:\n\n1. 'Aus welchem Material sind die Lüftungskanäle?' (Lehner Haus: verzinkte Stahlrohre oder antibakterielle Kunststoffrohre; VIELE ANDERE: billige Flexschläuche = Keimsammler!)\n\n2. 'Wie werden die Kanäle gereinigt?' (Stahlrohre: professionell reinigbar; Flexschläuche: praktisch nicht reinigbar, nach 10-15 Jahren hygienisches Problem)\n\n3. 'Welche Wärmerückgewinnung?' (95% = Spitze; billige nur 80-85%)\n\n4. 'Welcher Filter?' (F7 = Pollenfilter für Allergiker; einfache haben nur G3/G4 = grober Staub)\n\n5. 'Wo steht das Gerät?' (Im Technikraum = geräuschfrei in Wohnräumen; im Keller = Schallübertragung?)\n\n6. 'Wie ist die Wartung?' (Professionelle Reinigung alle 3-5 Jahre empfohlen)",
+      "filePath": "assets/variants/lueftung/zentral.png",
+      "technicalDrawing": "assets/variants/lueftung/zentral-technical.png"
+    }
+  ]
+}

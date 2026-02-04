@@ -1,0 +1,74 @@
+# ===========================================
+# Lehner Haus Konfigurator - .gitignore
+# ===========================================
+
+# ============ DEPENDENCIES ============
+node_modules/
+
+# ============ GENERATED OUTPUT ============
+# Generierte PDFs (Leistungsbeschreibungen)
+output/*
+!output/.gitkeep
+
+# ============ SENSITIVE DATA ============
+# Kundendaten / Submissions (WICHTIG!)
+data/submissions/*
+!data/submissions/.gitkeep
+
+# ============ LOCAL CONFIGURATION ============
+.claude/
+.env
+.env.local
+.env.*.local
+
+# ============ LOGS ============
+*.log
+server.log
+npm-debug.log*
+
+# ============ INTERNAL COMPANY MATERIALS ============
+# Diese Ordner enthalten interne Firmenmaterialien
+# die nicht oeffentlich geteilt werden sollten
+bauteilinformationen/
+Styleguide/
+Logo/
+Neue Dokumente/
+
+# Einzelne interne PDFs im Root
+Aktionshaus.pdf
+
+# ============ BACKUP & DEBUG FILES ============
+*.backup
+*.broken
+*.debug
+*.bak
+*.orig
+*.tmp
+
+# ============ OS GENERATED FILES ============
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+nul
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+
+# ============ IDE / EDITOR ============
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# ============ TEST COVERAGE ============
+coverage/
+.nyc_output/

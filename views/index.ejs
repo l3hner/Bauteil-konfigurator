@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lehner Haus - Konfigurator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-inner">
+                <div class="logo">
+                    <h1>LEHNER HAUS</h1>
+                    <p class="tagline">schwäbisch gut</p>
+                </div>
+                <div class="qdf-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    QDF Zertifiziert 2026
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-inner">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="progress-bar"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step" data-step="1">
+                        <div class="progress-step-indicator">1</div>
+                        <span class="progress-step-label">Kontakt</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-step-indicator">2</div>
+                        <span class="progress-step-label">Energie</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-step-indicator">3</div>
+                        <span class="progress-step-label">Wand</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="progress-step-indicator">4</div>
+                        <span class="progress-step-label">Innen</span>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="progress-step-indicator">5</div>
+                        <span class="progress-step-label">Haus</span>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="progress-step-indicator">6</div>
+                        <span class="progress-step-label">Fenster</span>
+                    </div>
+                    <div class="progress-step" data-step="7">
+                        <div class="progress-step-indicator">7</div>
+                        <span class="progress-step-label">Dach</span>
+                    </div>
+                    <div class="progress-step" data-step="8">
+                        <div class="progress-step-indicator">8</div>
+                        <span class="progress-step-label">Heizung</span>
+                    </div>
+                    <div class="progress-step" data-step="9">
+                        <div class="progress-step-indicator">9</div>
+                        <span class="progress-step-label">Luft</span>
+                    </div>
+                    <div class="progress-step" data-step="10">
+                        <div class="progress-step-indicator">10</div>
+                        <span class="progress-step-label">Personen</span>
+                    </div>
+                    <div class="progress-step" data-step="11">
+                        <div class="progress-step-indicator">11</div>
+                        <span class="progress-step-label">Grundst.</span>
+                    </div>
+                    <div class="progress-step" data-step="12">
+                        <div class="progress-step-indicator">12</div>
+                        <span class="progress-step-label">Raume</span>
+                    </div>
+                    <div class="progress-step" data-step="13">
+                        <div class="progress-step-indicator">13</div>
+                        <span class="progress-step-label">Eigen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <h2 class="page-title">Ihre personliche Leistungsbeschreibung</h2>
+            <p class="intro-text">Gestalten Sie Ihr Traumhaus - wir erstellen Ihnen eine massgeschneiderte Leistungsbeschreibung</p>
+
+            <form id="konfigurator-form" action="/submit" method="POST">
+
+                <!-- Bauherren-Daten -->
+                <section class="form-section" id="section-1">
+                    <h3 class="section-title">1. Ihre Kontaktdaten</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bauherr_vorname">Vorname *</label>
+                            <input type="text" id="bauherr_vorname" name="bauherr_vorname" required>
+                            <span class="valid-indicator">&#10003;</span>
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bauherr_nachname">Nachname *</label>
+                            <input type="text" id="bauherr_nachname" name="bauherr_nachname" required>
+                            <span class="valid-indicator">&#10003;</span>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bauherr_email">E-Mail</label>
+                            <input type="email" id="bauherr_email" name="bauherr_email">
+                            <span class="valid-indicator">&#10003;</span>
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bauherr_telefon">Telefon</label>
+                            <input type="tel" id="bauherr_telefon" name="bauherr_telefon">
+                            <span class="valid-indicator">&#10003;</span>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Energiestandard -->
+                <section class="form-section" id="section-2">
+                    <h3 class="section-title">2. Energiestandard</h3>
+
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="kfw_standard" value="KFW55" required onchange="updateWallOptions(); updateLueftungOptions(); updateProgress();">
+                            <div class="radio-content">
+                                <h4>KfW 55</h4>
+                                <p>Effizienzhaus 55 - Attraktive Forderung mit bewahrter Technik</p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio" name="kfw_standard" value="KFW40" onchange="updateWallOptions(); updateLueftungOptions(); updateProgress();">
+                            <div class="radio-content">
+                                <h4>KfW 40</h4>
+                                <p>Effizienzhaus 40 - Hochste Energieeffizienz fur maximale Forderung</p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Aussenwand -->
+                <section class="form-section" id="section-3">
+                    <h3 class="section-title">3. Aussenwandsystem</h3>
+                    <p class="section-description">Wahlen Sie Ihr Wandsystem basierend auf dem Energiestandard</p>
+
+                    <div id="wall-options" class="radio-group">
+                        <p class="info-message">Bitte wahlen Sie zuerst einen Energiestandard aus.</p>
+                    </div>
+                </section>
+
+                <!-- Innenwand -->
+                <section class="form-section" id="section-4">
+                    <h3 class="section-title">4. Innenwandsystem</h3>
+
+                    <div class="radio-group">
+                        <% if (catalog && catalog.innerwalls) { catalog.innerwalls.forEach(innerwall => { %>
+                        <label class="radio-card">
+                            <input type="radio" name="innerwall" value="<%= innerwall.id %>" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4><%= innerwall.name %></h4>
+                                <p><%= innerwall.description %></p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                        <% }); } %>
+                    </div>
+                </section>
+
+                <!-- Haustyp -->
+                <section class="form-section" id="section-5">
+                    <h3 class="section-title">5. Haustyp</h3>
+
+                    <div class="radio-group">
+                        <% catalog.haustypen.forEach(haustyp => { %>
+                        <label class="radio-card">
+                            <input type="radio" name="haustyp" value="<%= haustyp.id %>" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4><%= haustyp.name %></h4>
+                                <p><%= haustyp.description %></p>
+                                <small><%= haustyp.details %></small>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                        <% }); %>
+                    </div>
+                </section>
+
+                <!-- Fenster -->
+                <section class="form-section" id="section-6">
+                    <h3 class="section-title">6. Fenstersystem</h3>
+
+                    <div class="radio-group">
+                        <% catalog.windows.forEach(window => { %>
+                        <label class="radio-card">
+                            <input type="radio" name="window" value="<%= window.id %>" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4><%= window.name %></h4>
+                                <p><%= window.description %></p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                        <% }); %>
+                    </div>
+                </section>
+
+                <!-- Dachziegel -->
+                <section class="form-section" id="section-7">
+                    <h3 class="section-title">7. Dacheindeckung</h3>
+
+                    <div class="radio-group">
+                        <% catalog.tiles.forEach(tile => { %>
+                        <label class="radio-card">
+                            <input type="radio" name="tiles" value="<%= tile.id %>" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4><%= tile.name %></h4>
+                                <p><%= tile.description %></p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                        <% }); %>
+                    </div>
+                </section>
+
+                <!-- Heizung -->
+                <section class="form-section" id="section-8">
+                    <h3 class="section-title">8. Heizungssystem</h3>
+
+                    <div class="radio-group">
+                        <% catalog.heizung.forEach(heiz => { %>
+                        <label class="radio-card">
+                            <input type="radio" name="heizung" value="<%= heiz.id %>" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4><%= heiz.name %></h4>
+                                <p><%= heiz.description %></p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                        <% }); %>
+                    </div>
+                </section>
+
+                <!-- Luftung -->
+                <section class="form-section" id="section-9">
+                    <h3 class="section-title">9. Luftungssystem</h3>
+                    <p class="section-description">Die Luftungsoptionen richten sich nach Ihrem gewahlten Energiestandard</p>
+
+                    <div id="lueftung-options" class="radio-group">
+                        <p class="info-message">Bitte wahlen Sie zuerst einen Energiestandard aus.</p>
+                    </div>
+                </section>
+
+                <!-- Personenanzahl -->
+                <section class="form-section" id="section-10">
+                    <h3 class="section-title">10. Personenanzahl</h3>
+
+                    <div class="form-group">
+                        <label for="personenanzahl">Wie viele Personen ziehen ein? *</label>
+                        <select id="personenanzahl" name="personenanzahl" required onchange="updateProgress();">
+                            <option value="">Bitte wahlen</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 Personen</option>
+                            <option value="3">3 Personen</option>
+                            <option value="4">4 Personen</option>
+                            <option value="5">5 Personen</option>
+                            <option value="6">6 Personen</option>
+                            <option value="7">7 Personen</option>
+                            <option value="8">8 Personen</option>
+                            <option value="9">9 Personen</option>
+                            <option value="10">10+ Personen</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- Grundstuck -->
+                <section class="form-section" id="section-11">
+                    <h3 class="section-title">11. Grundstucksstatus</h3>
+
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="grundstueck" value="vorhanden" required onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4>Vorhanden</h4>
+                                <p>Ich besitze bereits ein Grundstuck</p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio" name="grundstueck" value="in_aussicht" onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4>In Aussicht</h4>
+                                <p>Ein Grundstuck ist in Aussicht</p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input type="radio" name="grundstueck" value="suche" onchange="updateProgress();">
+                            <div class="radio-content">
+                                <h4>Auf der Suche</h4>
+                                <p>Ich suche noch nach einem Grundstuck</p>
+                            </div>
+                            <span class="checkmark">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Raumplanung -->
+                <section class="form-section" id="section-12">
+                    <h3 class="section-title">12. Raumplanung</h3>
+                    <p class="section-description">Welche Raume wunschen Sie sich in Ihrem Haus?</p>
+
+                    <div class="rooms-container">
+                        <div class="room-section">
+                            <h4>Erdgeschoss</h4>
+                            <div id="eg-rooms">
+                                <div class="room-item">
+                                    <input type="text" name="eg_rooms" placeholder="z.B. Wohnzimmer" class="room-name">
+                                    <input type="text" name="eg_details" placeholder="Besondere Wunsche" class="room-details">
+                                </div>
+                            </div>
+                            <button type="button" onclick="addRoom('eg')" class="btn-add">+ Raum hinzufugen</button>
+                        </div>
+
+                        <div class="room-section">
+                            <h4>Obergeschoss</h4>
+                            <div id="og-rooms">
+                                <div class="room-item">
+                                    <input type="text" name="og_rooms" placeholder="z.B. Schlafzimmer" class="room-name">
+                                    <input type="text" name="og_details" placeholder="Besondere Wunsche" class="room-details">
+                                </div>
+                            </div>
+                            <button type="button" onclick="addRoom('og')" class="btn-add">+ Raum hinzufugen</button>
+                        </div>
+
+                        <div class="room-section">
+                            <h4>Untergeschoss</h4>
+                            <div id="ug-rooms">
+                                <div class="room-item">
+                                    <input type="text" name="ug_rooms" placeholder="z.B. Keller" class="room-name">
+                                    <input type="text" name="ug_details" placeholder="Besondere Wunsche" class="room-details">
+                                </div>
+                            </div>
+                            <button type="button" onclick="addRoom('ug')" class="btn-add">+ Raum hinzufugen</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Eigenleistungen -->
+                <section class="form-section" id="section-13">
+                    <h3 class="section-title">13. Geplante Eigenleistungen</h3>
+                    <p class="section-description">Welche Arbeiten mochten Sie selbst durchfuhren?</p>
+
+                    <div id="eigenleistungen-container">
+                        <div class="eigenleistung-item">
+                            <input type="text" name="eigenleistungen" placeholder="z.B. Malerarbeiten" class="eigenleistung-input">
+                        </div>
+                    </div>
+                    <button type="button" onclick="addEigenleistung()" class="btn-add">+ Eigenleistung hinzufugen</button>
+                </section>
+
+                <!-- Submit Button -->
+                <div class="submit-section">
+                    <button type="submit" class="btn-submit">Leistungsbeschreibung erstellen</button>
+                </div>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Lehner Haus GmbH & Co. KG. Alle Rechte vorbehalten.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
