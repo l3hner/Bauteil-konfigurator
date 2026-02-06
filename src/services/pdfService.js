@@ -118,7 +118,7 @@ class PdfService {
     this.drawServiceContent(doc);
     this.drawFooter(doc, pageNum);
 
-    // Komponenten-Seiten
+    // Komponenten-Seiten mit ELK-Style Kapitel-Nummerierung
     const innerwallData = catalogService.getVariantById('innerwalls', submission.innerwall);
     if (!innerwallData && submission.innerwall) {
       console.error('[PDF] ERROR: Innenwand not found:', submission.innerwall);
@@ -126,33 +126,40 @@ class PdfService {
     }
 
     const components = [
-      { title: 'Außenwandsystem', data: catalogService.getVariantById('walls', submission.wall) },
-      { title: 'Innenwandsystem', data: innerwallData },
-      { title: 'Deckensystem', data: catalogService.getVariantById('decken', submission.decke) },
-      { title: 'Fenstersystem', data: catalogService.getVariantById('windows', submission.window) },
-      { title: 'Dacheindeckung', data: catalogService.getVariantById('tiles', submission.tiles) },
-      { title: 'Ihr Haustyp', data: catalogService.getVariantById('haustypen', submission.haustyp) },
-      { title: 'Heizungssystem', data: catalogService.getVariantById('heizung', submission.heizung) }
+      { title: 'Außenwandsystem', data: catalogService.getVariantById('walls', submission.wall), chapter: '5.1' },
+      { title: 'Innenwandsystem', data: innerwallData, chapter: '5.2' },
+      { title: 'Deckensystem', data: catalogService.getVariantById('decken', submission.decke), chapter: '5.3' },
+      { title: 'Fenstersystem', data: catalogService.getVariantById('windows', submission.window), chapter: '5.4' },
+      { title: 'Dacheindeckung', data: catalogService.getVariantById('tiles', submission.tiles), chapter: '5.5' },
+      { title: 'Ihr Haustyp', data: catalogService.getVariantById('haustypen', submission.haustyp), chapter: '6.1', isHaustyp: true },
+      { title: 'Heizungssystem', data: catalogService.getVariantById('heizung', submission.heizung), chapter: '7.1' }
     ];
 
     // Lüftung hinzufügen wenn gewählt
     if (submission.lueftung && submission.lueftung !== 'keine') {
       const lueftung = catalogService.getVariantById('lueftung', submission.lueftung);
       if (lueftung && lueftung.id !== 'keine') {
-        components.push({ title: 'Lüftungssystem', data: lueftung });
+        components.push({ title: 'Lüftungssystem', data: lueftung, chapter: '7.2' });
       }
     }
 
     for (const comp of components) {
       if (comp.data) {
-        console.log(`[PDF] Adding page ${pageNum + 1}: ${comp.title}`)
+        console.log(`[PDF] Adding page ${pageNum + 1}: ${comp.title} (${comp.chapter})`);
         doc.addPage();
         pageNum++;
         this.drawHeader(doc, comp.title);
-        this.drawComponentContent(doc, comp.data, comp.title);
+
+        // Spezielle Seite für Haustyp (Flyer-Stil)
+        if (comp.isHaustyp) {
+          this.drawHaustypPage(doc, comp.data);
+        } else {
+          this.drawComponentContent(doc, comp.data, comp.title, comp.chapter);
+        }
+
         this.drawFooter(doc, pageNum);
       } else {
-        console.log(`[PDF] SKIPPED: ${comp.title} - no data`)
+        console.log(`[PDF] SKIPPED: ${comp.title} - no data`);
       }
     }
 
@@ -820,180 +827,345 @@ class PdfService {
     doc.text('QDF-zertifiziert | RAL-Gütezeichen | Mitglied im BDF', 80, y + 32, { lineBreak: false });
   }
 
-  drawComponentContent(doc, component, categoryTitle) {
-    // 2-Spalten-Layout: Links Bild, Rechts Content
-    const leftColX = 60;
-    const leftColWidth = 220;
-    const rightColX = 300;
-    const rightColWidth = 235;
-    let y = 100;
+  drawComponentContent(doc, component, categoryTitle, chapterNumber) {
+    // ELK-Style Layout: Technisches Schnittbild + Aufbau-Liste + Qualitätsmerkmale
+    const marginLeft = 50;
+    const contentWidth = 495;
+    let y = 95;
 
-    // === LINKE SPALTE: Bild ===
-    if (component.filePath) {
-      const imgPath = path.join(__dirname, '../..', component.filePath);
+    // === KAPITEL-HEADER mit Nummerierung ===
+    const chapterNum = chapterNumber || '5.1';
+    doc.font('Helvetica-Bold').fontSize(11).fillColor(this.colors.primary);
+    doc.text(`${chapterNum} ${categoryTitle.toUpperCase()}`, marginLeft, y);
+    y += 18;
 
-      if (fs.existsSync(imgPath)) {
-        try {
-          doc.image(imgPath, leftColX, y, { fit: [200, 150] });
-        } catch (e) {
-          this.drawImagePlaceholder(doc, leftColX, y, 200, 150, categoryTitle);
-        }
-      } else {
-        this.drawImagePlaceholder(doc, leftColX, y, 200, 150, categoryTitle);
+    // Komponenten-Name und kurze Beschreibung
+    doc.font('Helvetica').fontSize(9).fillColor(this.colors.text);
+    const shortDesc = component.description ? component.description.split('.')[0] + '.' : '';
+    doc.text(`${component.name}${shortDesc ? ' – ' + shortDesc : ''}`, marginLeft, y, { width: contentWidth });
+    y += 25;
+
+    // === 2-SPALTEN LAYOUT: Bild links, Aufbau rechts ===
+    const imgWidth = 180;
+    const imgHeight = 140;
+    const rightColX = marginLeft + imgWidth + 25;
+    const rightColWidth = contentWidth - imgWidth - 25;
+
+    // Technische Zeichnung/Schnittbild (bevorzugt) oder Produktbild
+    const techDrawingPath = component.technicalDrawing ?
+      path.join(__dirname, '../..', component.technicalDrawing) : null;
+    const productImgPath = component.filePath ?
+      path.join(__dirname, '../..', component.filePath) : null;
+
+    const imgPath = (techDrawingPath && fs.existsSync(techDrawingPath)) ? techDrawingPath : productImgPath;
+
+    if (imgPath && fs.existsSync(imgPath)) {
+      try {
+        doc.image(imgPath, marginLeft, y, { fit: [imgWidth, imgHeight] });
+      } catch (e) {
+        this.drawImagePlaceholder(doc, marginLeft, y, imgWidth, imgHeight, categoryTitle);
       }
+    } else {
+      this.drawImagePlaceholder(doc, marginLeft, y, imgWidth, imgHeight, categoryTitle);
     }
 
-    // === RECHTE SPALTE: Content ===
+    // === AUFBAU-LISTE (rechte Spalte) - ELK Style ===
     let rightY = y;
 
-    // Name
-    doc.font('Helvetica-Bold').fontSize(14).fillColor(this.colors.primary);
-    doc.text(component.name, rightColX, rightY, { width: rightColWidth, lineGap: 1 });
-    rightY += 25;
+    // "Aufbau von außen nach innen" Header (fett, unterstrichen)
+    doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
+    doc.text('Aufbau von außen nach innen', rightColX, rightY);
+    rightY += 4;
+    doc.moveTo(rightColX, rightY + 8).lineTo(rightColX + 130, rightY + 8)
+       .strokeColor(this.colors.secondary).lineWidth(0.5).stroke();
+    rightY += 14;
 
-    // Beschreibung
-    doc.font('Helvetica').fontSize(9).fillColor(this.colors.textLight);
-    const desc = component.description || component.details || '';
-    if (desc) {
-      const descHeight = Math.min(60, Math.ceil(desc.length / 45) * 10 + 10);
-      doc.text(desc, rightColX, rightY, { width: rightColWidth, lineGap: 2 });
-      rightY += descHeight;
-    }
+    // Aufbau-Schichten aus component.layers oder technicalDetails extrahieren
+    const aufbauItems = this.extractAufbauItems(component, categoryTitle);
 
-    // Tech-Box (rechte Spalte, kompakter)
-    if (component.technicalDetails) {
-      rightY += 10;
-      const techDetails = component.technicalDetails;
-      const techKeys = Object.keys(techDetails);
-      const boxHeight = techKeys.length * 14 + 30;
-
-      doc.roundedRect(rightColX, rightY, rightColWidth, boxHeight, 6)
-         .strokeColor('#FFD700').lineWidth(1.5).stroke();
-      doc.rect(rightColX, rightY, rightColWidth, boxHeight).fill('#fffef8');
-
-      doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.primary);
-      doc.text('Technische Daten', rightColX + 8, rightY + 8, { lineBreak: false });
-
-      rightY += 24;
-
-      const techLabels = {
-        uValue: 'U-Wert', ugValue: 'Ug-Wert', wallThickness: 'Wandstärke',
-        insulation: 'Dämmung', position: 'Position', soundInsulation: 'Schallschutz',
-        profile: 'Profil', glazing: 'Verglasung', material: 'Material',
-        lifespan: 'Lebensdauer', weight: 'Gewicht', scop: 'SCOP',
-        refrigerant: 'Kältemittel', noise: 'Schallpegel',
-        heatRecovery: 'Wärmerückgewinnung', energySaving: 'Energieeinsparung',
-        filters: 'Filter', fireRating: 'Brandschutz',
-        securityFeatures: 'Sicherheit', plasterThickness: 'Gipskarton-Stärke',
-        surface: 'Oberfläche'
-      };
-
-      techKeys.forEach(key => {
-        const label = techLabels[key] || key;
-        const value = techDetails[key];
-
-        // U-Werte in Gold hervorgehoben
-        if (key === 'uValue' || key === 'ugValue') {
-          doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.gold);
-          doc.text(`${label}: ${value}`, rightColX + 8, rightY, { lineBreak: false });
-        }
-        // Position in Gold
-        else if (key === 'position') {
-          doc.font('Helvetica-Bold').fontSize(8).fillColor(this.colors.gold);
-          doc.text(`${label}: ${value}`, rightColX + 8, rightY, { lineBreak: false });
-        }
-        // SCOP-Wert für Infografik merken (später)
-        else if (key === 'scop') {
-          this._cachedSCOP = value; // Für Gauge
-          doc.font('Helvetica').fontSize(8).fillColor(this.colors.textLight);
-          doc.text(`${label}: ${value}`, rightColX + 8, rightY, { lineBreak: false });
-        }
-        else {
-          doc.font('Helvetica').fontSize(8).fillColor(this.colors.textLight);
-          doc.text(`${label}: ${value}`, rightColX + 8, rightY, { lineBreak: false });
-        }
-
-        rightY += 12;
-      });
-
-      rightY += 10;
-
-      // U-Wert Bar-Chart (wenn vorhanden)
-      if (techDetails.uValue) {
-        rightY = this.drawUValueBarChart(doc, rightColX, rightY, techDetails.uValue, rightColWidth);
+    doc.font('Helvetica').fontSize(8);
+    aufbauItems.forEach(item => {
+      // Bullet Point (fett)
+      doc.font('Helvetica-Bold').fillColor(this.colors.text).text('·', rightColX, rightY, { lineBreak: false });
+      // Beschreibung
+      doc.font('Helvetica').fillColor(this.colors.text);
+      doc.text(item.name, rightColX + 8, rightY, { width: rightColWidth - 70, lineBreak: false });
+      // Maß rechtsbündig (wenn vorhanden) - hervorgehoben
+      if (item.value) {
+        doc.font('Helvetica-Bold').fillColor(this.colors.primary);
+        doc.text(item.value, rightColX + rightColWidth - 65, rightY, {
+          width: 60,
+          align: 'right',
+          lineBreak: false
+        });
       }
-    }
+      rightY += 11;
+    });
 
-    // Premium Features (rechte Spalte, kompakter)
+    // === QUALITÄTSMERKMALE TABELLE ===
+    rightY += 10;
+    doc.moveTo(rightColX, rightY).lineTo(rightColX + rightColWidth, rightY)
+       .strokeColor(this.colors.secondary).lineWidth(0.5).stroke();
+    rightY += 8;
+
+    doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
+    doc.text('Qualitätsmerkmal', rightColX, rightY, { lineBreak: false });
+    doc.text('Wert', rightColX + rightColWidth - 80, rightY, { width: 80, align: 'right', lineBreak: false });
+    rightY += 14;
+
+    // Qualitätsmerkmale aus technicalDetails
+    const qualityItems = this.extractQualityItems(component, categoryTitle);
+
+    doc.font('Helvetica').fontSize(8);
+    qualityItems.forEach(item => {
+      doc.fillColor(this.colors.text).text(item.label, rightColX, rightY, { lineBreak: false });
+      // Wichtige Werte (U-Wert, SCOP) hervorheben
+      if (item.highlight) {
+        doc.font('Helvetica-Bold').fillColor(this.colors.gold);
+      } else {
+        doc.font('Helvetica').fillColor(this.colors.primary);
+      }
+      doc.text(item.value, rightColX + rightColWidth - 100, rightY, { width: 100, align: 'right', lineBreak: false });
+      doc.font('Helvetica');
+      rightY += 12;
+    });
+
+    // === PREMIUM-FEATURES BOX (volle Breite) ===
+    y = Math.max(y + imgHeight + 15, rightY + 15);
+
     if (component.premiumFeatures && component.premiumFeatures.length > 0) {
-      rightY += 8;
-      const featHeight = component.premiumFeatures.length * 12 + 22;
+      const boxHeight = Math.min(70, component.premiumFeatures.length * 14 + 20);
 
-      doc.roundedRect(rightColX, rightY, rightColWidth, featHeight, 6).fill(this.colors.goldLight);
-      doc.rect(rightColX, rightY, 3, featHeight).fill(this.colors.gold);
+      doc.roundedRect(marginLeft, y, contentWidth, boxHeight, 4).fill(this.colors.goldLight);
+      doc.rect(marginLeft, y, 3, boxHeight).fill(this.colors.gold);
 
       doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
-      doc.text('Premium-Merkmale', rightColX + 8, rightY + 6, { lineBreak: false });
+      doc.text('Ihre Vorteile bei Lehner Haus:', marginLeft + 12, y + 8);
 
-      rightY += 18;
+      let featY = y + 22;
+      const featColWidth = (contentWidth - 24) / 2;
 
-      component.premiumFeatures.forEach(feature => {
+      component.premiumFeatures.slice(0, 4).forEach((feature, idx) => {
+        const colX = idx % 2 === 0 ? marginLeft + 12 : marginLeft + 12 + featColWidth;
+        const rowY = featY + Math.floor(idx / 2) * 14;
+
         doc.font('Helvetica').fontSize(7.5).fillColor(this.colors.gold);
-        doc.text('★', rightColX + 8, rightY, { lineBreak: false });
+        doc.text('✓', colX, rowY, { lineBreak: false });
         doc.fillColor(this.colors.text);
-        doc.text(feature, rightColX + 18, rightY, { width: rightColWidth - 24, lineGap: 0.5 });
-        rightY += 11;
+        doc.text(feature.substring(0, 55) + (feature.length > 55 ? '...' : ''), colX + 10, rowY, {
+          width: featColWidth - 15,
+          lineBreak: false
+        });
       });
 
-      rightY += 6;
+      y += boxHeight + 10;
     }
 
-    // SCOP-Gauge (nur für Heizung/Lüftung)
-    if (this._cachedSCOP && (categoryTitle === 'Heizungssystem' || categoryTitle === 'Lüftungssystem')) {
-      rightY += 10;
-      rightY = this.drawSCOPGauge(doc, leftColX, rightY, this._cachedSCOP);
-      this._cachedSCOP = null; // Reset
-    }
+    // === VORTEILE-LISTE (kompakt) ===
+    if (component.advantages && component.advantages.length > 0 && y < 620) {
+      doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
+      doc.text('Weitere Vorteile:', marginLeft, y);
+      y += 14;
 
-    // === VERGLEICHSBOX: Full Width unten ===
-    y = Math.max(y + 170, rightY + 15);
+      const advColWidth = contentWidth / 2;
+      component.advantages.slice(0, 6).forEach((adv, idx) => {
+        const colX = idx % 2 === 0 ? marginLeft : marginLeft + advColWidth;
+        const rowY = y + Math.floor(idx / 2) * 12;
 
-    // Vorteile (kompakt, falls vorhanden)
-    if (component.advantages && component.advantages.length > 0) {
-      doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.primary);
-      doc.text('Ihre Vorteile', 70, y, { lineBreak: false });
-      y += 16;
-
-      component.advantages.slice(0, 5).forEach(adv => {
-        doc.font('Helvetica').fontSize(8).fillColor(this.colors.gold);
-        doc.text('✓', 75, y, { lineBreak: false });
+        doc.font('Helvetica').fontSize(7.5).fillColor(this.colors.gold);
+        doc.text('•', colX, rowY, { lineBreak: false });
         doc.fillColor(this.colors.textLight);
-        doc.text(adv, 88, y, { width: 450, lineGap: 0.5 });
-        y += 12;
+        doc.text(adv.substring(0, 50) + (adv.length > 50 ? '...' : ''), colX + 8, rowY, {
+          width: advColWidth - 15,
+          lineBreak: false
+        });
       });
 
-      y += 10;
+      y += Math.ceil(Math.min(6, component.advantages.length) / 2) * 12 + 10;
     }
 
-    // Vergleichshinweise (gelber Rahmen)
-    if (component.comparisonNotes) {
-      const maxWidth = 455;
-      const textHeight = Math.min(120, Math.ceil(component.comparisonNotes.length / 70) * 9 + 30);
+    // === VERGLEICHS-HINWEIS BOX (wenn Platz) ===
+    if (component.comparisonNotes && y < 700) {
+      const remainingHeight = 770 - y;
+      const boxHeight = Math.min(remainingHeight - 10, 80);
 
-      if (y + textHeight < 770) {
-        doc.roundedRect(60, y, 475, textHeight, 8)
-           .strokeColor('#FFD700').lineWidth(2).stroke();
-        doc.rect(60, y, 475, textHeight).fill('#fffef8');
+      doc.roundedRect(marginLeft, y, contentWidth, boxHeight, 4)
+         .strokeColor(this.colors.gold).lineWidth(1.5).stroke();
+      doc.roundedRect(marginLeft, y, contentWidth, boxHeight, 4).fill('#fffef5');
 
-        doc.font('Helvetica-Bold').fontSize(12).fillColor('#FFD700');
-        doc.text('⚠', 70, y + 8, { lineBreak: false });
+      doc.font('Helvetica-Bold').fontSize(8).fillColor(this.colors.gold);
+      doc.text('💡 Tipp für den Anbietervergleich:', marginLeft + 10, y + 8);
 
-        doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
-        doc.text('KRITISCHE FRAGEN beim Vergleich:', 85, y + 10, { lineBreak: false });
+      // Ersten relevanten Satz extrahieren
+      const firstTip = component.comparisonNotes.split('\n')[0].replace(/❗|KRITISCHE FRAGEN.*:/g, '').trim();
+      doc.font('Helvetica').fontSize(7.5).fillColor(this.colors.text);
+      doc.text(firstTip.substring(0, 200) + (firstTip.length > 200 ? '...' : ''),
+        marginLeft + 10, y + 22, { width: contentWidth - 20, lineGap: 1 });
+    }
+  }
 
-        doc.font('Helvetica').fontSize(8).fillColor(this.colors.text);
-        doc.text(component.comparisonNotes, 75, y + 25, { width: maxWidth, lineGap: 1.5 });
+  // Hilfsmethode: Aufbau-Schichten extrahieren (ELK-Style)
+  extractAufbauItems(component, categoryTitle) {
+    // Wenn component.layers definiert ist, diese direkt verwenden (ELK-Style)
+    if (component.layers && component.layers.length > 0) {
+      return component.layers.map(layer => ({
+        name: layer.name,
+        value: layer.value || '',
+        note: layer.note || ''
+      }));
+    }
+
+    // Fallback: Aus technicalDetails extrahieren
+    const items = [];
+    const td = component.technicalDetails || {};
+
+    // Je nach Kategorie unterschiedliche Aufbau-Struktur
+    if (categoryTitle.includes('Außenwand') || categoryTitle.includes('wand')) {
+      if (td.insulation) items.push({ name: 'Wärmedämmung', value: td.insulation.match(/\d+\s*mm/)?.[0] || td.insulation });
+      if (td.wallThickness) items.push({ name: 'Wandstärke gesamt', value: td.wallThickness });
+      if (td.fireRating) items.push({ name: 'Brandschutz', value: td.fireRating.split(' ')[0] });
+      if (component.constructionType) items.push({ name: 'Bauweise', value: component.constructionType });
+    } else if (categoryTitle.includes('Innenwand')) {
+      if (td.wallThickness) items.push({ name: 'Wandstärke', value: td.wallThickness });
+      if (td.soundInsulation) items.push({ name: 'Schallschutz', value: td.soundInsulation });
+      if (td.plasterThickness) items.push({ name: 'Beplankung', value: td.plasterThickness });
+    } else if (categoryTitle.includes('Decke')) {
+      if (td.construction) items.push({ name: 'Konstruktion', value: '' });
+      if (td.soundInsulation) items.push({ name: 'Trittschall', value: td.soundInsulation });
+      if (td.loadCapacity) items.push({ name: 'Tragfähigkeit', value: td.loadCapacity });
+    } else if (categoryTitle.includes('Fenster')) {
+      if (td.glazing) items.push({ name: 'Verglasung', value: '' });
+      if (td.profile) items.push({ name: 'Profil', value: '' });
+      if (td.securityFeatures) items.push({ name: 'Sicherheit', value: 'RC2' });
+    } else if (categoryTitle.includes('Dach')) {
+      if (td.material) items.push({ name: 'Material', value: td.material });
+      if (td.surface) items.push({ name: 'Oberfläche', value: td.surface });
+      if (td.weight) items.push({ name: 'Gewicht', value: td.weight });
+    } else if (categoryTitle.includes('Heizung')) {
+      if (td.refrigerant) items.push({ name: 'Kältemittel', value: td.refrigerant.split(' ')[0] });
+      if (td.noise) items.push({ name: 'Schallpegel', value: td.noise });
+    } else if (categoryTitle.includes('Lüftung')) {
+      if (td.heatRecovery) items.push({ name: 'Wärmerückgewinnung', value: td.heatRecovery });
+      if (td.filters) items.push({ name: 'Filter', value: td.filters });
+      if (td.energySaving) items.push({ name: 'Energieeinsparung', value: td.energySaving });
+    }
+
+    // Fallback: Alle technischen Details hinzufügen wenn Liste leer
+    if (items.length === 0 && td) {
+      Object.entries(td).slice(0, 5).forEach(([key, value]) => {
+        items.push({ name: key, value: String(value).substring(0, 30) });
+      });
+    }
+
+    return items;
+  }
+
+  // Hilfsmethode: Qualitätsmerkmale extrahieren
+  extractQualityItems(component, categoryTitle) {
+    const items = [];
+    const td = component.technicalDetails || {};
+
+    // Hauptqualitätsmerkmale je nach Kategorie
+    if (td.uValue) {
+      items.push({ label: 'Wärmedämmwert (U)', value: td.uValue, highlight: true });
+    }
+    if (td.ugValue) {
+      items.push({ label: 'Glaswert (Ug)', value: td.ugValue, highlight: true });
+    }
+    if (td.fireRating) {
+      items.push({ label: 'Feuerwiderstandsklasse', value: td.fireRating.includes('F90') ? 'min. (R)EI 90' : td.fireRating });
+    }
+    if (td.soundInsulation) {
+      items.push({ label: 'Schallschutz', value: td.soundInsulation });
+    }
+    if (td.scop) {
+      items.push({ label: 'SCOP (Effizienz)', value: td.scop, highlight: true });
+    }
+    if (td.heatRecovery) {
+      items.push({ label: 'Wärmerückgewinnung', value: td.heatRecovery, highlight: true });
+    }
+    if (td.lifespan) {
+      items.push({ label: 'Lebensdauer', value: td.lifespan });
+    }
+    if (td.position) {
+      items.push({ label: 'Position', value: td.position });
+    }
+
+    return items.slice(0, 4); // Max 4 Qualitätsmerkmale
+  }
+
+  // Spezielle Haustyp-Seite im Flyer-Stil
+  drawHaustypPage(doc, component) {
+    const marginLeft = 50;
+    const contentWidth = 495;
+
+    // === GROSSES HAUSBILD (oben) ===
+    const imgPath = component.filePath ? path.join(__dirname, '../..', component.filePath) : null;
+
+    if (imgPath && fs.existsSync(imgPath)) {
+      try {
+        // Bild über fast die gesamte Breite
+        doc.image(imgPath, marginLeft, 95, { fit: [contentWidth, 280] });
+      } catch (e) {
+        this.drawImagePlaceholder(doc, marginLeft, 95, contentWidth, 280, 'Haustyp');
       }
+    } else {
+      this.drawImagePlaceholder(doc, marginLeft, 95, contentWidth, 280, 'Haustyp');
+    }
+
+    let y = 390;
+
+    // === "MADE BEI LEHNER HAUS" Badge ===
+    doc.roundedRect(marginLeft, y, 180, 35, 4).fill(this.colors.primary);
+    doc.font('Helvetica-Bold').fontSize(14).fillColor(this.colors.white);
+    doc.text('MADE BEI', marginLeft + 10, y + 5, { lineBreak: false });
+    doc.font('Helvetica-Bold').fontSize(12).fillColor(this.colors.gold);
+    doc.text('LEHNER HAUS', marginLeft + 10, y + 20, { lineBreak: false });
+
+    // Haustyp-Name rechts daneben
+    doc.font('Helvetica-Bold').fontSize(22).fillColor(this.colors.primary);
+    doc.text(component.name.toUpperCase(), marginLeft + 200, y + 8, { width: contentWidth - 200 });
+
+    y += 50;
+
+    // === Beschreibung ===
+    doc.font('Helvetica').fontSize(10).fillColor(this.colors.text);
+    const desc = component.details || component.description || '';
+    doc.text(desc, marginLeft, y, { width: contentWidth, lineGap: 2 });
+
+    y += 60;
+
+    // === Vorteile Grid (2 Spalten) ===
+    if (component.advantages && component.advantages.length > 0) {
+      doc.font('Helvetica-Bold').fontSize(11).fillColor(this.colors.primary);
+      doc.text('Ihre Vorteile mit diesem Haustyp:', marginLeft, y);
+      y += 20;
+
+      const colWidth = contentWidth / 2;
+      component.advantages.forEach((adv, idx) => {
+        const colX = idx % 2 === 0 ? marginLeft : marginLeft + colWidth;
+        const rowY = y + Math.floor(idx / 2) * 18;
+
+        doc.font('Helvetica').fontSize(9).fillColor(this.colors.gold);
+        doc.text('✓', colX, rowY, { lineBreak: false });
+        doc.fillColor(this.colors.text);
+        doc.text(adv, colX + 12, rowY, { width: colWidth - 20 });
+      });
+
+      y += Math.ceil(component.advantages.length / 2) * 18 + 15;
+    }
+
+    // === Lehner Haus Qualitäts-Badge ===
+    if (y < 720) {
+      doc.roundedRect(marginLeft, y, contentWidth, 55, 6).fill(this.colors.goldLight);
+      doc.rect(marginLeft, y, 4, 55).fill(this.colors.gold);
+
+      doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.primary);
+      doc.text('100% individuelle Grundrissgestaltung', marginLeft + 15, y + 10);
+
+      doc.font('Helvetica').fontSize(9).fillColor(this.colors.text);
+      doc.text('Bei Lehner Haus sind Sie nicht an Katalog-Grundrisse gebunden. Ihr Traumhaus wird nach Ihren Wünschen geplant – schwäbisch gut seit über 60 Jahren.',
+        marginLeft + 15, y + 28, { width: contentWidth - 30, lineGap: 1 });
     }
   }
 

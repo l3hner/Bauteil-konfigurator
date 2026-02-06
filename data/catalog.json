@@ -1,24 +1,37 @@
 {
   "walls": [
     {
-      "id": "climativ-fermacell",
-      "name": "CLIMA-tiv Wand – fermacell®",
+      "id": "climativ-gf",
+      "name": "CLIMA-tiv (GF)",
       "kfwCompatible": ["KFW55", "KFW40"],
-      "description": "Hochwertige CLIMA-tiv Außenwand mit fermacell Gipsfaser-Innenbeplankung. Optimaler U-Wert von 0,149 W/(m²K) für energieeffizientes Bauen. Wandstärke: 282,5 mm inkl. 80mm Dämmfassade.",
+      "description": "CLIMA-tiv Außenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion aus KVH (Vollholz 80/160) mit diffusionsoffenem Außenputz. Wandstärke: 270 mm.",
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
-        "Doppelbeplankung für höchste Stabilität und 60 kg Auszugslast",
-        "Diffusionsoffener Wandaufbau - natürliche Feuchteregulation ohne Dampfsperren",
-        "F90 Brandschutz - 90 Minuten Feuerwiderstand als Standard"
+        "Gipsfaserplatte für höchste Stabilität und Tragfähigkeit",
+        "Diffusionsoffener Wandaufbau mit 3-lagigem Außenputz",
+        "Massivholz-Rahmenkonstruktion aus KVH (Vollholz)"
+      ],
+      "layers": [
+        { "name": "3-lagiger Außenputz", "value": "" },
+        { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion KVH", "value": "160,0 mm" },
+        { "name": "Wärmedämmung WLG 035", "value": "160,0 mm" },
+        { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
+        { "name": "Dampfbremse", "value": "" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
         "uValue": "0,149 W/(m²K)",
-        "wallThickness": "282,5 mm",
-        "insulation": "160 mm Mineralwolle + 80 mm Dämmfassade",
-        "position": "Pos. 11.160 / 11.165",
-        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+        "wallThickness": "270 mm",
+        "insulation": "160 mm WLG 035 + 80 mm Holzfaser WLG 042",
+        "position": "Pos. 11.165",
+        "fireRating": "F90",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
+      "options": [
+        { "position": "Pos. 11.169", "description": "160 mm Holzfaser - Jutedämmung WLS 039" }
+      ],
       "advantages": [
         "Fermacell Gipsfaser-Innenbeplankung für höchste Robustheit",
         "Hervorragende Befestigungsmöglichkeiten für schwere Lasten (Hängeschränke, TV-Halterungen)",
@@ -31,24 +44,37 @@
       "technicalDrawing": "assets/variants/walls/climativ-fermacell-technical.png"
     },
     {
-      "id": "climativ-esb",
-      "name": "CLIMA-tiv Wand – ESB",
+      "id": "climativ",
+      "name": "CLIMA-tiv",
       "kfwCompatible": ["KFW55", "KFW40"],
-      "description": "Wirtschaftliche CLIMA-tiv Variante mit wohngesunder ESB-Innenbeplankung. U-Wert: 0,149 W/(m²K). ESB-Platten aus frischem Fichtenholz – nachhaltig und emissionsarm.",
+      "description": "CLIMA-tiv Außenwand mit Holzwerkstoffplatte. Massivholz-Rahmenkonstruktion aus KVH (Vollholz 80/160) mit diffusionsoffenem Außenputz. Wandstärke: 270 mm.",
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
-        "ESB statt OSB - wohngesund zertifiziert aus regionalem Fichtenholz (max. 150km)",
-        "Diffusionsoffener Wandaufbau - höhere Diffusionsoffenheit als OSB reduziert Schimmelrisiko",
-        "F90 Brandschutz durch spezielle ESB-Qualität"
+        "Holzwerkstoffplatte für natürliches Raumklima",
+        "Diffusionsoffener Wandaufbau mit 3-lagigem Außenputz",
+        "Massivholz-Rahmenkonstruktion aus KVH (Vollholz)"
+      ],
+      "layers": [
+        { "name": "3-lagiger Außenputz", "value": "" },
+        { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion KVH", "value": "160,0 mm" },
+        { "name": "Wärmedämmung WLG 035", "value": "160,0 mm" },
+        { "name": "Holzwerkstoffplatte", "value": "12,5 mm" },
+        { "name": "Dampfbremse", "value": "" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
         "uValue": "0,149 W/(m²K)",
-        "wallThickness": "282,5 mm",
-        "insulation": "160 mm Mineralwolle + 80 mm Dämmfassade",
-        "position": "Pos. 11.160 / 11.165",
-        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+        "wallThickness": "270 mm",
+        "insulation": "160 mm WLG 035 + 80 mm Holzfaser WLG 042",
+        "position": "Pos. 11.160",
+        "fireRating": "F90",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
+      "options": [
+        { "position": "Pos. 11.169", "description": "160 mm Holzfaser - Jutedämmung WLS 039" }
+      ],
       "advantages": [
         "ESB-Platten aus frischem Fichtenholz (max. 150km Transportweg)",
         "Wohngesund zertifiziert – keine bedenklichen Emissionen",
@@ -61,25 +87,37 @@
       "technicalDrawing": "assets/variants/walls/climativ-esb-technical.png"
     },
     {
-      "id": "climativ-plus-fermacell",
-      "name": "CLIMA-tiv PLUS – fermacell®",
+      "id": "climativ-plus-gf",
+      "name": "CLIMA-tiv plus (GF)",
       "kfwCompatible": ["KFW40"],
-      "description": "Premium-Wandsystem für KfW 40 mit exzellentem U-Wert von 0,129 W/(m²K). Fermacell Innenbeplankung für höchste Wohnqualität. Wandstärke 322,5 mm.",
+      "description": "CLIMA-tiv plus Außenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion aus LSH (verleimtes Holz 80/240) mit diffusionsoffenem Außenputz. Wandstärke: 350 mm.",
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
-        "U-Wert 0,129 W/(m²K) - DEUTLICH besser als KfW 40 Anforderung (Sicherheitspuffer!)",
-        "Doppelbeplankung mit Fermacell - 60 kg Auszugslast pro Befestigung",
-        "Diffusionsoffene Konstruktion - natürliche Feuchteregulation",
-        "F90 Brandschutz - höchste Sicherheit durch mineralische Beplankung"
+        "Gipsfaserplatte für höchste Stabilität und Tragfähigkeit",
+        "Diffusionsoffener Wandaufbau mit 3-lagigem Außenputz",
+        "Massivholz-Rahmenkonstruktion aus LSH (verleimtes Holz)"
+      ],
+      "layers": [
+        { "name": "3-lagiger Außenputz", "value": "" },
+        { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion LSH", "value": "240,0 mm" },
+        { "name": "Wärmedämmung WLG 035", "value": "240,0 mm" },
+        { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
+        { "name": "Dampfbremse", "value": "" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
         "uValue": "0,129 W/(m²K)",
-        "wallThickness": "322,5 mm",
-        "insulation": "200 mm Mineralwolle + 80 mm Dämmfassade",
-        "position": "Pos. 11.240 / 11.245",
-        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+        "wallThickness": "350 mm",
+        "insulation": "240 mm WLG 035 + 80 mm Holzfaser WLG 042",
+        "position": "Pos. 11.245",
+        "fireRating": "F90",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
+      "options": [
+        { "position": "Pos. 11.249", "description": "240 mm Holzfaser - Jutedämmung WLS 039" }
+      ],
       "advantages": [
         "Exzellenter U-Wert von 0,129 W/(m²K) – deutlich besser als KfW-Anforderung",
         "Zukunftssicher für kommende verschärfte Anforderungen",
@@ -92,25 +130,37 @@
       "technicalDrawing": "assets/variants/walls/climativ-plus-fermacell-technical.png"
     },
     {
-      "id": "climativ-plus-esb",
-      "name": "CLIMA-tiv PLUS – ESB",
+      "id": "climativ-plus",
+      "name": "CLIMA-tiv plus",
       "kfwCompatible": ["KFW40"],
-      "description": "Hocheffiziente KfW 40 Wand mit wohngesunder ESB-Beplankung. U-Wert: 0,129 W/(m²K). Beste Energieeffizienz kombiniert mit nachhaltigen Materialien.",
+      "description": "CLIMA-tiv plus Außenwand mit Holzwerkstoffplatte. Massivholz-Rahmenkonstruktion aus LSH (verleimtes Holz 80/240) mit diffusionsoffenem Außenputz. Wandstärke: 350 mm.",
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
-        "U-Wert 0,129 W/(m²K) - übertrifft KfW 40 Standard deutlich",
-        "Wohngesunde ESB-Platten aus regionalem Fichtenholz (max. 150km)",
-        "Diffusionsoffene Konstruktion minimiert Feuchteprobleme",
-        "F90 Brandschutz mit nachhaltigen Materialien"
+        "Holzwerkstoffplatte für natürliches Raumklima",
+        "Diffusionsoffener Wandaufbau mit 3-lagigem Außenputz",
+        "Massivholz-Rahmenkonstruktion aus LSH (verleimtes Holz)"
+      ],
+      "layers": [
+        { "name": "3-lagiger Außenputz", "value": "" },
+        { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion LSH", "value": "240,0 mm" },
+        { "name": "Wärmedämmung WLG 035", "value": "240,0 mm" },
+        { "name": "Holzwerkstoffplatte", "value": "12,5 mm" },
+        { "name": "Dampfbremse", "value": "" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
         "uValue": "0,129 W/(m²K)",
-        "wallThickness": "322,5 mm",
-        "insulation": "200 mm Mineralwolle + 80 mm Dämmfassade",
-        "position": "Pos. 11.240 / 11.245",
-        "fireRating": "F90 - 90 Minuten Feuerwiderstand"
+        "wallThickness": "350 mm",
+        "insulation": "240 mm WLG 035 + 80 mm Holzfaser WLG 042",
+        "position": "Pos. 11.240",
+        "fireRating": "F90",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
+      "options": [
+        { "position": "Pos. 11.249", "description": "240 mm Holzfaser - Jutedämmung WLS 039" }
+      ],
       "advantages": [
         "KfW 40 Effizienz mit wohngesundem ESB-Material",
         "U-Wert 0,129 – übertrifft Anforderungen deutlich",
@@ -125,22 +175,35 @@
   ],
   "innerwalls": [
     {
-      "id": "innenwand-fermacell-gipskarton",
-      "name": "Innenwand fermacell® + Gipskarton",
-      "description": "Premium-Innenwand mit Doppelbeplankung: fermacell Gipsfaser außen, Gipskarton innen. Schallschutz BASIS+ mit Rw,R bis 55 dB - erreicht Wohnungsstandard.",
+      "id": "iw80-gf",
+      "name": "IW 80 (GF)",
+      "description": "Innenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion (Vollholz 80/80) mit beidseitiger Beplankung. Wandstärke: 130 mm.",
       "constructionType": "beidseitig beplankt",
       "bathroomSuitable": true,
       "premiumFeatures": [
-        "Beidseitige Beplankung für besseren Schallschutz - BASIS+ Standard (52-55 dB)",
-        "2,5 cm Gipskarton - ideal für schwere Badezimmer-Fliesen (statt 1,25 cm Standard)",
-        "Schallschutz bis zu Wohnungsstandard - 'keine oder kaum wahrnehmbare Geräusche'"
+        "Gipsfaserplatte für höchste Stabilität und Feuchtraumeignung",
+        "Beidseitige Beplankung für optimalen Schallschutz",
+        "Massivholz-Rahmenkonstruktion (Vollholz 80/80)"
+      ],
+      "layers": [
+        { "name": "Gipsbauplatte", "value": "12,5 mm" },
+        { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion", "value": "80,0 mm" },
+        { "name": "Wärme-/Schalldämmung WLG 040", "value": "40,0 mm" },
+        { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
-        "soundInsulation": "Rw,R 52-55 dB (BASIS+)",
-        "wallThickness": "IW 80/160 mm",
-        "position": "Pos. 30.200",
-        "plasterThickness": "2,5 cm Gipskarton für Feuchträume und schwere Fliesen"
+        "soundInsulation": "Schallschutz optimiert",
+        "wallThickness": "130 mm",
+        "position": "Pos. 15.030",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
+      "options": [
+        { "position": "Pos. 15.190", "description": "40 mm Holzfaserdämmung WLG 039" },
+        { "position": "Pos. 15.330", "description": "IW 80 (GF) Ausbau (ohne Gipsbauplatte)" },
+        { "position": "Pos. 15.390", "description": "Material nur liefern und mit Kran heben (Einbau bauseits)" }
+      ],
       "advantages": [
         "Schallschutz BASIS+ Standard: 'Keine oder nur kaum wahrnehmbaren Geräusche'",
         "Fermacell bietet 60 kg Auszugslast pro Befestigung",
@@ -153,21 +216,35 @@
       "technicalDrawing": "assets/variants/innenwalls/fermacell-gipskarton-technical.png"
     },
     {
-      "id": "innenwand-esb-gipskarton",
-      "name": "Innenwand ESB + Gipskarton",
-      "description": "Wirtschaftliche Innenwand mit ESB-Holzwerkstoffplatte und Gipskarton. Schallschutz BASIS Standard - ideal für Hauswirtschaftsräume und Flure.",
+      "id": "iw80",
+      "name": "IW 80",
+      "description": "Innenwand mit Holzwerkstoffplatte. Massivholz-Rahmenkonstruktion (Vollholz 80/80) mit beidseitiger Beplankung. Wandstärke: 130 mm.",
       "constructionType": "beidseitig beplankt",
       "bathroomSuitable": false,
       "premiumFeatures": [
-        "ESB statt OSB - wohngesund zertifiziert, keine VOC-Emissionen",
-        "Beidseitige Beplankung für soliden Schallschutz BASIS (47-49 dB)",
-        "25% geringere Quellung als OSB bei Feuchtigkeit"
+        "Holzwerkstoffplatte für natürliches Raumklima",
+        "Beidseitige Beplankung für optimalen Schallschutz",
+        "Massivholz-Rahmenkonstruktion (Vollholz 80/80)"
+      ],
+      "layers": [
+        { "name": "Gipsbauplatte", "value": "12,5 mm" },
+        { "name": "Holzwerkstoffplatte", "value": "12,5 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion", "value": "80,0 mm" },
+        { "name": "Wärme-/Schalldämmung WLG 040", "value": "40,0 mm" },
+        { "name": "Holzwerkstoffplatte", "value": "12,5 mm" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
-        "soundInsulation": "Rw,R 47-49 dB (BASIS)",
-        "wallThickness": "IW 80/160 mm",
-        "position": "Pos. 30.100"
+        "soundInsulation": "Schallschutz optimiert",
+        "wallThickness": "130 mm",
+        "position": "Pos. 15.020",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
+      "options": [
+        { "position": "Pos. 15.190", "description": "40 mm Holzfaserdämmung WLG 039" },
+        { "position": "Pos. 15.320", "description": "IW 80 Ausbau (ohne Gipsbauplatte)" },
+        { "position": "Pos. 15.390", "description": "Material nur liefern und mit Kran heben (Einbau bauseits)" }
+      ],
       "advantages": [
         "Wirtschaftliche Lösung mit solidem Schallschutz BASIS",
         "ESB-Platten für wohngesundes Raumklima",
@@ -190,6 +267,13 @@
         "RC2-Beschlagstechnik serienmäßig - Pilzkopfverriegelung für Einbruchschutz",
         "Ug-Wert 0,5 W/(m²K) - Passivhaus-tauglich",
         "Warme Kante mit Edelstahl - keine Wärmebrücken"
+      ],
+      "layers": [
+        { "name": "6-Kammer-Kunststoffprofil", "value": "80 mm Bautiefe" },
+        { "name": "3-fach Wärmeschutzverglasung", "value": "Ug 0,5" },
+        { "name": "Warme Kante (Edelstahl)", "value": "" },
+        { "name": "RC2-Beschlagstechnik", "value": "" },
+        { "name": "Pilzkopfverriegelung umlaufend", "value": "" }
       ],
       "technicalDetails": {
         "ugValue": "0,5 W/(m²K)",
@@ -218,6 +302,14 @@
         "Dreischicht-Leimholz innen - keine Furniere",
         "Wartungsfreie Aluminium-Außenschale - kein Streichen nötig"
       ],
+      "layers": [
+        { "name": "Aluminium-Außenschale", "value": "mind. 1,5 mm" },
+        { "name": "Dreischicht-Leimholz innen", "value": "" },
+        { "name": "3-fach Wärmeschutzverglasung", "value": "Ug 0,5" },
+        { "name": "Warme Kante (Edelstahl)", "value": "" },
+        { "name": "RC2-Beschlagstechnik", "value": "" },
+        { "name": "Pilzkopfverriegelung umlaufend", "value": "" }
+      ],
       "technicalDetails": {
         "ugValue": "0,5 W/(m²K)",
         "profile": "Dreischicht-Leimholz innen, pulverbeschichtetes Aluminium außen (mind. 1,5mm)",
@@ -243,6 +335,13 @@
       "description": "Hochwertige Tondachziegel mit Premium Surface Beschichtung und Durchfärbung. Lebensdauer 80-100 Jahre. Zeitlose Optik und nachhaltiges Naturmaterial. A² Brandschutz.",
       "premiumSurface": true,
       "brandProtection": "A²",
+      "layers": [
+        { "name": "Tondachziegel, in Standardfarben", "value": "" },
+        { "name": "Dachlattung", "value": "" },
+        { "name": "Konterlattung", "value": "" },
+        { "name": "Diffusionsoffene Schalungsbahn", "value": "" },
+        { "name": "Dachkonstruktion (zimmermannsm. abgeb.)", "value": "" }
+      ],
       "technicalDetails": {
         "material": "Gebrannter Ton, durchgefärbt",
         "lifespan": "80-100 Jahre",
@@ -267,6 +366,13 @@
       "description": "Wirtschaftliche Betondachsteine mit guter Haltbarkeit. Vielfältige Farbauswahl für individuelle Dachgestaltung. Lebensdauer 30-40 Jahre.",
       "premiumSurface": false,
       "brandProtection": "B",
+      "layers": [
+        { "name": "Betondachsteine, in Standardfarben", "value": "" },
+        { "name": "Dachlattung", "value": "" },
+        { "name": "Konterlattung", "value": "" },
+        { "name": "Diffusionsoffene Schalungsbahn", "value": "" },
+        { "name": "Dachkonstruktion (zimmermannsm. abgeb.)", "value": "" }
+      ],
       "technicalDetails": {
         "material": "Hochdruckbeton, oberflächenbeschichtet",
         "lifespan": "30-40 Jahre",
@@ -376,6 +482,13 @@
       "id": "vaillant",
       "name": "Vaillant aroTHERM plus Wärmepumpe",
       "description": "Premium-Luft-Wasser-Wärmepumpe vom deutschen Marktführer. SCOP bis 5,0 – höchste Effizienz auf dem Markt. Mit natürlichem Kältemittel R290 (Propan).",
+      "layers": [
+        { "name": "Luft-Wasser-Wärmepumpe Außeneinheit", "value": "" },
+        { "name": "Inneneinheit mit Regelung", "value": "" },
+        { "name": "Kältemittel R290 (Propan)", "value": "natürlich" },
+        { "name": "Energiemanagement sensoCOMFORT", "value": "" },
+        { "name": "Fußbodenheizung komplett", "value": "" }
+      ],
       "technicalDetails": {
         "scop": "bis 5,0",
         "refrigerant": "R290 (Propan) – natürlich, klimafreundlich",
@@ -396,6 +509,13 @@
       "id": "viessmann",
       "name": "Viessmann Vitocal 250-A Wärmepumpe",
       "description": "Deutsche Premium-Wärmepumpe mit intelligenter Regelung. SCOP bis 4,7 und höchste Zuverlässigkeit. Made in Germany.",
+      "layers": [
+        { "name": "Luft-Wasser-Wärmepumpe Außeneinheit", "value": "" },
+        { "name": "Inneneinheit mit Vitoconnect", "value": "" },
+        { "name": "Kältemittel R290 (Propan)", "value": "natürlich" },
+        { "name": "Intelligente Regelung", "value": "" },
+        { "name": "Fußbodenheizung komplett", "value": "" }
+      ],
       "technicalDetails": {
         "scop": "bis 4,7",
         "refrigerant": "R290 (Propan) – natürlich, klimafreundlich",
@@ -432,6 +552,12 @@
       "id": "dezentral",
       "name": "Dezentrale Lüftung mit WRG",
       "description": "Einzelraumlüftungsgeräte mit bis zu 91% Wärmerückgewinnung. Raumweise steuerbar und einfach nachrüstbar.",
+      "layers": [
+        { "name": "Dezentrale Lüftungsgeräte", "value": "je Raum" },
+        { "name": "Wärmerückgewinnung", "value": "bis 91%" },
+        { "name": "Filterklasse G3/G4", "value": "" },
+        { "name": "Raumweise Steuerung", "value": "" }
+      ],
       "technicalDetails": {
         "heatRecovery": "bis 91%",
         "noise": "ab 19 dB(A) – praktisch unhörbar",
@@ -452,6 +578,13 @@
       "id": "zentral",
       "name": "Zentrale Komfortlüftung mit WRG",
       "description": "Vollwertiges Lüftungssystem mit zentralem Gerät und Kanalnetz. Bis zu 95% Wärmerückgewinnung. Die Premium-Lösung für höchsten Wohnkomfort.",
+      "layers": [
+        { "name": "Zentrales Lüftungsgerät", "value": "im Technikraum" },
+        { "name": "Kanalnetz (Stahlrohre)", "value": "verzinkt" },
+        { "name": "Wärmerückgewinnung", "value": "bis 95%" },
+        { "name": "F7 Pollenfilter", "value": "Standard" },
+        { "name": "Automatische Feuchteregulierung", "value": "" }
+      ],
       "technicalDetails": {
         "heatRecovery": "bis 95%",
         "noise": "Geräte im Technikraum – Wohnräume geräuschfrei",
@@ -472,21 +605,36 @@
   ],
   "decken": [
     {
-      "id": "lehner-decke",
-      "name": "Lehner Decke – Holzbalkendecke",
-      "description": "Die bewährte Lehner Holzbalkendecke mit optimaler Statik und exzellentem Schallschutz. Massivholzbalken mit hochwertiger Dämmung für höchsten Wohnkomfort.",
+      "id": "holzbalkendecke",
+      "name": "Holzbalkendecke",
+      "description": "Holzbalkendecke mit Verkleidung aus Gipsbauplatten. Deckenbalken nach statischer Berechnung (Vollholz h = 240 mm) mit Wärmedämmung.",
       "constructionType": "Holzbalkendecke",
       "premiumFeatures": [
-        "Massive Holzbalken für optimale Tragfähigkeit",
-        "Integrierte Trittschalldämmung für ruhige Wohnräume",
-        "Diffusionsoffener Aufbau für gesundes Raumklima"
+        "Deckenbalken nach statischer Berechnung (Vollholz)",
+        "160 mm Wärmedämmung für optimalen Schallschutz",
+        "Verkleidung mit Gipsbauplatten"
+      ],
+      "layers": [
+        { "name": "Holzwerkstoffplatte", "value": "22,0 mm" },
+        { "name": "Deckenbalken (Vollholz h = 240 mm)", "value": "240,0 mm" },
+        { "name": "Wärmedämmung", "value": "160,0 mm" },
+        { "name": "Unterkonstruktion", "value": "21,0 mm" },
+        { "name": "Sperrbahn / Rieselschutz", "value": "" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
-        "construction": "Holzbalken mit Zwischendämmung",
+        "construction": "Holzbalken nach statischer Berechnung",
         "soundInsulation": "Trittschall optimiert",
-        "loadCapacity": "Hohe Tragfähigkeit für alle Wohnbereiche",
-        "height": "Standardhöhe für optimale Raumnutzung"
+        "loadCapacity": "Nach statischer Berechnung",
+        "position": "Pos. 20.120 / 20.140",
+        "cladding": "Pos. 23.125 / 23.140"
       },
+      "options": [
+        { "position": "Pos. 20.210", "description": "160 mm Holzfaser - Jutedämmung WLS 039" },
+        { "position": "Pos. 20.145", "description": "Decke Rohbau (nur Holzwerkstoffplatte und Deckenbalken lt. Statik)" },
+        { "position": "Pos. 20.150", "description": "Decke Rohbau DG (nur Holzwerkstoffplatte und Deckenbalken lt. Statik)" },
+        { "position": "Pos. 20.490", "description": "Material für bauseitige Dämmung und Bekleidung (Einbau bauseits)" }
+      ],
       "advantages": [
         "Bewährte Lehner Haus Konstruktion seit Jahrzehnten",
         "Optimales Preis-Leistungs-Verhältnis",
@@ -499,20 +647,26 @@
       "technicalDrawing": "assets/variants/decken/lehner-decke-technical.png"
     },
     {
-      "id": "vollholzdecke",
-      "name": "Vollholzdecke Premium",
-      "description": "Die massive Vollholzdecke für höchste Ansprüche. Sichtbare Holzoberfläche von unten für ein warmes, natürliches Wohnambiente. Premium-Qualität aus nachhaltiger Forstwirtschaft.",
+      "id": "massivholzdecke",
+      "name": "Massivholzdecke",
+      "description": "Massivholzdecke mit sichtbarer Holzoberfläche. Massivholzplatte (60 cm breit mit 6 mm Fugen) für natürliches Wohnambiente. Gesamtstärke: 155 mm.",
       "constructionType": "Massivholzdecke",
       "premiumFeatures": [
-        "Sichtbare Holzoberfläche – natürliche Schönheit in jedem Raum",
-        "Massive Konstruktion für maximale Langlebigkeit",
-        "Premium-Schallschutz durch Massivholz"
+        "Sichtbare Massivholzoberfläche von unten",
+        "Massivholzplatte 60 cm breit mit 6 mm Fugen",
+        "Natürliches Wohnambiente durch echtes Holz"
+      ],
+      "layers": [
+        { "name": "Holzwerkstoffplatte", "value": "15,0 mm" },
+        { "name": "Sperrbahn / Rieselschutz", "value": "" },
+        { "name": "Massivholzplatte", "value": "140,0 mm" }
       ],
       "technicalDetails": {
-        "construction": "Massivholzelemente, optional sichtbar",
+        "construction": "Massivholzplatte (60 cm breit mit 6 mm Fugen)",
         "soundInsulation": "Hervorragender Schallschutz durch Masse",
         "loadCapacity": "Höchste Tragfähigkeit",
-        "surface": "Sichtholz-Qualität möglich"
+        "deckenstärke": "155 mm",
+        "position": "Pos. 20.520"
       },
       "advantages": [
         "Sichtbare Holzdecke für gehobenes Wohnambiente",

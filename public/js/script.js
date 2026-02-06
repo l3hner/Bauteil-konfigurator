@@ -99,26 +99,26 @@ const toast = new ToastNotification();
 const wallOptions = {
     KFW55: [
         {
-            id: 'climativ-fermacell',
-            name: 'CLIMATIV fermacell',
-            description: 'Hohere Robustheit mit fermacell-Beplankung'
+            id: 'climativ-gf',
+            name: 'CLIMA-tiv (GF)',
+            description: 'Mit Gipsfaserplatte - 270 mm Wandstärke'
         },
         {
-            id: 'climativ-esb',
-            name: 'CLIMATIV ESB',
-            description: 'Wirtschaftliche Variante mit OSB-Beplankung'
+            id: 'climativ',
+            name: 'CLIMA-tiv',
+            description: 'Mit Holzwerkstoffplatte - 270 mm Wandstärke'
         }
     ],
     KFW40: [
         {
-            id: 'climativ-plus-fermacell',
-            name: 'CLIMATIV PLUS fermacell',
-            description: 'Premium-Dammung mit fermacell-Beplankung'
+            id: 'climativ-plus-gf',
+            name: 'CLIMA-tiv plus (GF)',
+            description: 'Mit Gipsfaserplatte - 350 mm Wandstärke'
         },
         {
-            id: 'climativ-plus-esb',
-            name: 'CLIMATIV PLUS ESB',
-            description: 'Hocheffiziente Dammung mit OSB-Beplankung'
+            id: 'climativ-plus',
+            name: 'CLIMA-tiv plus',
+            description: 'Mit Holzwerkstoffplatte - 350 mm Wandstärke'
         }
     ]
 };
