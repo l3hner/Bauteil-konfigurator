@@ -260,7 +260,7 @@
   "windows": [
     {
       "id": "kunststoff",
-      "name": "Kunststofffenster Premium",
+      "name": "Kunststofffenster",
       "description": "Hochwertige Kunststofffenster mit 3-fach Verglasung und 6-Kammer-Profil. Ug-Wert 0,5 W/(m²K) für beste Wärmedämmung. RC2-Beschlagstechnik serienmäßig.",
       "securityClass": "RC2",
       "premiumFeatures": [
@@ -329,9 +329,9 @@
   "tiles": [
     {
       "id": "ton",
-      "name": "Tondachziegel Premium Surface",
-      "description": "Hochwertige Tondachziegel mit Premium Surface Beschichtung und Durchfärbung. Lebensdauer 80-100 Jahre. Zeitlose Optik und nachhaltiges Naturmaterial. A² Brandschutz.",
-      "premiumSurface": true,
+      "name": "Tondachziegel",
+      "description": "Hochwertige Tondachziegel mit Durchfärbung. Lebensdauer 80-100 Jahre. Zeitlose Optik und nachhaltiges Naturmaterial. A² Brandschutz.",
+      "premiumSurface": false,
       "brandProtection": "A²",
       "layers": [
         { "name": "Tondachziegel, in Standardfarben", "value": "" },
@@ -344,7 +344,7 @@
         "material": "Gebrannter Ton, durchgefärbt",
         "lifespan": "80-100 Jahre",
         "weight": "ab 4t Gesamtdachgewicht bei typischem Einfamilienhaus",
-        "surface": "Premium Surface für lange Lebensdauer und dauerhaften Glanz"
+        "surface": "Durchfärbung für lange Lebensdauer und dauerhaften Glanz"
       },
       "advantages": [
         "Lebensdauer 80-100 Jahre – einmal decken, nie wieder",
@@ -353,7 +353,7 @@
         "Atmungsaktiv – reguliert Dachfeuchtigkeit",
         "Wertstabil – steigert den Immobilienwert"
       ],
-      "comparisonNotes": "❗ Tondachziegel sind die Investition FÜRS LEBEN! Langfrist-Rechnung:\n\n1. 'Wie lange hält das Dach?' (Beton: 30-40 Jahre = 2-3x neu decken; Ton: 80-100 Jahre = einmal!)\n\n2. 'Premium Surface oder Standard?' (Premium Surface hält länger und glänzt dauerhaft; Standard kann nach 20-30 Jahren matt werden)\n\n3. 'Durchgefärbt oder nur beschichtet?' (Durchgefärbt = Farbe IN der Masse, verblasst nie; beschichtet = Farbe AUF der Oberfläche, kann verblassen)\n\n4. 'A² Brandschutz gewährleistet?' (Ton = A² nicht brennbar; manche Materialien nur B oder C)\n\n5. 'Wie schwer ist das Dach?' (Ab 4t Gesamtgewicht - zeigt Qualität und Sturmfestigkeit)\n\n6. 'Preisvergleich mit Neubeschichtung?' (Beton nach 30 Jahren neu beschichten = Zusatzkosten; Ton = keine)",
+      "comparisonNotes": "❗ Tondachziegel sind die Investition FÜRS LEBEN! Langfrist-Rechnung:\n\n1. 'Wie lange hält das Dach?' (Beton: 30-40 Jahre = 2-3x neu decken; Ton: 80-100 Jahre = einmal!)\n\n2. 'Durchgefärbt oder nur beschichtet?' (Durchgefärbt = Farbe IN der Masse, verblasst nie; beschichtet = Farbe AUF der Oberfläche, kann verblassen)\n\n3. 'A² Brandschutz gewährleistet?' (Ton = A² nicht brennbar; manche Materialien nur B oder C)\n\n4. 'Wie schwer ist das Dach?' (Ab 4t Gesamtgewicht - zeigt Qualität und Sturmfestigkeit)\n\n5. 'Preisvergleich mit Neubeschichtung?' (Beton nach 30 Jahren neu beschichten = Zusatzkosten; Ton = keine)",
       "filePath": "assets/variants/tiles/ton.png",
       "technicalDrawing": "assets/variants/tiles/ton-technical.png"
     },
