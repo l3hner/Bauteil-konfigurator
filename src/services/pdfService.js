@@ -553,11 +553,8 @@ class PdfService {
 
     let y1 = y + 30;
     const planungItems = [
-      'Bestandsvermessung',
-      'Elektroplanung',
-      'Lüftungsplanung',
+      'Feste kompetente Ansprechpartner',
       'Vor-Ort Bemusterung',
-      'Übergabe- & Werkplanung',
       'Statische Berechnungen',
       'Bauleitung',
       'Energieberater (EnEV)',
@@ -582,16 +579,13 @@ class PdfService {
     const rohbauItems = [
       'Gerüst & Kran',
       'Transport',
-      'Baustromanschluss',
-      'Bodenplatte inkl. Dämmung',
-      'Mehrspartenhauseinführung',
       'Geschlossene Gebäudehülle',
       'Außenputz',
       'Zwischendecke',
       'Innenwände geschlossen',
       'Dach mit Eindeckung',
       'Dachüberstände gestrichen',
-      fensterText,
+      'Kunststofffenster',
       'Haustür (3-fach-Verrieg.)',
       'Alu-Außenfensterbänke',
       'Dachrinnen & Fallrohre'
@@ -611,11 +605,9 @@ class PdfService {
 
     let y3 = y + 30;
     const ausbauItems = [
-      heizungText,
       'Estrich mit Fußbodenheizung',
       'Raumthermostate',
       'Elektr. Alu-Rollläden',
-      'Stromantrag & Abnahme',
       'Zählerschrank',
       'Blower-Door-Test',
       'Komplette Elektroinstallation'
@@ -629,7 +621,7 @@ class PdfService {
     // Innenausbau
     ausbauItems.push(
       'Fliesen (Bäder/WC)',
-      'Sanitärobjekte & Armaturen',
+      'Marken Sanitärobjekte',
       'Vinyl/Laminat (Wohnräume)',
       'Spachteln & Schleifen',
       'Malern (weiß)',
