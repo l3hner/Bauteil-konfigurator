@@ -51,7 +51,7 @@
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
-        "ESB-Innenbeplankung – wohngesund, emissionsarm, aus regionalem Fichtenholz",
+        "ESB plus Innenbeplankung – Blauer Engel zertifiziert, emissionsarm",
         "F90 Brandschutz – 90 Min. Feuerwiderstand als Standard",
         "Holzfaserdämmplatten auf der Außenseite für optimalen Hitzeschutz",
         "Diffusionsoffener Wandaufbau – feuchteregulierend, schimmelfrei"
@@ -61,7 +61,7 @@
         { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
         { "name": "Massivholz-Rahmenkonstruktion KVH", "value": "160,0 mm" },
         { "name": "Wärmedämmung WLG 035", "value": "160,0 mm" },
-        { "name": "Holzwerkstoffplatte", "value": "12,5 mm" },
+        { "name": "ESB plus Holzwerkstoffplatte", "value": "12,5 mm" },
         { "name": "Dampfbremse", "value": "" },
         { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
@@ -76,13 +76,13 @@
         { "position": "Pos. 11.169", "description": "160 mm Holzfaser - Jutedämmung WLS 039" }
       ],
       "advantages": [
-        "ESB-Platten aus frischem Fichtenholz (max. 150km Transportweg)",
-        "Wohngesund zertifiziert – keine bedenklichen Emissionen",
-        "Hohe Diffusionsoffenheit für natürliche Feuchteregulierung",
-        "Bewährtes CLIMA-tiv System zu attraktivem Preis",
+        "ESB plus Platten aus frischem Fichtenholz (max. 150km Transportweg)",
+        "Wohngesund zertifiziert (Blauer Engel) – keine bedenklichen Emissionen",
+        "Diffusionsoffen für natürliche Feuchteregulierung",
+        "Empfohlen von der DGNB (Deutsche Gesellschaft für Nachhaltiges Bauen)",
         "Ausgezeichnete Wärmedämmung mit U-Wert 0,149"
       ],
-      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welche Holzwerkstoffplatte wird verwendet? (Lehner Haus: ESB – wohngesund zertifiziert, aus regionalem Fichtenholz)\n\n2. Ist die Holzwerkstoffplatte emissionsgeprüft? (Lehner Haus: ESB mit niedrigen VOC-Emissionen und 25 % geringerer Quellung)\n\n3. Wie ist der exakte U-Wert der Außenwand? (Lehner Haus: 0,149 W/(m²K))\n\n4. Ist der Wandaufbau diffusionsoffen? (Lehner Haus: ja – natürliche Feuchteregulierung ohne Dampfsperre)\n\n5. Woher stammt das Holz? (Lehner Haus: max. 150 km Transportweg – nachhaltig und regional)",
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welche Holzwerkstoffplatte wird verwendet? (Lehner Haus: ESB plus – Blauer Engel zertifiziert, empfohlen von der DGNB)\n\n2. Ist die Holzwerkstoffplatte emissionsgeprüft? (Lehner Haus: ESB mit niedrigen VOC-Emissionen und 25 % geringerer Quellung)\n\n3. Wie ist der exakte U-Wert der Außenwand? (Lehner Haus: 0,149 W/(m²K))\n\n4. Ist der Wandaufbau diffusionsoffen? (Lehner Haus: ja – natürliche Feuchteregulierung ohne Dampfsperre)\n\n5. Woher stammt das Holz? (Lehner Haus: max. 150 km Transportweg – nachhaltig und regional)\n\n6. Wieviel Wohnraum verschenken Sie bei dickeren Bauteilen? Schlechtere Werte im Wärmedurchlass und Schallschutz führen automatisch zu stärker dimensionierten Bauteilen. Das kostet Sie wertvollen Wohnraum.",
       "filePath": "assets/variants/walls/climativ-esb.png",
       "technicalDrawing": "assets/variants/walls/climativ-esb-technical.png"
     },
@@ -137,7 +137,7 @@
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
-        "ESB-Innenbeplankung – wohngesund, emissionsarm, aus regionalem Fichtenholz",
+        "ESB plus Innenbeplankung – Blauer Engel zertifiziert, emissionsarm",
         "F90 Brandschutz – 90 Min. Feuerwiderstand als Standard",
         "Holzfaserdämmplatten auf der Außenseite für optimalen Hitzeschutz",
         "Diffusionsoffener Wandaufbau – feuchteregulierend, schimmelfrei"
@@ -147,7 +147,7 @@
         { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
         { "name": "Massivholz-Rahmenkonstruktion LSH", "value": "240,0 mm" },
         { "name": "Wärmedämmung WLG 035", "value": "240,0 mm" },
-        { "name": "Holzwerkstoffplatte", "value": "12,5 mm" },
+        { "name": "ESB plus Holzwerkstoffplatte", "value": "12,5 mm" },
         { "name": "Dampfbremse", "value": "" },
         { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
@@ -162,11 +162,11 @@
         { "position": "Pos. 11.249", "description": "240 mm Holzfaser - Jutedämmung WLS 039" }
       ],
       "advantages": [
-        "KfW 40 Effizienz mit wohngesundem ESB-Material",
+        "KfW 40 Effizienz mit wohngesundem ESB plus Material (Blauer Engel)",
         "U-Wert 0,129 – übertrifft Anforderungen deutlich",
-        "Nachhaltige ESB-Platten aus regionalem Fichtenholz",
-        "Optimales Preis-Leistungs-Verhältnis im KfW 40 Segment",
-        "Diffusionsoffene Konstruktion minimiert Feuchteprobleme"
+        "Nachhaltige ESB plus Platten aus regionalem Fichtenholz",
+        "Empfohlen von der DGNB (Deutsche Gesellschaft für Nachhaltiges Bauen)",
+        "Diffusionsoffen für natürliche Feuchteregulierung"
       ],
       "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Wie dick ist die Dämmung? (Lehner Haus: 240 mm Mineralwolle plus 80 mm Holzfaserdämmplatte = 320 mm gesamt)\n\n2. Welcher Dämmstoff wird eingesetzt? (Lehner Haus: Mineralwolle, brandsicher Klasse A1)\n\n3. Welche Holzwerkstoffplatte wird verwendet? (Lehner Haus: ESB – wohngesund zertifiziert, aus regionalem Fichtenholz)\n\n4. Wird der U-Wert schriftlich garantiert? (Lehner Haus: 0,129 W/(m²K) – nachweislich geprüft)\n\n5. Ist die Konstruktion diffusionsoffen? (Lehner Haus: ja – natürliche Feuchteregulierung ohne Dampfsperre)",
       "filePath": "assets/variants/walls/climativ-plus-esb.png",
@@ -319,7 +319,9 @@
         "Wartungsfreie Aluminiumaußenseite – kein Streichen nötig",
         "Lebensdauer 40+ Jahre bei richtiger Pflege",
         "Beste Wärmedämmung gleich Kunststoff",
-        "Deutliche Wertsteigerung der Immobilie"
+        "Deutliche Wertsteigerung der Immobilie",
+        "Höhere Maßhaltigkeit bei Schiebetüren – kein Klemmen durch thermische Ausdehnung",
+        "Optimale Dichtigkeit auch ab Fensterbreiten von 2 Metern"
       ],
       "comparisonNotes": "❗ Holz-Alu ist die PREMIUM-Wahl! Aber Vorsicht vor Billig-Angeboten:\n\n1. 'Ist es Dreischicht-Leimholz oder nur Furnier?' (Furnier = günstig aber kann sich ablösen; Massivholz = langlebig)\n\n2. 'Wie dick ist die Aluminium-Außenschale?' (Minimum 1,5mm; dünnere Schalen verziehen sich)\n\n3. 'Deutsche Markenqualität oder Import?' (Fernost-Fenster haben oft nach 5-10 Jahren Verzug und Undichtigkeit)\n\n4. 'Wie viele Jahre Garantie?' (Bei uns 10 Jahre auf deutsche Markenqualität)\n\n5. 'Welcher Ug-Wert?' (Manche Holz-Alu haben nur 0,7-0,9; wir bieten 0,5 W/(m²K))\n\n6. 'RC2-Sicherheit serienmäßig?' (Bei uns ja; andere nehmen Aufpreis)",
       "filePath": "assets/variants/windows/holz-alu.png",
@@ -378,9 +380,8 @@
       "advantages": [
         "Attraktives Preis-Leistungs-Verhältnis",
         "Große Farbauswahl möglich",
-        "Gute Haltbarkeit von 30-40 Jahren",
-        "Bewährtes Material millionenfach verbaut",
-        "Schnelle Verlegung durch größere Formate möglich"
+        "Langlebig und 30-40 Jahre haltbar",
+        "Bewährtes Material millionenfach verbaut"
       ],
       "comparisonNotes": "❗ Die wirtschaftliche Wahl für begrenztes Budget. BEACHTEN SIE:\n\n1. 'Wie lange hält die Farbe?' (Oberflächenbeschichtung kann nach 15-20 Jahren verblassen - durchgefärbter Beton existiert NICHT)\n\n2. 'Was kostet Neubeschichtung?' (Nach 20-30 Jahren oft nötig - rechnen Sie das in Ihre Kalkulation ein)\n\n3. 'Lebensdauer gesamt?' (30-40 Jahre, dann Austausch - Ton hält 80-100 Jahre)\n\n4. 'Brandschutzklasse?' (Beton = B schwer entflammbar; Ton = A² nicht brennbar)\n\n5. 'Langfrist-Kosten beachten!' (Beton günstiger jetzt, aber 2-3x Erneuerung in 100 Jahren; Ton teurer jetzt, aber nur 1x)\n\nFür maximale Langlebigkeit und Werterhalt empfehlen wir Tondachziegel.",
       "filePath": "assets/variants/tiles/beton.png",
@@ -497,7 +498,7 @@
         "Integriertes Energiemanagement mit sensoCOMFORT",
         "Service-Netzwerk mit über 3.000 Partnerbetrieben"
       ],
-      "comparisonNotes": "❗ Bei Wärmepumpen entscheidet die EFFIZIENZ über Ihre Stromkosten für die nächsten 20 Jahre!\n\n1. 'Welchen SCOP hat die Wärmepumpe?' (SCOP = Seasonal Coefficient of Performance; 5,0 = aus 1 kWh Strom werden 5 kWh Wärme; Billige: nur 3,5 = 40% MEHR Stromkosten!)\n\n2. 'Welches Kältemittel wird verwendet?' (R290 = natürlich, zukunftssicher; R410A/R32 = werden langfristig verboten und teurer)\n\n3. 'Wie laut ist die Wärmepumpe?' (35 dB(A) = flüsterleise; billige >45 dB = deutlich hörbar, Streit mit Nachbarn)\n\n4. 'Wer plant und installiert die Anlage?' (Zertifizierte Fachbetriebe = richtige Auslegung; viele Probleme durch falsche Installation!)\n\n5. 'Wie viele Servicepartner gibt es?' (Vaillant: über 3.000 in Deutschland; bei Exoten: lange Wartezeiten)",
+      "comparisonNotes": "Bei Wärmepumpen entscheidet die EFFIZIENZ über Ihre Stromkosten für die nächsten 20 Jahre!\n\n1. 'Welchen SCOP hat die Wärmepumpe?' (SCOP = Seasonal Coefficient of Performance; 5,0 = aus 1 kWh Strom werden 5 kWh Wärme; Billige: nur 3,5 = 40% MEHR Stromkosten!)\n\n2. 'Welches Kältemittel wird verwendet?' (R290 = natürlich, zukunftssicher; R410A/R32 = werden langfristig verboten und teurer)\n\n3. 'Wie laut ist die Wärmepumpe?' (35 dB(A) = flüsterleise; billige >45 dB = deutlich hörbar)\n\n4. 'Wer plant und installiert die Anlage?' (Zertifizierte Fachbetriebe = richtige Auslegung)\n\n5. Kühlfunktion anderer Hersteller: Viele Wettbewerber werben mit aktiver Kühlung. Die Nachteile: höherer Stromverbrauch, Kondensationsgefahr an kalten Flächen, zusätzlicher Wartungsaufwand. Bei Lehner Haus haben wir an weniger als 20 Tagen im Jahr Übertemperatur – und das nur stundenweise. Unsere Holzfaser-Dämmung bietet eine ausgezeichnete Phasenverschiebung und damit optimalen sommerlichen Wärmeschutz.",
       "filePath": "assets/variants/heizung/vaillant.png",
       "technicalDrawing": "assets/variants/heizung/vaillant-technical.png"
     },
@@ -524,7 +525,7 @@
         "Extrem zuverlässig mit 5 Jahren Garantie",
         "Optimal für Hybrid-Kombinationen geeignet"
       ],
-      "comparisonNotes": "❗ Viessmann ist der INBEGRIFF deutscher Qualität. KRITISCHE FRAGEN:\n\n1. 'Welchen SCOP bietet die Wärmepumpe?' (Vitocal 250-A: bis 4,7 - Spitzenklasse!)\n\n2. 'Wer plant die Anlage?' (Installation ist SO wichtig wie das Gerät! Bei Lehner Haus: zertifizierte Fachbetriebe mit Viessmann-Schulung)\n\n3. 'Welche Zertifizierung haben die Installateure?' (Viele Probleme durch falsche Auslegung und Installation - fragen Sie konkret nach!)\n\n4. 'Made in Germany oder Import?' (Viessmann = Deutschland; viele andere importieren aus Fernost)\n\n5. 'Wie viele Jahre Garantie?' (Viessmann: 5 Jahre; billige oft nur 2 Jahre)\n\n6. 'Service-Verfügbarkeit?' (Viessmann-Partner deutschlandweit; bei Exoten oft lange Wartezeiten bei Störung)",
+      "comparisonNotes": "Viessmann ist der INBEGRIFF deutscher Qualität.\n\n1. 'Welchen SCOP bietet die Wärmepumpe?' (Vitocal 250-A: bis 4,7 - Spitzenklasse!)\n\n2. 'Wer plant die Anlage?' (Installation ist SO wichtig wie das Gerät! Bei Lehner Haus: zertifizierte Fachbetriebe mit Viessmann-Schulung)\n\n3. 'Made in Germany oder Import?' (Viessmann = Deutschland; viele andere importieren aus Fernost)\n\n4. 'Wie viele Jahre Garantie?' (Viessmann: 5 Jahre; billige oft nur 2 Jahre)\n\n5. Kühlfunktion anderer Hersteller: Viele Wettbewerber werben mit aktiver Kühlung. Die Nachteile: höherer Stromverbrauch, Kondensationsgefahr an kalten Flächen, zusätzlicher Wartungsaufwand und eingeschränkte Effizienz. Bei Lehner Haus haben wir an weniger als 20 Tagen im Jahr Übertemperatur – und das nur stundenweise. Unsere Holzfaser-Dämmung bietet eine ausgezeichnete Phasenverschiebung und damit optimalen sommerlichen Wärmeschutz. Wir empfehlen, sich nicht auf die Nachteile aktiver Kühlung einzulassen.",
       "filePath": "assets/variants/heizung/viessmann.png",
       "technicalDrawing": "assets/variants/heizung/viessmann-technical.png"
     }
@@ -612,7 +613,7 @@
       "layers": [
         { "name": "Holzwerkstoffplatte", "value": "22,0 mm" },
         { "name": "Deckenbalken (Vollholz h = 240 mm)", "value": "240,0 mm" },
-        { "name": "Mineralwolledämmung", "value": "160,0 mm" },
+        { "name": "Knauf Insulation Glaswolle (ECOSE, formaldehydfrei)", "value": "160,0 mm" },
         { "name": "Unterkonstruktion", "value": "21,0 mm" },
         { "name": "Sperrbahn / Rieselschutz", "value": "" },
         { "name": "Gipsbauplatte", "value": "12,5 mm" }

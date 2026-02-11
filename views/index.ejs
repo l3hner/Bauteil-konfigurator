@@ -434,6 +434,32 @@
                     <button type="button" onclick="addEigenleistung()" class="btn-add">+ Eigenleistung hinzufugen</button>
                 </section>
 
+                <section class="form-section" id="section-15">
+                    <h3 class="section-title">15. Fachberater (optional)</h3>
+                    <p class="section-description">Personalisieren Sie die Leistungsbeschreibung mit Ihren Kontaktdaten als Fachberater.</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="berater_name">Name des Beraters</label>
+                            <input type="text" id="berater_name" name="berater_name" placeholder="z.B. Max Mustermann">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="berater_telefon">Telefon</label>
+                            <input type="tel" id="berater_telefon" name="berater_telefon" placeholder="z.B. 07321 96700">
+                        </div>
+                        <div class="form-group half">
+                            <label for="berater_email">E-Mail</label>
+                            <input type="email" id="berater_email" name="berater_email" placeholder="z.B. berater@lehner-haus.de">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="berater_freitext">Persönliche Nachricht an den Interessenten</label>
+                        <textarea id="berater_freitext" name="berater_freitext" rows="5" placeholder="Hier können Sie eine persönliche Nachricht verfassen, die auf einer eigenen Seite in der PDF erscheint..."></textarea>
+                    </div>
+                </section>
+
                 <!-- Submit Button -->
                 <div class="submit-section">
                     <button type="submit" class="btn-submit">Leistungsbeschreibung erstellen</button>

@@ -180,8 +180,25 @@ class PdfService {
     doc.addPage();
     pageNum++;
     this.drawHeader(doc, 'Ihre Checkliste für den Anbietervergleich');
-    this.drawComparisonChecklist(doc);
+    this.drawComparisonChecklist(doc, submission);
     this.drawFooter(doc, pageNum);
+
+    // Glossar-Seite
+    doc.addPage();
+    pageNum++;
+    this.drawHeader(doc, 'Glossar – Fachbegriffe erklärt');
+    this.drawGlossaryPage(doc);
+    this.drawFooter(doc, pageNum);
+
+    // Fachberater-Seite (wenn ausgefüllt)
+    const hasBerater = submission.berater_name || submission.berater_freitext;
+    if (hasBerater) {
+      doc.addPage();
+      pageNum++;
+      this.drawHeader(doc, 'Ihr persönlicher Fachberater');
+      this.drawBeraterPage(doc, submission);
+      this.drawFooter(doc, pageNum);
+    }
 
     // Abschluss-Seite mit Bedarfsanalyse
     doc.addPage();
@@ -247,8 +264,7 @@ class PdfService {
     doc.font('Helvetica').fontSize(11).fillColor('#cccccc');
     doc.text(`Erstellt am ${dateStr}`, 0, splitY + 230, { width: 595, align: 'center' });
 
-    doc.fontSize(9).fillColor('#999999');
-    doc.text(`Referenz: ${submission.id}`, 0, splitY + 250, { width: 595, align: 'center' });
+    // Referenz-ID entfernt (nicht kundenrelevant)
 
     // Footer Titelseite
     doc.rect(0, 770, 595, 2).fill(this.colors.gold);
@@ -494,16 +510,7 @@ class PdfService {
       y += rowHeight;
     });
 
-    // CTA Box
-    y += this.layout.sectionGap + 10;
-    doc.roundedRect(marginLeft, y, contentWidth, 80, 8).fill(this.colors.primary);
-
-    doc.font(this.typography.h3.font).fontSize(this.typography.h3.size).fillColor(this.colors.gold);
-    doc.text('Nächster Schritt: Persönliche Beratung', marginLeft + 20, y + 15, { width: contentWidth - 40 });
-
-    doc.font(this.typography.body.font).fontSize(this.typography.body.size).fillColor(this.colors.white);
-    doc.text('Vereinbaren Sie jetzt Ihren Termin im Musterhaus oder nutzen Sie unsere kostenlose Bedarfsanalyse.',
-      marginLeft + 20, y + 40, { width: contentWidth - 40, lineGap: 2 });
+    // CTA-Box entfernt (Dokument wird als Zwischenschritt nach Bedarfsanalyse genutzt)
   }
 
   // NEU: Kompakte Leistungsübersicht auf einer Seite
@@ -570,10 +577,10 @@ class PdfService {
       'Innenwände geschlossen',
       'Dach mit Eindeckung',
       'Dachüberstände gestrichen',
-      'Kunststofffenster',
+      '3-fach verglaste Fenster nach Wahl',
       'Haustür (3-fach-Verrieg.)',
       'Alu-Außenfensterbänke',
-      'Dachrinnen & Fallrohre'
+      'Dachrinnen & Fallrohre (Titanzink)'
     ];
 
     doc.font('Helvetica').fontSize(7.5);
@@ -628,7 +635,7 @@ class PdfService {
     doc.rect(marginLeft, maxY, 4, 85).fill(this.colors.gold);
 
     doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.primary);
-    doc.text('Ihre gewählten Ausstattungsmerkmale:', marginLeft + 15, maxY + 10);
+    doc.text('Ihre zusätzlich gewählten Ausstattungsmerkmale:', marginLeft + 15, maxY + 10);
 
     const wall = catalogService.getVariantById('walls', submission.wall);
     const innerwall = catalogService.getVariantById('innerwalls', submission.innerwall);
@@ -787,7 +794,7 @@ class PdfService {
     y += 15;
     doc.roundedRect(60, y, 475, 55, 8).fill(this.colors.primary);
     doc.font('Helvetica-Bold').fontSize(11).fillColor(this.colors.white);
-    doc.text('Mehr als 3.000 zufriedene Baufamilien vertrauen auf Lehner Haus.', 80, y + 12, { lineBreak: false });
+    doc.text('Seit 3 Generationen vertrauen uns über 5.000 Baufamilien.', 80, y + 12, { lineBreak: false });
     doc.font('Helvetica').fontSize(9).fillColor(this.colors.white);
     doc.text('QDF-zertifiziert | RAL-Gütezeichen | Mitglied im BDF', 80, y + 32, { lineBreak: false });
   }
@@ -861,6 +868,28 @@ class PdfService {
       }
       rightY += 15;
     });
+
+    // Gesamtstärke als Summe berechnen und anzeigen
+    const totalThickness = aufbauItems.reduce((sum, item) => {
+      const match = (item.value || '').match(/([\d,]+)\s*mm/);
+      if (match) {
+        return sum + parseFloat(match[1].replace(',', '.'));
+      }
+      return sum;
+    }, 0);
+
+    if (totalThickness > 0) {
+      rightY += 4;
+      doc.moveTo(rightColX, rightY).lineTo(rightColX + rightColWidth, rightY)
+         .strokeColor(this.colors.gold).lineWidth(0.8).stroke();
+      rightY += 6;
+      doc.font('Helvetica-Bold').fontSize(8).fillColor(this.colors.primary);
+      doc.text('Gesamtstärke', rightColX + 8, rightY, { width: rightColWidth - 70, lineBreak: false });
+      doc.text(`${totalThickness.toFixed(1).replace('.', ',')} mm`, rightColX + rightColWidth - 65, rightY, {
+        width: 60, align: 'right', lineBreak: false
+      });
+      rightY += 15;
+    }
 
     // === QUALITÄTSMERKMALE TABELLE ===
     rightY += 12;
@@ -1096,6 +1125,10 @@ class PdfService {
       }
     }
 
+    // "Beispielbilder" Label unter den Bildern
+    doc.font('Helvetica').fontSize(7).fillColor(this.colors.textMuted);
+    doc.text('Beispielbilder', 0, 95 + imgHeight + 5, { width: 595, align: 'center' });
+
     let y = 95 + imgHeight + 20;
 
     // Haustyp-Name
@@ -1292,20 +1325,32 @@ class PdfService {
       doc.fillColor(this.colors.text).text(item, 100, y + 48 + (i * 12), { lineBreak: false });
     });
 
-    // Kontakt-Box
+    // Kontakt-Box (Berater oder Standard)
     y += 125;
     doc.roundedRect(60, y, 475, 90, 8).fill(this.colors.primary);
-
-    doc.font('Helvetica-Bold').fontSize(13).fillColor(this.colors.white);
-    doc.text('Ihr Ansprechpartner', 80, y + 12, { lineBreak: false });
-
-    doc.font('Helvetica').fontSize(10).fillColor(this.colors.white);
-    doc.text('Lehner Haus GmbH', 80, y + 35, { lineBreak: false });
-    doc.text('Telefon: 07321 96700', 80, y + 50, { lineBreak: false });
-    doc.text('E-Mail: info@lehner-haus.de', 80, y + 65, { lineBreak: false });
-
-    // Gold accent on contact box
     doc.rect(530, y + 10, 4, 70).fill(this.colors.gold);
+
+    if (submission.berater_name) {
+      doc.font('Helvetica-Bold').fontSize(13).fillColor(this.colors.white);
+      doc.text('Ihr Ansprechpartner', 80, y + 12, { lineBreak: false });
+
+      doc.font('Helvetica').fontSize(10).fillColor(this.colors.white);
+      doc.text(submission.berater_name, 80, y + 35, { lineBreak: false });
+      if (submission.berater_telefon) {
+        doc.text(`Telefon: ${submission.berater_telefon}`, 80, y + 50, { lineBreak: false });
+      }
+      if (submission.berater_email) {
+        doc.text(`E-Mail: ${submission.berater_email}`, 80, y + 65, { lineBreak: false });
+      }
+    } else {
+      doc.font('Helvetica-Bold').fontSize(13).fillColor(this.colors.white);
+      doc.text('Ihr Ansprechpartner', 80, y + 12, { lineBreak: false });
+
+      doc.font('Helvetica').fontSize(10).fillColor(this.colors.white);
+      doc.text('Lehner Haus GmbH', 80, y + 35, { lineBreak: false });
+      doc.text('Telefon: 07321 96700', 80, y + 50, { lineBreak: false });
+      doc.text('E-Mail: info@lehner-haus.de', 80, y + 65, { lineBreak: false });
+    }
 
     // QR-Codes (3 nebeneinander)
     y += 110;
@@ -1324,26 +1369,38 @@ class PdfService {
     await this.drawQRCode(doc, 340, y, 'tel:+497321096700', 'Anrufen');
   }
 
-  drawComparisonChecklist(doc) {
+  drawComparisonChecklist(doc, submission) {
     let y = 95;
 
     doc.font('Helvetica').fontSize(10).fillColor(this.colors.text);
-    doc.text('Nutzen Sie diese Checkliste, um Fertighausanbieter objektiv zu vergleichen:', 80, y, { lineBreak: false });
+    doc.text('Nutzen Sie diese Checkliste, um unterschiedliche Hersteller objektiv zu vergleichen:', 80, y, { lineBreak: false });
 
     y += 25;
 
+    // Dynamisches Fenster-Profil je nach Auswahl
+    const isHolzAlu = submission && submission.window === 'holz-alu';
+    const fensterProfilText = isHolzAlu
+      ? 'Dreischicht-Leimholz mit Aluminium-Außenschale? Lehner Haus: Standard.'
+      : '6-Kammer-Profil mit 80 mm Bautiefe? Lehner Haus: Standard.';
+
+    // Dynamischer U-Wert Text mit Wandtyp-Bezeichnung
+    const wall = submission ? catalogService.getVariantById('walls', submission.wall) : null;
+    const uWertText = wall && wall.name
+      ? `Exakter U-Wert? Lehner Haus: ${wall.technicalDetails?.uValue || '0,149 W/(m²K)'} (${wall.name}). Je niedriger, desto besser.`
+      : 'Exakter U-Wert? Lehner Haus: 0,129 (Climativ-PLUS) bzw. 0,149 W/(m²K) (Climativ). Je niedriger, desto besser.';
+
     const checklistItems = [
       ['Doppelte Beplankung', 'Werden die Wände beidseitig doppelt beplankt? Lehner Haus: ja – für Stabilität und Schallschutz.'],
-      ['Holzwerkstoffe', 'Wird ESB verwendet? ESB ist wohngesund zertifiziert, emissionsarm und aus regionalem Fichtenholz.'],
-      ['U-Wert Außenwand', 'Exakter U-Wert? Lehner Haus: 0,129 bzw. 0,149 W/(m²K). Je niedriger, desto besser.'],
+      ['Holzwerkstoffe', 'Wird ESB verwendet? ESB plus ist Blauer Engel zertifiziert, emissionsarm und empfohlen von der DGNB.'],
+      ['U-Wert Außenwand', uWertText],
       ['Dämmstärke', 'Wie viele mm Mineralwolle? Lehner Haus: bis 240 mm plus 80 mm Holzfaserdämmplatte.'],
       ['Schallschutz', 'Werden konkrete dB-Werte genannt? Lehner Haus gibt messbare Werte an.'],
       ['Fenster Ug-Wert', '3-fach Verglasung mit Ug 0,5 W/(m²K)? Lehner Haus: serienmäßig.'],
-      ['Fenster Profil', '6-Kammer-Profil mit 80 mm Bautiefe? Lehner Haus: Standard.'],
+      ['Fenster Profil', fensterProfilText],
       ['Kältemittel', 'Natürliches Kältemittel R290? Lehner Haus: ja – zukunftssicher.'],
       ['Diffusionsoffen', 'Ist der Wandaufbau diffusionsoffen? Lehner Haus: ja – baubiologisch optimal.'],
       ['Qualitätszertifikat', 'QDF-Zertifizierung und RAL-Gütezeichen vorhanden? Lehner Haus: ja.'],
-      ['Festpreis', 'Echte Festpreis-Garantie oder nur ein Circa-Preis?'],
+      ['Festpreis', 'Echte Festpreis-Garantie oder nur ein Circa-Preis? Bei Lehner Haus: Festpreisgarantie.'],
       ['Referenzen', 'Können Sie mit Bauherren-Referenzen sprechen?']
     ];
 
@@ -1392,8 +1449,102 @@ class PdfService {
     doc.text('Überzeugen Sie sich selbst: Besuchen Sie uns im Musterhaus!', 80, y + 28, { lineBreak: false });
   }
 
+  drawBeraterPage(doc, submission) {
+    let y = 95;
+    const marginLeft = 60;
+    const contentWidth = 475;
+
+    // Berater-Kontaktbox
+    if (submission.berater_name) {
+      doc.roundedRect(marginLeft, y, contentWidth, 80, 8).fill(this.colors.primary);
+      doc.rect(marginLeft + contentWidth - 4, y, 4, 80).fill(this.colors.gold);
+
+      doc.font('Helvetica-Bold').fontSize(14).fillColor(this.colors.white);
+      doc.text(submission.berater_name, marginLeft + 20, y + 15);
+
+      let contactY = y + 38;
+      if (submission.berater_telefon) {
+        doc.font('Helvetica').fontSize(10).fillColor(this.colors.white);
+        doc.text(`Telefon: ${submission.berater_telefon}`, marginLeft + 20, contactY);
+        contactY += 16;
+      }
+      if (submission.berater_email) {
+        doc.font('Helvetica').fontSize(10).fillColor(this.colors.white);
+        doc.text(`E-Mail: ${submission.berater_email}`, marginLeft + 20, contactY);
+      }
+
+      y += 100;
+    }
+
+    // Freitext
+    if (submission.berater_freitext) {
+      doc.roundedRect(marginLeft, y, contentWidth, 0, 6).fill(this.colors.goldLight);
+      doc.rect(marginLeft, y, 4, 0).fill(this.colors.gold);
+
+      // Höhe dynamisch berechnen
+      doc.font('Helvetica').fontSize(10);
+      const textHeight = doc.heightOfString(submission.berater_freitext, { width: contentWidth - 40 });
+      const boxHeight = textHeight + 40;
+
+      doc.roundedRect(marginLeft, y, contentWidth, boxHeight, 6).fill(this.colors.goldLight);
+      doc.rect(marginLeft, y, 4, boxHeight).fill(this.colors.gold);
+
+      doc.font('Helvetica-Bold').fontSize(11).fillColor(this.colors.primary);
+      doc.text('Persönliche Nachricht:', marginLeft + 15, y + 12);
+
+      doc.font('Helvetica').fontSize(10).fillColor(this.colors.text);
+      doc.text(submission.berater_freitext, marginLeft + 15, y + 30, { width: contentWidth - 30, lineGap: 2 });
+    }
+  }
+
+  drawGlossaryPage(doc) {
+    let y = 95;
+    const marginLeft = 60;
+    const contentWidth = 475;
+
+    doc.font('Helvetica').fontSize(9).fillColor(this.colors.textMuted);
+    doc.text('Die wichtigsten Fachbegriffe aus Ihrer Leistungsbeschreibung im Überblick:', marginLeft, y, { width: contentWidth });
+    y += 25;
+
+    const glossarItems = [
+      ['U-Wert', 'Wärmedurchgangskoeffizient – gibt an, wie viel Wärme durch ein Bauteil verloren geht. Je niedriger, desto besser die Dämmung. Einheit: W/(m²K).'],
+      ['Ug-Wert', 'Wärmedurchgangskoeffizient der Verglasung (g = glazing). Beschreibt die Wärmedämmung des Glases. Je niedriger, desto weniger Wärmeverlust.'],
+      ['KVH', 'Konstruktionsvollholz – technisch getrocknetes Vollholz für tragende Konstruktionen. Formstabil, maßhaltig und frei von Insektenbefall.'],
+      ['LSH', 'Leimschichtholz – verleimtes Holz aus mehreren Schichten für besonders belastbare Konstruktionen.'],
+      ['RC2', 'Resistance Class 2 – Sicherheitsklasse für Fenster und Türen. Bietet geprüften Einbruchschutz mit Pilzkopfverriegelung.'],
+      ['F90', 'Feuerwiderstandsklasse – das Bauteil widersteht einem Brand mindestens 90 Minuten lang. Standard bei Lehner Haus.'],
+      ['ESB', 'Elka Strong Board – Holzwerkstoffplatte aus frischem Fichtenholz. Wohngesund zertifiziert (Blauer Engel), geringe Emissionen.'],
+      ['WLG / WLS', 'Wärmeleitgruppe / Wärmeleitstufe – Kennzahl für die Dämmeigenschaft eines Materials. Je niedriger die Zahl, desto besser die Dämmung.'],
+      ['SCOP', 'Seasonal Coefficient of Performance – jahreszeitbezogene Effizienz einer Wärmepumpe. SCOP 5,0 bedeutet: aus 1 kWh Strom werden 5 kWh Wärme.'],
+      ['R290', 'Natürliches Kältemittel (Propan) für Wärmepumpen. Klimafreundlich und zukunftssicher, da synthetische Kältemittel schrittweise verboten werden.'],
+      ['WRG', 'Wärmerückgewinnung – Technologie in Lüftungsanlagen, die Wärme aus der Abluft zurückgewinnt und an die Frischluft überträgt.'],
+      ['QDF', 'Qualitätsgemeinschaft Deutscher Fertigbau – unabhängiger Qualitätsverband mit strengen Prüfstandards für Fertighaushersteller.'],
+      ['RAL', 'RAL-Gütezeichen – unabhängiges Qualitätssiegel, das regelmäßig durch neutrale Institute überprüft wird.'],
+      ['dB(A)', 'Dezibel (A-bewertet) – Maßeinheit für Lautstärke. 35 dB(A) = Flüstern, 50 dB(A) = normales Gespräch.'],
+      ['DGNB', 'Deutsche Gesellschaft für Nachhaltiges Bauen – vergibt Zertifikate für nachhaltiges und ressourcenschonendes Bauen.'],
+      ['EnEV / GEG', 'Energieeinsparverordnung / Gebäudeenergiegesetz – gesetzliche Vorgaben für die energetische Qualität von Gebäuden.'],
+      ['LCA', 'Lebenszyklusanalyse – bewertet die Umweltwirkungen eines Gebäudes über seinen gesamten Lebenszyklus.'],
+      ['ECOSE', 'Bindemittel-Technologie von Knauf Insulation – formaldehydfrei, auf Basis natürlicher Rohstoffe. Wohngesünder als herkömmliche Mineralwolle.']
+    ];
+
+    const colWidth = contentWidth / 2 - 8;
+    const itemsPerCol = Math.ceil(glossarItems.length / 2);
+
+    glossarItems.forEach((item, idx) => {
+      const col = idx < itemsPerCol ? 0 : 1;
+      const row = col === 0 ? idx : idx - itemsPerCol;
+      const x = marginLeft + col * (colWidth + 16);
+      const rowY = y + row * 38;
+
+      doc.font('Helvetica-Bold').fontSize(8).fillColor(this.colors.primary);
+      doc.text(item[0], x, rowY, { width: colWidth });
+      doc.font('Helvetica').fontSize(7).fillColor(this.colors.text);
+      doc.text(item[1], x, rowY + 10, { width: colWidth, lineGap: 0.5 });
+    });
+  }
+
   getGrundstueckText(status) {
-    const map = { 'vorhanden': 'Vorhanden', 'in_aussicht': 'In Aussicht', 'suche': 'Auf der Suche' };
+    const map = { 'vorhanden': 'vorhanden', 'in_aussicht': 'in Aussicht', 'suche': 'auf der Suche' };
     return map[status] || status || '-';
   }
 
@@ -1427,15 +1578,15 @@ class PdfService {
       // Raum-Liste
       floor.rooms.forEach((room, idx) => {
         const roomName = room.name || `Raum ${idx + 1}`;
-        const details = room.details ? ` – ${room.details}` : '';
 
         doc.font('Helvetica').fontSize(10).fillColor(this.colors.gold);
         doc.text('•', marginLeft + 10, y, { lineBreak: false });
         doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.text);
         doc.text(roomName, marginLeft + 22, y, { lineBreak: false });
-        if (details) {
+        if (room.details) {
+          const nameWidth = doc.widthOfString(roomName, { font: 'Helvetica-Bold', fontSize: 10 });
           doc.font('Helvetica').fontSize(10).fillColor(this.colors.textLight);
-          doc.text(details, marginLeft + 22 + doc.widthOfString(roomName, { font: 'Helvetica-Bold', fontSize: 10 }), y, { lineBreak: false });
+          doc.text(` \u2013 ${room.details}`, marginLeft + 22 + nameWidth, y, { width: contentWidth - nameWidth - 32 });
         }
         y += 18;
       });
@@ -1446,7 +1597,7 @@ class PdfService {
     doc.roundedRect(marginLeft, y, contentWidth, 40, 6).fill(this.colors.goldLight);
     doc.rect(marginLeft, y, 4, 40).fill(this.colors.gold);
     doc.font('Helvetica').fontSize(9).fillColor(this.colors.text);
-    doc.text('Die finale Raumplanung erfolgt im persönlichen Beratungsgespräch. Bei Lehner Haus haben Sie 100 % freie Grundrissgestaltung.', marginLeft + 15, y + 12, { width: contentWidth - 30 });
+    doc.text('Durch unsere freie Raumplanung können wir all Ihre Wünsche umsetzen. Bei Lehner Haus haben Sie 100 % freie Grundrissgestaltung.', marginLeft + 15, y + 12, { width: contentWidth - 30 });
   }
 
   drawImagePlaceholder(doc, x, y, width, height, category) {

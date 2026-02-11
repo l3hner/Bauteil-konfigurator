@@ -40,7 +40,13 @@ router.post('/', async (req, res) => {
 
       // Rooms and eigenleistungen
       rooms: rooms,
-      eigenleistungen: eigenleistungen
+      eigenleistungen: eigenleistungen,
+
+      // Fachberater (optional)
+      berater_name: formData.berater_name || '',
+      berater_telefon: formData.berater_telefon || '',
+      berater_email: formData.berater_email || '',
+      berater_freitext: formData.berater_freitext || ''
     };
 
     // Validate selection
