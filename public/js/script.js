@@ -99,26 +99,26 @@ const toast = new ToastNotification();
 const wallOptions = {
     KFW55: [
         {
-            id: 'climativ-gf',
-            name: 'CLIMA-tiv (GF)',
-            description: 'Mit Gipsfaserplatte - 270 mm Wandstärke'
-        },
-        {
             id: 'climativ',
             name: 'CLIMA-tiv',
             description: 'Mit Holzwerkstoffplatte - 270 mm Wandstärke'
+        },
+        {
+            id: 'climativ-gf',
+            name: 'CLIMA-tiv (GF)',
+            description: 'Mit Gipsfaserplatte - 270 mm Wandstärke'
         }
     ],
     KFW40: [
         {
-            id: 'climativ-plus-gf',
-            name: 'CLIMA-tiv plus (GF)',
-            description: 'Mit Gipsfaserplatte - 350 mm Wandstärke'
-        },
-        {
             id: 'climativ-plus',
             name: 'CLIMA-tiv plus',
             description: 'Mit Holzwerkstoffplatte - 350 mm Wandstärke'
+        },
+        {
+            id: 'climativ-plus-gf',
+            name: 'CLIMA-tiv plus (GF)',
+            description: 'Mit Gipsfaserplatte - 350 mm Wandstärke'
         }
     ]
 };
@@ -175,7 +175,7 @@ function updateWallOptions() {
     walls.forEach(wall => {
         html += `
             <label class="radio-card">
-                <input type="radio" name="wall" value="${wall.id}" required onchange="handleRadioSelect(this); updateProgress();">
+                <input type="radio" name="wall" value="${wall.id}" onchange="handleRadioSelect(this); updateProgress();">
                 <div class="radio-content">
                     <h4>${wall.name}</h4>
                     <p>${wall.description}</p>
@@ -217,7 +217,7 @@ function updateLueftungOptions() {
     lueftungen.forEach(lueftung => {
         html += `
             <label class="radio-card">
-                <input type="radio" name="lueftung" value="${lueftung.id}" required onchange="handleRadioSelect(this); updateProgress();">
+                <input type="radio" name="lueftung" value="${lueftung.id}" onchange="handleRadioSelect(this); updateProgress();">
                 <div class="radio-content">
                     <h4>${lueftung.name}</h4>
                     <p>${lueftung.description}</p>
@@ -481,24 +481,6 @@ function initFormValidation() {
                 e.preventDefault();
                 toast.error('Bitte wahlen Sie einen Energiestandard aus.');
                 document.getElementById('section-2')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return false;
-            }
-
-            // Check if wall is selected
-            const wallRadios = document.getElementsByName('wall');
-            let wallSelected = false;
-
-            for (const radio of wallRadios) {
-                if (radio.checked) {
-                    wallSelected = true;
-                    break;
-                }
-            }
-
-            if (!wallSelected) {
-                e.preventDefault();
-                toast.error('Bitte wahlen Sie ein Aussenwandsystem aus.');
-                document.getElementById('section-3')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return false;
             }
 

@@ -1,48 +1,6 @@
 {
   "walls": [
     {
-      "id": "climativ-gf",
-      "name": "CLIMA-tiv (GF)",
-      "kfwCompatible": ["KFW55", "KFW40"],
-      "description": "CLIMA-tiv Außenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion aus KVH (Vollholz 80/160) mit diffusionsoffenem Außenputz. Wandstärke: 265 mm. Massivholzrahmenkonstruktion und Wärmedämmung liegen in einer Ebene.",
-      "fireRating": "F90",
-      "constructionType": "diffusionsoffen",
-      "premiumFeatures": [
-        "F90 Brandschutz – 90 Min. Feuerwiderstand als Standard",
-        "Holzfaserdämmplatten auf der Außenseite für optimalen Hitzeschutz",
-        "Diffusionsoffener Wandaufbau – feuchteregulierend, schimmelfrei",
-        "Gipsfaser-Innenbeplankung – höchste Stabilität und Tragfähigkeit"
-      ],
-      "layers": [
-        { "name": "3-lagiger Außenputz", "value": "" },
-        { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
-        { "name": "Massivholz-Rahmenkonstruktion KVH (inkl. Wärmedämmung WLG 035)", "value": "160,0 mm" },
-        { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
-        { "name": "Dampfbremse", "value": "" },
-        { "name": "Gipsbauplatte", "value": "12,5 mm" }
-      ],
-      "technicalDetails": {
-        "uValue": "0,17 W/(m²K)",
-        "wallThickness": "265 mm",
-        "insulation": "160 mm WLG 035 + 80 mm Holzfaser WLG 042",
-        "fireRating": "F90",
-        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
-      },
-      "options": [
-        { "position": "Pos. 11.169", "description": "160 mm Holzfaser - Jutedämmung WLS 039" }
-      ],
-      "advantages": [
-        "Fermacell Gipsfaser-Innenbeplankung für höchste Robustheit",
-        "Hervorragende Befestigungsmöglichkeiten für schwere Lasten (Hängeschränke, TV-Halterungen)",
-        "Feuchtigkeitsresistent und schimmelunempfindlich",
-        "Höchster Brandschutz durch mineralische Platte",
-        "QDF-zertifizierte Qualität mit RAL-Gütezeichen"
-      ],
-      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welchen exakten U-Wert hat die Außenwand? (Lehner Haus: 0,17 W/(m²K))\n\n2. Welche Innenbeplankung wird verwendet? (Lehner Haus: Gipsfaserplatte mit F90 Brandschutz und 60 kg Tragkraft)\n\n3. Ist der Wandaufbau diffusionsoffen? (Lehner Haus: ja – baubiologisch optimale Feuchteregulierung)\n\n4. Wird F90 Brandschutz als Standard erreicht? (Lehner Haus: 90 Min. Feuerwiderstand serienmäßig)\n\n5. Welcher Dämmstoff wird eingesetzt? (Lehner Haus: Mineralwolle, brandsicher Klasse A1)",
-      "filePath": "assets/variants/walls/climativ-fermacell.png",
-      "technicalDrawing": "assets/variants/walls/climativ-fermacell-technical.png"
-    },
-    {
       "id": "climativ",
       "name": "CLIMA-tiv",
       "kfwCompatible": ["KFW55", "KFW40"],
@@ -85,10 +43,10 @@
       "technicalDrawing": "assets/variants/walls/climativ-esb-technical.png"
     },
     {
-      "id": "climativ-plus-gf",
-      "name": "CLIMA-tiv plus (GF)",
-      "kfwCompatible": ["KFW40"],
-      "description": "CLIMA-tiv plus Außenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion aus LSH (verleimtes Holz 80/240) mit diffusionsoffenem Außenputz. Wandstärke: 345 mm. Massivholzrahmenkonstruktion und Wärmedämmung liegen in einer Ebene.",
+      "id": "climativ-gf",
+      "name": "CLIMA-tiv (GF)",
+      "kfwCompatible": ["KFW55", "KFW40"],
+      "description": "CLIMA-tiv Außenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion aus KVH (Vollholz 80/160) mit diffusionsoffenem Außenputz. Wandstärke: 265 mm. Massivholzrahmenkonstruktion und Wärmedämmung liegen in einer Ebene.",
       "fireRating": "F90",
       "constructionType": "diffusionsoffen",
       "premiumFeatures": [
@@ -100,31 +58,31 @@
       "layers": [
         { "name": "3-lagiger Außenputz", "value": "" },
         { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
-        { "name": "Massivholz-Rahmenkonstruktion LSH (inkl. Wärmedämmung WLG 035)", "value": "240,0 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion KVH (inkl. Wärmedämmung WLG 035)", "value": "160,0 mm" },
         { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
         { "name": "Dampfbremse", "value": "" },
         { "name": "Gipsbauplatte", "value": "12,5 mm" }
       ],
       "technicalDetails": {
-        "uValue": "0,129 W/(m²K)",
-        "wallThickness": "345 mm",
-        "insulation": "240 mm WLG 035 + 80 mm Holzfaser WLG 042",
+        "uValue": "0,17 W/(m²K)",
+        "wallThickness": "265 mm",
+        "insulation": "160 mm WLG 035 + 80 mm Holzfaser WLG 042",
         "fireRating": "F90",
         "rawHeight": "2,60 m / 2,68 m / 2,76 m"
       },
       "options": [
-        { "position": "Pos. 11.249", "description": "240 mm Holzfaser - Jutedämmung WLS 039" }
+        { "position": "Pos. 11.169", "description": "160 mm Holzfaser - Jutedämmung WLS 039" }
       ],
       "advantages": [
-        "Exzellenter U-Wert von 0,129 W/(m²K) – deutlich besser als KfW-Anforderung",
-        "Zukunftssicher für kommende verschärfte Anforderungen",
-        "Fermacell Premium-Oberfläche mit maximaler Robustheit",
-        "Optimale Basis für hochwertige Innenwandgestaltung",
-        "Höchste Förderfähigkeit durch übererfüllte Standards"
+        "Fermacell Gipsfaser-Innenbeplankung für höchste Robustheit",
+        "Hervorragende Befestigungsmöglichkeiten für schwere Lasten (Hängeschränke, TV-Halterungen)",
+        "Feuchtigkeitsresistent und schimmelunempfindlich",
+        "Höchster Brandschutz durch mineralische Platte",
+        "QDF-zertifizierte Qualität mit RAL-Gütezeichen"
       ],
-      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welchen exakten U-Wert hat die Außenwand? (Lehner Haus: 0,129 W/(m²K) – deutlich besser als KfW-Anforderung)\n\n2. Wird die Dämmung vollflächig eingebracht? (Lehner Haus: 240 mm Mineralwolle plus 80 mm Holzfaserdämmplatte = 320 mm gesamt)\n\n3. Welche Innenbeplankung wird verwendet? (Lehner Haus: Gipsfaserplatte mit F90 Brandschutz und 60 kg Tragkraft)\n\n4. Ist der Wandaufbau diffusionsoffen? (Lehner Haus: ja – optimale Feuchteregulierung ohne Dampfsperre)\n\n5. Welcher Dämmstoff wird eingesetzt? (Lehner Haus: Mineralwolle, brandsicher Klasse A1)",
-      "filePath": "assets/variants/walls/climativ-plus-fermacell.png",
-      "technicalDrawing": "assets/variants/walls/climativ-plus-fermacell-technical.png"
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welchen exakten U-Wert hat die Außenwand? (Lehner Haus: 0,17 W/(m²K))\n\n2. Welche Innenbeplankung wird verwendet? (Lehner Haus: Gipsfaserplatte mit F90 Brandschutz und 60 kg Tragkraft)\n\n3. Ist der Wandaufbau diffusionsoffen? (Lehner Haus: ja – baubiologisch optimale Feuchteregulierung)\n\n4. Wird F90 Brandschutz als Standard erreicht? (Lehner Haus: 90 Min. Feuerwiderstand serienmäßig)\n\n5. Welcher Dämmstoff wird eingesetzt? (Lehner Haus: Mineralwolle, brandsicher Klasse A1)",
+      "filePath": "assets/variants/walls/climativ-fermacell.png",
+      "technicalDrawing": "assets/variants/walls/climativ-fermacell-technical.png"
     },
     {
       "id": "climativ-plus",
@@ -167,6 +125,48 @@
       "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Wie dick ist die Dämmung? (Lehner Haus: 240 mm Mineralwolle plus 80 mm Holzfaserdämmplatte = 320 mm gesamt)\n\n2. Welcher Dämmstoff wird eingesetzt? (Lehner Haus: Mineralwolle, brandsicher Klasse A1)\n\n3. Welche Holzwerkstoffplatte wird verwendet? (Lehner Haus: ESB – wohngesund zertifiziert, aus regionalem Fichtenholz)\n\n4. Wird der U-Wert schriftlich garantiert? (Lehner Haus: 0,129 W/(m²K) – nachweislich geprüft)\n\n5. Ist die Konstruktion diffusionsoffen? (Lehner Haus: ja – natürliche Feuchteregulierung ohne Dampfsperre)",
       "filePath": "assets/variants/walls/climativ-plus-esb.png",
       "technicalDrawing": "assets/variants/walls/climativ-plus-esb-technical.png"
+    },
+    {
+      "id": "climativ-plus-gf",
+      "name": "CLIMA-tiv plus (GF)",
+      "kfwCompatible": ["KFW40"],
+      "description": "CLIMA-tiv plus Außenwand mit Gipsfaserplatte. Massivholz-Rahmenkonstruktion aus LSH (verleimtes Holz 80/240) mit diffusionsoffenem Außenputz. Wandstärke: 345 mm. Massivholzrahmenkonstruktion und Wärmedämmung liegen in einer Ebene.",
+      "fireRating": "F90",
+      "constructionType": "diffusionsoffen",
+      "premiumFeatures": [
+        "F90 Brandschutz – 90 Min. Feuerwiderstand als Standard",
+        "Holzfaserdämmplatten auf der Außenseite für optimalen Hitzeschutz",
+        "Diffusionsoffener Wandaufbau – feuchteregulierend, schimmelfrei",
+        "Gipsfaser-Innenbeplankung – höchste Stabilität und Tragfähigkeit"
+      ],
+      "layers": [
+        { "name": "3-lagiger Außenputz", "value": "" },
+        { "name": "Holzfaser-Wärme-Dämmplatten WLG 042", "value": "80,0 mm" },
+        { "name": "Massivholz-Rahmenkonstruktion LSH (inkl. Wärmedämmung WLG 035)", "value": "240,0 mm" },
+        { "name": "Holzwerkstoffplatte / Gipsfaserplatte", "value": "12,5 mm" },
+        { "name": "Dampfbremse", "value": "" },
+        { "name": "Gipsbauplatte", "value": "12,5 mm" }
+      ],
+      "technicalDetails": {
+        "uValue": "0,129 W/(m²K)",
+        "wallThickness": "345 mm",
+        "insulation": "240 mm WLG 035 + 80 mm Holzfaser WLG 042",
+        "fireRating": "F90",
+        "rawHeight": "2,60 m / 2,68 m / 2,76 m"
+      },
+      "options": [
+        { "position": "Pos. 11.249", "description": "240 mm Holzfaser - Jutedämmung WLS 039" }
+      ],
+      "advantages": [
+        "Exzellenter U-Wert von 0,129 W/(m²K) – deutlich besser als KfW-Anforderung",
+        "Zukunftssicher für kommende verschärfte Anforderungen",
+        "Fermacell Premium-Oberfläche mit maximaler Robustheit",
+        "Optimale Basis für hochwertige Innenwandgestaltung",
+        "Höchste Förderfähigkeit durch übererfüllte Standards"
+      ],
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welchen exakten U-Wert hat die Außenwand? (Lehner Haus: 0,129 W/(m²K) – deutlich besser als KfW-Anforderung)\n\n2. Wird die Dämmung vollflächig eingebracht? (Lehner Haus: 240 mm Mineralwolle plus 80 mm Holzfaserdämmplatte = 320 mm gesamt)\n\n3. Welche Innenbeplankung wird verwendet? (Lehner Haus: Gipsfaserplatte mit F90 Brandschutz und 60 kg Tragkraft)\n\n4. Ist der Wandaufbau diffusionsoffen? (Lehner Haus: ja – optimale Feuchteregulierung ohne Dampfsperre)\n\n5. Welcher Dämmstoff wird eingesetzt? (Lehner Haus: Mineralwolle, brandsicher Klasse A1)",
+      "filePath": "assets/variants/walls/climativ-plus-fermacell.png",
+      "technicalDrawing": "assets/variants/walls/climativ-plus-fermacell-technical.png"
     }
   ],
   "innerwalls": [
@@ -207,7 +207,7 @@
         "Optimale Kombination aus Robustheit und Verarbeitungsfreundlichkeit",
         "A2-Brandschutzklasse (nicht brennbar)"
       ],
-      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Sind die Innenwände doppelt beplankt? (Lehner Haus: ja – für optimalen Schallschutz und Stabilität)\n\n2. Welche Innenbeplankung wird verwendet? (Lehner Haus: Gipsfaserplatte – robust, feuchtraumgeeignet, A2 Brandschutz)\n\n3. Welche Tragkraft bieten die Wände? (Lehner Haus: 60 kg Auszugslast pro Befestigung)\n\n4. Sind alle Materialien im Preis enthalten? (Lehner Haus: ja – inkl. Ständerwerk, Beplankung und Dichtungen)\n\n5. Welcher Schallschutz wird erreicht? (Lehner Haus: konkrete dB-Werte, nicht nur Schätzungen)",
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Sind die Innenwände doppelt beplankt? (Lehner Haus: ja – für optimalen Schallschutz und Stabilität)\n\n2. Welche Innenbeplankung wird verwendet? (Lehner Haus: Gipsfaserplatte – robust, feuchtraumgeeignet, A2 Brandschutz)\n\n3. Welche Tragkraft bieten die Wände? (Lehner Haus: 60 kg Auszugslast pro Befestigung)\n\n4. Sind alle Materialien im Preis enthalten? (Lehner Haus: ja – inkl. Ständerwerk, Beplankung und Dichtungen)",
       "filePath": "assets/variants/innenwalls/fermacell-gipskarton.png",
       "technicalDrawing": "assets/variants/innenwalls/fermacell-gipskarton-technical.png"
     },
@@ -248,7 +248,7 @@
         "Bewährte Materialkombination",
         "Schnelle Verarbeitung auf der Baustelle"
       ],
-      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welche Holzwerkstoffplatte wird bei den Innenwänden verwendet? (Lehner Haus: ESB – wohngesund zertifiziert, geruchsneutral)\n\n2. Welcher Schallschutz wird erreicht? (Lehner Haus: konkrete dB-Werte auf Nachfrage)\n\n3. Sind alle Materialien im Preis enthalten? (Lehner Haus: ja – inkl. Ständerwerk, Beplankung und Dichtungen)\n\n4. Ist die ESB-Platte emissionsgeprüft? (Lehner Haus: niedrige VOC-Emissionen, 25 % geringere Quellung)\n\n5. Wird die Innenwand doppelt beplankt? (Lehner Haus: ja – ESB plus Gipsbauplatte für optimale Stabilität)",
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welche Holzwerkstoffplatte wird bei den Innenwänden verwendet? (Lehner Haus: ESB – wohngesund zertifiziert, geruchsneutral)\n\n2. Sind alle Materialien im Preis enthalten? (Lehner Haus: ja – inkl. Ständerwerk, Beplankung und Dichtungen)\n\n3. Ist die ESB-Platte emissionsgeprüft? (Lehner Haus: niedrige VOC-Emissionen, 25 % geringere Quellung)\n\n4. Wird die Innenwand doppelt beplankt? (Lehner Haus: ja – ESB plus Gipsbauplatte für optimale Stabilität)",
       "filePath": "assets/variants/innenwalls/esb-gipskarton.png",
       "technicalDrawing": "assets/variants/innenwalls/esb-gipskarton-technical.png"
     }
@@ -278,11 +278,10 @@
       "advantages": [
         "3-fach Verglasung mit Ug-Wert 0,5 – Passivhaus-tauglich",
         "6-Kammer-Profil für maximale Dämmung",
-        "Edelstahl-Abstandhalter für beste Dämmwerte",
         "Pilzkopfverriegelung für Einbruchschutz RC2",
         "Pflegeleicht und langlebig"
       ],
-      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welchen Ug-Wert haben die Fenster? (Lehner Haus: 0,5 W/(m²K) serienmäßig)\n\n2. 3-fach oder 2-fach Verglasung? (Lehner Haus: 3-fach Verglasung als Standard)\n\n3. Wie viele Kammern hat das Profil? (Lehner Haus: 6-Kammer-Profil mit 80 mm Bautiefe)\n\n4. Ist RC2-Sicherheitstechnik serienmäßig? (Lehner Haus: ja – Pilzkopfverriegelung an allen Fenstern)\n\n5. Welcher Abstandhalter wird verwendet? (Lehner Haus: Edelstahl für optimale Dämmwerte)",
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. Welchen Ug-Wert haben die Fenster? (Lehner Haus: 0,5 W/(m²K) serienmäßig)\n\n2. 3-fach oder 2-fach Verglasung? (Lehner Haus: 3-fach Verglasung als Standard)\n\n3. Wie viele Kammern hat das Profil? (Lehner Haus: 6-Kammer-Profil mit 80 mm Bautiefe)\n\n4. Ist RC2-Sicherheitstechnik serienmäßig? (Lehner Haus: ja – Pilzkopfverriegelung an allen Fenstern)",
       "filePath": "assets/variants/windows/kunststoff.png",
       "technicalDrawing": "assets/variants/windows/kunststoff-technical.png"
     },
@@ -324,38 +323,9 @@
   ],
   "tiles": [
     {
-      "id": "ton",
-      "name": "Tondachziegel",
-      "description": "Hochwertige Tondachziegel mit Durchfärbung. Lebensdauer 80-100 Jahre. Zeitlose Optik und nachhaltiges Naturmaterial. A² Brandschutz.",
-      "premiumSurface": false,
-      "brandProtection": "A²",
-      "layers": [
-        { "name": "Tondachziegel, in Standardfarben", "value": "" },
-        { "name": "Dachlattung", "value": "" },
-        { "name": "Konterlattung", "value": "" },
-        { "name": "Diffusionsoffene Schalungsbahn", "value": "" },
-        { "name": "Dachkonstruktion (zimmermannsm. abgeb.)", "value": "" }
-      ],
-      "technicalDetails": {
-        "material": "Gebrannter Ton, durchgefärbt",
-        "weight": "ab 4t Gesamtdachgewicht bei typischem Einfamilienhaus",
-        "surface": "Durchfärbung für lange Lebensdauer und dauerhaften Glanz"
-      },
-      "advantages": [
-        "Lebensdauer 80-100 Jahre – einmal decken, nie wieder",
-        "Durchfärbung – Farbe verblasst nie",
-        "Natürliches Material ohne chemische Zusätze",
-        "Atmungsaktiv – reguliert Dachfeuchtigkeit",
-        "Wertstabil – steigert den Immobilienwert"
-      ],
-      "comparisonNotes": "❗ Tondachziegel sind die Investition FÜRS LEBEN! Langfrist-Rechnung:\n\n1. 'Wie lange hält das Dach?' (Beton: 30-40 Jahre = 2-3x neu decken; Ton: 80-100 Jahre = einmal!)\n\n2. 'Durchgefärbt oder nur beschichtet?' (Durchgefärbt = Farbe IN der Masse, verblasst nie; beschichtet = Farbe AUF der Oberfläche, kann verblassen)\n\n3. 'A² Brandschutz gewährleistet?' (Ton = A² nicht brennbar; manche Materialien nur B oder C)\n\n4. 'Wie schwer ist das Dach?' (Ab 4t Gesamtgewicht - zeigt Qualität und Sturmfestigkeit)\n\n5. 'Preisvergleich mit Neubeschichtung?' (Beton nach 30 Jahren neu beschichten = Zusatzkosten; Ton = keine)",
-      "filePath": "assets/variants/tiles/ton.png",
-      "technicalDrawing": "assets/variants/tiles/ton-technical.png"
-    },
-    {
       "id": "beton",
       "name": "Betondachsteine",
-      "description": "Wirtschaftliche Betondachsteine mit guter Haltbarkeit. Vielfältige Farbauswahl für individuelle Dachgestaltung. Lebensdauer 30-40 Jahre.",
+      "description": "Wirtschaftliche Betondachsteine mit guter Haltbarkeit. Vielfältige Farbauswahl für individuelle Dachgestaltung.",
       "premiumSurface": false,
       "brandProtection": "B",
       "layers": [
@@ -372,12 +342,38 @@
       "advantages": [
         "Attraktives Preis-Leistungs-Verhältnis",
         "Große Farbauswahl möglich",
-        "Langlebig und 30-40 Jahre haltbar",
         "Bewährtes Material millionenfach verbaut"
       ],
-      "comparisonNotes": "❗ Die wirtschaftliche Wahl für begrenztes Budget. BEACHTEN SIE:\n\n1. 'Wie lange hält die Farbe?' (Oberflächenbeschichtung kann nach 15-20 Jahren verblassen - durchgefärbter Beton existiert NICHT)\n\n2. 'Was kostet Neubeschichtung?' (Nach 20-30 Jahren oft nötig - rechnen Sie das in Ihre Kalkulation ein)\n\n3. 'Lebensdauer gesamt?' (30-40 Jahre, dann Austausch - Ton hält 80-100 Jahre)\n\n4. 'Brandschutzklasse?' (Beton = B schwer entflammbar; Ton = A² nicht brennbar)\n\n5. 'Langfrist-Kosten beachten!' (Beton günstiger jetzt, aber 2-3x Erneuerung in 100 Jahren; Ton teurer jetzt, aber nur 1x)\n\nFür maximale Langlebigkeit und Werterhalt empfehlen wir Tondachziegel.",
+      "comparisonNotes": "Fragen Sie gezielt nach diesen Punkten:\n\n1. 'Welche Farbauswahl ist verfügbar?'\n\n2. 'Welche Oberflächenbeschichtung wird verwendet?'\n\n3. 'Ist das Dach sturmsicher montiert?'",
       "filePath": "assets/variants/tiles/beton.png",
       "technicalDrawing": "assets/variants/tiles/beton-technical.png"
+    },
+    {
+      "id": "ton",
+      "name": "Tondachziegel",
+      "description": "Tondachziegel mit Durchfärbung. Teurere Lösung, nur in seltenen Fällen notwendig. A² Brandschutz.",
+      "premiumSurface": false,
+      "brandProtection": "A²",
+      "layers": [
+        { "name": "Tondachziegel, in Standardfarben", "value": "" },
+        { "name": "Dachlattung", "value": "" },
+        { "name": "Konterlattung", "value": "" },
+        { "name": "Diffusionsoffene Schalungsbahn", "value": "" },
+        { "name": "Dachkonstruktion (zimmermannsm. abgeb.)", "value": "" }
+      ],
+      "technicalDetails": {
+        "material": "Gebrannter Ton, durchgefärbt",
+        "weight": "ab 4t Gesamtdachgewicht bei typischem Einfamilienhaus",
+        "surface": "Durchfärbung"
+      },
+      "advantages": [
+        "Durchfärbung – dauerhafte Farbgebung",
+        "Natürliches Material",
+        "A² Brandschutzklasse"
+      ],
+      "comparisonNotes": "Hinweis: Tondachziegel sind die teurere Variante und nur in seltenen Fällen notwendig. Betondachsteine bieten in der Regel ein besseres Preis-Leistungs-Verhältnis.",
+      "filePath": "assets/variants/tiles/ton.png",
+      "technicalDrawing": "assets/variants/tiles/ton-technical.png"
     }
   ],
   "haustypen": [
@@ -612,7 +608,6 @@
       ],
       "technicalDetails": {
         "construction": "Holzbalken nach statischer Berechnung",
-        "loadCapacity": "Nach statischer Berechnung",
         "position": "Pos. 20.120 / 20.140",
         "cladding": "Pos. 23.125 / 23.140"
       },
@@ -629,7 +624,7 @@
         "Natürlicher Baustoff Holz – nachhaltig und wohngesund",
         "Flexible Installationsführung möglich"
       ],
-      "comparisonNotes": "❗ Die Decke ist entscheidend für Schallschutz und Wohnkomfort! KRITISCHE FRAGEN:\n\n1. 'Welchen Trittschallschutz bietet die Decke?' (Schlechter Schallschutz = jeder Schritt im OG ist im EG hörbar)\n\n2. 'Wie dick ist die Dämmung in der Decke?' (Mehr Dämmung = besserer Schall- und Wärmeschutz)\n\n3. 'Ist die Decke diffusionsoffen?' (Wichtig für Feuchteregulierung und Vermeidung von Schimmel)\n\n4. 'Welche Tragfähigkeit hat die Decke?' (Wichtig für schwere Möbel, Badewannen, etc.)\n\n5. 'Wo werden Installationen geführt?' (Gute Planung = keine nachträglichen Probleme)",
+      "comparisonNotes": "❗ Die Decke ist entscheidend für Schallschutz und Wohnkomfort! KRITISCHE FRAGEN:\n\n1. 'Wie dick ist die Dämmung in der Decke?' (Mehr Dämmung = besserer Schall- und Wärmeschutz)\n\n2. 'Ist die Decke diffusionsoffen?' (Wichtig für Feuchteregulierung und Vermeidung von Schimmel)\n\n3. 'Wo werden Installationen geführt?' (Gute Planung = keine nachträglichen Probleme)",
       "filePath": "assets/variants/decken/lehner-decke.png",
       "technicalDrawing": "assets/variants/decken/lehner-decke-technical.png"
     },
@@ -651,7 +646,6 @@
       "technicalDetails": {
         "construction": "Massivholzplatte (60 cm breit mit 6 mm Fugen)",
         "soundInsulation": "Hervorragender Schallschutz durch Masse",
-        "loadCapacity": "Höchste Tragfähigkeit",
         "deckenstärke": "155 mm",
         "position": "Pos. 20.520"
       },

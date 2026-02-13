@@ -766,20 +766,25 @@ class PdfService {
 
     const services = [
       ['Individuelle Planung', '100% freie Grundrissgestaltung – keine Katalog-Zwänge'],
+      ['Budgetoptimierte Grundrisse', 'Optimale Raumaufteilung für jedes Budget'],
+      ['Individuelle Ausbaustufen', 'Flexible Ausstattungsoptionen nach Ihren Wünschen'],
       ['Wohngesunde Materialien', 'ESB-Platten statt OSB – zertifiziert emissionsarm'],
       ['Premium-Ausstattung', 'Vaillant & Viessmann Wärmepumpen, Villeroy & Boch Sanitär'],
       ['Kompletter Innenausbau', 'Elektrik, Sanitär, Fußböden – alles aus einer Hand'],
-      ['Ein Ansprechpartner', 'Ihr persönlicher Bauleiter von Planung bis Schlüsselübergabe'],
+      ['Persönliche Projektbetreuung', 'Ihr Ansprechpartner von Planung bis Schlüsselübergabe'],
+      ['Zugeschnittene Hausempfehlungen', 'Individuelle Beratung passend zu Ihren Bedürfnissen'],
       ['Festpreis-Garantie', 'Keine versteckten Kosten, keine bösen Überraschungen'],
+      ['Kosten- und Terminsicherheit', 'Verbindliche Termine und transparente Kosten'],
+      ['Nachhaltige Wertbeständigkeit', 'Langlebige Materialien für dauerhaften Wert'],
       ['Qualitätssicherung', 'QDF-zertifiziert mit RAL-Gütezeichen und Eigenüberwachung']
     ];
 
     services.forEach(([title, text]) => {
-      doc.font('Helvetica-Bold').fontSize(10).fillColor(this.colors.primary);
+      doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
       doc.text(title, 80, y, { lineBreak: false });
-      doc.font('Helvetica').fontSize(9).fillColor(this.colors.text);
-      doc.text(text, 80, y + 13, { lineBreak: false });
-      y += 38;
+      doc.font('Helvetica').fontSize(8).fillColor(this.colors.text);
+      doc.text(text, 80, y + 11, { lineBreak: false });
+      y += 28;
     });
 
     // Highlight-Box
@@ -836,9 +841,12 @@ class PdfService {
     // === AUFBAU-LISTE (rechte Spalte) - ELK Style ===
     let rightY = y;
 
-    // "Aufbau von außen nach innen" Header (fett, unterstrichen)
+    // Aufbau-Header (dynamisch je nach Kategorie)
+    const aufbauHeader = categoryTitle.includes('Decke')
+      ? 'Aufbau von oben nach unten'
+      : 'Aufbau von außen nach innen';
     doc.font('Helvetica-Bold').fontSize(9).fillColor(this.colors.primary);
-    doc.text('Aufbau von außen nach innen', rightColX, rightY);
+    doc.text(aufbauHeader, rightColX, rightY);
     rightY += 4;
     doc.moveTo(rightColX, rightY + 8).lineTo(rightColX + 130, rightY + 8)
        .strokeColor(this.colors.secondary).lineWidth(0.5).stroke();
@@ -1032,7 +1040,6 @@ class PdfService {
     } else if (categoryTitle.includes('Decke')) {
       if (td.construction) items.push({ name: 'Konstruktion', value: '' });
       if (td.soundInsulation) items.push({ name: 'Trittschall', value: td.soundInsulation });
-      if (td.loadCapacity) items.push({ name: 'Tragfähigkeit', value: td.loadCapacity });
     } else if (categoryTitle.includes('Fenster')) {
       if (td.glazing) items.push({ name: 'Verglasung', value: '' });
       if (td.profile) items.push({ name: 'Profil', value: '' });
@@ -1288,7 +1295,6 @@ class PdfService {
     const steps = [
       'Persönliches Beratungsgespräch',
       'Besichtigung unserer Musterhäuser',
-      'Gespräch mit Bauherren-Referenzen',
       'Detaillierte Kostenaufstellung',
       'Erstellung Ihres Angebots'
     ];
@@ -1429,8 +1435,7 @@ class PdfService {
       ['Kältemittel', 'Natürliches Kältemittel R290? Lehner Haus: ja – zukunftssicher.'],
       ['Diffusionsoffen', 'Ist der Wandaufbau diffusionsoffen? Lehner Haus: ja – baubiologisch optimal.'],
       ['Qualitätszertifikat', 'QDF-Zertifizierung und RAL-Gütezeichen vorhanden? Lehner Haus: ja.'],
-      ['Festpreis', 'Echte Festpreis-Garantie oder nur ein Circa-Preis? Bei Lehner Haus: Festpreisgarantie.'],
-      ['Referenzen', 'Können Sie mit Bauherren-Referenzen sprechen?']
+      ['Festpreis', 'Echte Festpreis-Garantie oder nur ein Circa-Preis? Bei Lehner Haus: Festpreisgarantie.']
     ];
 
     doc.font('Helvetica').fontSize(9);
@@ -1460,15 +1465,14 @@ class PdfService {
       '• Extrem niedriger Preis ohne nachvollziehbare Kalkulation',
       '• Keine konkreten Antworten auf technische Fragen',
       '• Druck zum schnellen Vertragsabschluss',
-      '• Keine QDF-Zertifizierung oder RAL-Gütezeichen',
-      '• Keine Möglichkeit, mit Bauherren-Referenzen zu sprechen'
+      '• Keine QDF-Zertifizierung oder RAL-Gütezeichen'
     ];
     warnings.forEach((w, i) => {
       doc.text(w, 80, y + 25 + (i * 10), { lineBreak: false });
     });
 
     // Lehner Haus Box
-    y += 95;
+    y += 85;
     doc.roundedRect(60, y, 475, 45, 8).fill(this.colors.primary);
     doc.rect(530, y, 4, 45).fill(this.colors.gold);
 
@@ -1507,12 +1511,13 @@ class PdfService {
 
     // Freitext
     if (submission.berater_freitext) {
+      const cleanFreitext = submission.berater_freitext.replace(/\r/g, '');
       doc.roundedRect(marginLeft, y, contentWidth, 0, 6).fill(this.colors.goldLight);
       doc.rect(marginLeft, y, 4, 0).fill(this.colors.gold);
 
       // Höhe dynamisch berechnen
       doc.font('Helvetica').fontSize(10);
-      const textHeight = doc.heightOfString(submission.berater_freitext, { width: contentWidth - 40 });
+      const textHeight = doc.heightOfString(cleanFreitext, { width: contentWidth - 40 });
       const boxHeight = textHeight + 40;
 
       doc.roundedRect(marginLeft, y, contentWidth, boxHeight, 6).fill(this.colors.goldLight);
@@ -1522,7 +1527,7 @@ class PdfService {
       doc.text('Persönliche Nachricht:', marginLeft + 15, y + 12);
 
       doc.font('Helvetica').fontSize(10).fillColor(this.colors.text);
-      doc.text(submission.berater_freitext, marginLeft + 15, y + 30, { width: contentWidth - 30, lineGap: 2 });
+      doc.text(cleanFreitext, marginLeft + 15, y + 30, { width: contentWidth - 30, lineGap: 2 });
     }
   }
 
@@ -1586,7 +1591,7 @@ class PdfService {
     const floors = [
       { name: 'Erdgeschoss', rooms: rooms.erdgeschoss || [] },
       { name: 'Obergeschoss', rooms: rooms.obergeschoss || [] },
-      { name: 'Untergeschoss', rooms: rooms.untergeschoss || [] }
+      { name: 'Untergeschoss (Partnerkeller oder bauseits)', rooms: rooms.untergeschoss || [] }
     ].filter(floor => floor.rooms.length > 0);
 
     if (floors.length === 0) {

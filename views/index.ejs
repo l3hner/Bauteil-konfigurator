@@ -155,7 +155,7 @@
                     <div class="radio-group">
                         <% catalog.haustypen.forEach(haustyp => { %>
                         <label class="radio-card">
-                            <input type="radio" name="haustyp" value="<%= haustyp.id %>" required onchange="updateProgress();">
+                            <input type="radio" name="haustyp" value="<%= haustyp.id %>" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4><%= haustyp.name %></h4>
                                 <p><%= haustyp.description %></p>
@@ -215,7 +215,7 @@
                     <div class="radio-group">
                         <% if (catalog && catalog.innerwalls) { catalog.innerwalls.forEach(innerwall => { %>
                         <label class="radio-card">
-                            <input type="radio" name="innerwall" value="<%= innerwall.id %>" required onchange="updateProgress();">
+                            <input type="radio" name="innerwall" value="<%= innerwall.id %>" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4><%= innerwall.name %></h4>
                                 <p><%= innerwall.description %></p>
@@ -235,7 +235,7 @@
                     <div class="radio-group">
                         <% if (catalog && catalog.decken) { catalog.decken.forEach(decke => { %>
                         <label class="radio-card">
-                            <input type="radio" name="decke" value="<%= decke.id %>" required onchange="updateProgress();">
+                            <input type="radio" name="decke" value="<%= decke.id %>" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4><%= decke.name %></h4>
                                 <p><%= decke.description %></p>
@@ -255,7 +255,7 @@
                     <div class="radio-group">
                         <% catalog.windows.forEach(window => { %>
                         <label class="radio-card">
-                            <input type="radio" name="window" value="<%= window.id %>" required onchange="updateProgress();">
+                            <input type="radio" name="window" value="<%= window.id %>" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4><%= window.name %></h4>
                                 <p><%= window.description %></p>
@@ -275,7 +275,7 @@
                     <div class="radio-group">
                         <% catalog.tiles.forEach(tile => { %>
                         <label class="radio-card">
-                            <input type="radio" name="tiles" value="<%= tile.id %>" required onchange="updateProgress();">
+                            <input type="radio" name="tiles" value="<%= tile.id %>" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4><%= tile.name %></h4>
                                 <p><%= tile.description %></p>
@@ -295,7 +295,7 @@
                     <div class="radio-group">
                         <% catalog.heizung.forEach(heiz => { %>
                         <label class="radio-card">
-                            <input type="radio" name="heizung" value="<%= heiz.id %>" required onchange="updateProgress();">
+                            <input type="radio" name="heizung" value="<%= heiz.id %>" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4><%= heiz.name %></h4>
                                 <p><%= heiz.description %></p>
@@ -346,7 +346,7 @@
 
                     <div class="radio-group">
                         <label class="radio-card">
-                            <input type="radio" name="grundstueck" value="vorhanden" required onchange="updateProgress();">
+                            <input type="radio" name="grundstueck" value="vorhanden" onchange="updateProgress();">
                             <div class="radio-content">
                                 <h4>Vorhanden</h4>
                                 <p>Ich besitze bereits ein Grundstuck</p>
